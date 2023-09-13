@@ -1,5 +1,5 @@
 --- 
-# TinyTapeout project information
+# Tiny Tapeout project information
 project:
   wokwi_id:    0        # If using wokwi, set this to your project's ID
 
@@ -10,7 +10,7 @@ project:
   top_module:  "tt_um_loopback"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
 
 # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 4x2 or 8x2
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
 
 # Keep a track of the submission yaml
 yaml_version: 4
@@ -71,4 +71,4 @@ documentation:
   discord:      ""      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
   clock_hz:     0       # Clock frequency in Hz (if required)
-  picture:      ""      # relative path to a picture in your repository
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
