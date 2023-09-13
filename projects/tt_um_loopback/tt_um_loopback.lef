@@ -74,7 +74,7 @@ MACRO tt_um_loopback
   PIN ui_in[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 1.113000 ;
+    ANTENNAGATEAREA 0.213000 ;
     PORT
       LAYER met4 ;
         RECT 151.190 110.520 151.490 111.520 ;
@@ -107,7 +107,7 @@ MACRO tt_um_loopback
   PIN ui_in[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.126000 ;
+    ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
         RECT 136.470 110.520 136.770 111.520 ;
@@ -116,7 +116,7 @@ MACRO tt_um_loopback
   PIN ui_in[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.126000 ;
+    ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
         RECT 132.790 110.520 133.090 111.520 ;
@@ -125,7 +125,7 @@ MACRO tt_um_loopback
   PIN ui_in[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.126000 ;
+    ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
         RECT 129.110 110.520 129.410 111.520 ;
@@ -134,7 +134,7 @@ MACRO tt_um_loopback
   PIN ui_in[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.126000 ;
+    ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
         RECT 125.430 110.520 125.730 111.520 ;
@@ -429,7 +429,7 @@ MACRO tt_um_loopback
       LAYER li1 ;
         RECT 2.760 2.635 165.600 108.885 ;
       LAYER met1 ;
-        RECT 2.760 2.480 166.400 109.040 ;
+        RECT 2.760 2.480 166.400 109.440 ;
       LAYER met2 ;
         RECT 7.910 2.535 166.370 110.005 ;
       LAYER met3 ;
