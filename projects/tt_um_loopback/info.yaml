@@ -21,7 +21,7 @@ yaml_version: 4
 # Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
 documentation: 
   author:       "Sylvain Munaut"      # Your name
-  title:        "TinyTapeout 04 Loopback Test Module"      # Project title
+  title:        "TinyTapeout 05 Loopback Test Module"      # Project title
   language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
   description:  "Loopback test module"      # Short description of what your project does
 
