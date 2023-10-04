@@ -1,0 +1,126 @@
+---
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+  # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here.
+  # Source files must be in ./src and you must list each source file separately
+  source_files:
+    - tt_um_rtfb_collatz.v
+  top_module:  "tt_um_rtfb_collatz"
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x2"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation:
+  author:       "Vytautas Šaltenis"
+  title:        "Collatz conjecture brute-forcer"
+  language:     "Verilog"
+  description:  |
+    Runs a Collatz sequence calculation for a given number, outputs the number
+    of steps it took to reach 1 (a.k.a. orbit length) and the upper 16 bits of
+    the highest number of the sequence.
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+    The module takes a (large) integer number `N` as an input and computes the
+    [Collatz sequence][1] until it reaches 1. When it does, it allows reading
+    back two numbers:
+
+    1) The orbit length (i.e. the number of steps it took to reach 1)
+    2) The highest recorded value of the upper 16 bits of the 144-bit internal
+       iterator
+
+    The latter number is an indicator for good candidates for computing [path
+    records][2]. The non-zero upper bits indicate that the highest iterator
+    value `Mx(N)` is in the range of the previous path records and should be
+    recomputed in the full offline. (Holding on to the entire 144 bits of
+    `Mx(N)` number would be more obvious, but this almost doubles the footprint
+    of the design, hence, this optimisation).
+
+    [1]: https://en.wikipedia.org/wiki/Collatz_conjecture
+    [2]: http://www.ericr.nl/wondrous/pathrecs.html
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+    The module can be in 2 states: IO and COMPUTE. After reset, the chip will
+    be in IO mode. Since the input is intended to be much larger that the
+    available pins, the input number is uploaded one byte at a time,
+    increasing the address of where in the internal 144-bit-wide register that
+    byte should be stored.
+
+    Same for reading the output, except that the output numbers are limited to
+    16-bits each, so it takes much fewer operations to read them.
+
+    The full loop of computations works like this:
+
+    1) Set input (see below)
+    2) Pull `start compute` pin to high. The chip will start computations and
+       will pull `compute busy indicator` pin to high
+    3) Keep reading `compute busy indicator` pin until it gets low again
+    4) Read the output (see below)
+
+    Writing input:
+
+    1) Set `write enable` pin to low
+    2) Wait at least one cycle
+    3) Expose your input byte to `input0-7`
+    4) Expose the target address for that byte to `address0-4`
+    5) Wait at least one cycle
+    6) Set `write enable` pin to high
+
+    Reading output:
+
+    1) Set `orbit/max select` pin to low
+    2) Set `address0-4` to 0
+    3) Read low byte of orbit length from `output0-7`
+    4) Set `address0-4` to 1
+    5) Read high byte of orbit length from `output0-7`
+    6) Set `orbit/max select` pin to high
+    7) Repeat steps 2-5 to read the upper `Mx(N)` bits
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:
+    - input0
+    - input1
+    - input2
+    - input3
+    - input4
+    - input5
+    - input6
+    - input7
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - output0
+    - output1
+    - output2
+    - output3
+    - output4
+    - output5
+    - output6
+    - output7
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - address0
+    - address1
+    - address2
+    - address3
+    - address4
+    - orbit/max select
+    - start compute
+    - write enable or compute busy indicator
+
+# The following fields are optional
+  tag:          "collatz, brute-force, accelerator"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""      # Describe any external hardware needed
+  discord:      "vytas.rtfb"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     "https://github.com/rtfb/tt05-collatz/blob/main/README.md"      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     0       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
