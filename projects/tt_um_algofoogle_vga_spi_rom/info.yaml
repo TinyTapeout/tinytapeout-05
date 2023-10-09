@@ -1,0 +1,111 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # A HDL design (Verilog) i.e. not Wokwi.
+
+  # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+  # Source files must be in ./src and you must list each source file separately
+  source_files:
+    - tt05_top.v
+    - vga_sync.v
+    - vga_spi_rom.v
+  top_module:  "tt_um_algofoogle_vga_spi_rom"      # Must start with "tt_um_"
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+documentation: 
+  author:       "algofoogle (Anton Maurovic)"
+  title:        "vga_spi_rom"
+  language:     "Verilog"
+  description:  "Test reading/buffering/displaying SPI flash ROM data on VGA display"
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+    TBC.
+
+    Drives a VGA display at 640x480 60Hz.
+
+    Reads data from an SPI flash ROM (or any memory compatible with, say, W25Q10 or above).
+
+    Displays it using two alternating modes:
+    1.  During HBLANK, read up to 128 bits (16 bytes) and store in local register memory,
+        then display on the next scanline.
+    2.  Just send unregistered SPI data output (MISO) directly to the VGA display.
+
+    These two modes are timed to line up, so we can check for consistency between them.
+
+    NOTE: This tries to use `!CLK` (main clock, inverted) to drive the SPI SCLK directly,
+    so that we don't need a *faster* system CLK in order to manage extra states. It keeps
+    this `SCLK` output running constantly, relying on `/CS`.
+
+    NOTE: Besides the main design, I've got simple loopback tests:
+    *   `TestA[5:0]` feeds a 6-input logical `AND` which outputs to `TestA_out`
+    *   `TestB` feeds directly to `TestB_out`
+
+    It could be interesting, when we get the actual chip back, to compare inputs to outputs
+    on an oscilloscope when sending signals into `TestA` and `TestB`, and also try chaining them.
+
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+    TBC.
+
+    Attach an SPI memory chip with some data in it, e.g. SPI flash ROM like W25Q10.
+    Anything that accepts a 24-bit address and supports at least 25MHz reads should be fine.
+    I used a generic 25Q80 (8Mbit) that I pulled off an ESP-01.
+
+    Attach a VGA display:
+    *   NOTE: I don't yet know what current a VGA display will sink per each input, nor what current
+        the TT05 chip can safely supply per pin (or in total), so for now I recommend using some
+        bigger resistors in series with each signal, even if it means an impedance mismatch. Either
+        that, or just properly buffer each TT05 chip output with something like a
+        74ALVC245 (https://www.digikey.com.au/en/products/detail/texas-instruments/SN74ALVC245DWR/374035).
+    *   `hsync_n`, `vsync_n` must be connected to the display; I recommend a 330&ohm; resistor
+        in series with their respective VGA pins (for safe current limiting) even though 100&ohm;
+        is more often done.
+    *   For a minimum display up and running quickly, attach the high bit (bit 2) of each of
+        `red`, `green`, and `blue`, each via a 330&ohm; resistor, to their respective VGA colour
+        channel input pins.
+    *   For a much better display, use at least an RGB222 (upper 2 bits per channel) or RGB333 DAC
+        (all 3 bits per channel), and preferably one that buffers each input.
+
+  inputs:
+    - 'In: MISO'
+    - 'In: TestA[0]'
+    - 'In: TestA[1]'
+    - 'In: TestA[2]'
+    - 'In: TestA[3]'
+    - 'In: TestA[4]'
+    - 'In: TestA[5]'
+    - 'In: TestB'
+  outputs:
+    # These match my tt04-raybox-zero design (https://app.tinytapeout.com/projects/136)
+    - 'Out: hsync_n'
+    - 'Out: vsync_n'
+    - 'Out: red[1]'
+    - 'Out: red[2]'
+    - 'Out: green[1]'
+    - 'Out: green[2]'
+    - 'Out: blue[1]'
+    - 'Out: blue[2]'
+  bidirectional:
+    - 'Out: /CS'
+    - 'Out: SCLK'
+    - 'Out: MOSI'
+    - 'Out: red[0]'
+    - 'Out: green[0]'
+    - 'Out: blue[0]'
+    - 'Out: TestA_out'
+    - 'Out: TestB_out'
+
+# The following fields are optional
+  tag:          "test, experiment, spi, vga"
+  external_hw:  "VGA RGB222 DAC and SPI flash memory"
+  discord:      "algofoogle"
+  doc_link:     "https://github.com/algofoogle/tt05-vga-spi-rom"
+  clock_hz:     25000000
+  picture:      "doc/vga_spi_rom-display.jpg"
