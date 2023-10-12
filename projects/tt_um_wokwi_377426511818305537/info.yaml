@@ -1,0 +1,175 @@
+---
+# Tiny Tapeout project information
+project:
+  wokwi_id:    377426511818305537        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here.
+# Source files must be in ./src and you must list each source file separately
+#  source_files:
+#    - counter.v
+#    - decoder.v
+#  top_module:  "tt_um_example"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation:
+  author:       "Ivan M Bow"                                                    # Your name
+  title:        "PRBS Generator"                                                # Project title
+  language:     "Wokwi"                                                         # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Generates a PRBS that is configureable up to 16-bits."         # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+    # Pseudo Random Binary Sequence (PRBS) generator.
+    ## Features:
+    - Implements a Galois LSFR with XOR taps for PRN generation.
+    - Estimated 1.5MHz Max output PRBS rate, at PRBS2.
+      - With 16-bit polynomial, 30-50 MHz may be achievable.
+      - Max frequency reduces as PRBS size is reduced.
+        - Estimated Max = (30 MHz / 2 ^ (16 - Nbits))
+    - Has a fail safe all 0's check to ensure the generator does not get locked up.
+    - Clock Divider
+    - SPI Interface
+      - CLK, MOSI, CS
+      - SPI Mode 0, CS Active Low, MSB First
+    - Register access for configuration
+    - Differential Output
+    - Look-ahead Outputs
+      - For each of the differential outputs, the next bit coming is output.
+      - Useful for waveshaping or other information.
+    - Logic added in so a bit cannot be XOR'ed if the previous bit is disabled.
+      - The highest order bit is not XOR'ed with the output bit, despite being in teh poly.
+
+    ## Registers
+    - 4 registers control the PRBS generator
+      - Register 0: Command and Address of register to configure
+      - Register 1: Clock Divider
+      - Register 2: Bits to enable
+      - Register 3: Polynomial XOR taps to enable
+    - Addressing and commands happen in a single CS session.
+      - CS low -> command + 2-bit address -> 8- or 16-bit data -> CS high
+    - Reset_N clears registers
+
+    ## Interface
+    ### Inputs:
+    - SPI Chip Select
+    - SPI Clock
+    - SPI Data (MOSI)
+
+    ### Outputs:
+    - PRBS OUT
+    - PRBS OUT +1 CLK
+    - PRBS OUT (Inverse) +1 CLK
+    - PRBS OUT (Inverse)
+
+    ### Bidirectional:
+    - none
+
+    ## Commands and Registers
+    - All commands and registers are sent to the device in SPI Mode 0, MSB first.
+    - Command structure is as follows:
+      - {Command Byte} {Data Byte or Word}
+        - Command Byte contains the address of the register.
+        - The Data Byte / Word is placed into the regester at that address.
+        - Register 1 is 8-bit.
+        - Register 2 is 16-bit.
+        - Register 3 is 16-bit.
+
+    ### Commands
+    - 1: Write to Register
+    - Currently there is only one command. Not sure what else to command...
+
+    ### Register 0: Command & Address
+    - : 7  : 6  : 5  : 4  : 3  : 2  : 1  : 0  :
+    - : C0 : X  : X  : X  : X  : X  : A1 : A0 :
+      - bits [7]   - 0: Nothing occurs.
+                     1: Writes the following word into the register
+      - bits [6:2] - Do Not Care
+      - bits [1:0] - 2-bit address of register to place the following data in.
+        - (Address 0 is this register.)
+
+    ### Register 1: Clock Divider
+    - : 7  : 6  : 5  : 4  : 3  : 2  : 1  : 0  :
+    - : X  : X  : X  : X  : X  : D2 : D1 : D0 :
+      - bits [7:3] - Do Not Care
+      - bits [2:0] - Clock Divider
+        - 0: /1
+        - 1: /2
+        - 2: /4
+        - 3: /8
+        - 4: /16
+        - 5: /32
+        - 6: /64
+        - 7: /128
+
+    ### Register 2: Polynomial Enable Bits
+    - : 15 : 14 : 13 : 12 : 11 : 10 : 9  : 8  : 7  : 6  : 5  : 4  : 3  : 2  : 1  : 0  :
+    - : E16: E15: E14: E13: E12: E11: E10: E9 : E8 : E7 : E6 : E5 : E4 : E3 : E2 : E1 :
+      - bits [15:0] - E(n) is the enable bit for the polynomial size.
+        - E(n) is 1 indexed to match the polynomial exponents.
+          - 3-bit ploynomial is b'111 or h'7.
+          - 12-bitpolynomial is b'111111111111 or h'FFF.
+        - Bits must be sequenctial from bit 0. Other values are undefined.
+
+    ### Register 3: Polynomial Tap Bits
+    - : 15 : 14 : 13 : 12 : 11 : 10 : 9  : 8  : 7  : 6  : 5  : 4  : 3  : 2  : 1  : 0  :
+    - : E16: E15: E14: E13: E12: E11: E10: E9 : E8 : E7 : E6 : E5 : E4 : E3 : E2 : E1 :
+      - bits [15:0] - E(n) is the enable bit for the polynomial taps.
+        - E(n) is 1 indexed to match the polynomial exponents.
+          - x^4 + x^2 + 1 is b'1010 or h'A.
+          - x^5 + x^4 + x^3 + 1 is b'11100 or h'1C.
+        - Bits must be sequenctial from bit 0. Other values are undefined.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test: |
+    1) Reset to ensure known states.
+    2) Configure the registers using SPI.
+    3) Connect Input Clock (If not already done).
+    4) Observe Output.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:
+    - spi_cs
+    - spi_clk
+    - spi_mosi
+    - none
+    - none
+    - none
+    - none
+    - none
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - prbs_out_0
+    - prbs_out_1
+    - prbs_out_n_1
+    - prbs_out_n_0
+    - none
+    - none
+    - none
+    - none
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+
+# The following fields are optional
+  tag:          "prn, prbs, spi, clock divider, registers, "                    # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "Connection to SPI port, clock input, and analyzer to observe." # Describe any external hardware needed
+  discord:      "wulfhednar"                                                    # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""                                                              # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     "The input drives the output frequency."                        # Clock frequency in Hz (if required)
+  picture:      ""                                                              # relative path to a picture in your repository (must be 512kb or less)
