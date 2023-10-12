@@ -1,4 +1,5 @@
 {
+  "skip": true,
   "app": "Tiny Tapeout tt05 2387160d",
   "repo": "https://github.com/splinedrive/74hc595",
   "commit": "cdec0062227c912ad71bbd25da1baecb87ef3734",

@@ -1,4 +1,5 @@
 {
+  "skip": true,
   "app": "Tiny Tapeout tt05 462004f9",
   "repo": "https://github.com/rejunity/tt05-rule110",
   "commit": "4190c2f860a3a8ebf72d7a162f712e6ce4ce8cb8",

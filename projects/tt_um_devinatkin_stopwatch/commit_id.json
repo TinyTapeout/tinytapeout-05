@@ -1,4 +1,5 @@
 {
+  "skip": true,
   "app": "Tiny Tapeout tt05 462004f9",
   "repo": "https://github.com/devinatkin/tt05-stopwatch",
   "commit": "d4a8a791360e3dab95030db45f24c044b02f5280",

@@ -1,4 +1,5 @@
 {
+  "skip": true,
   "app": "Tiny Tapeout tt05 462004f9",
   "repo": "https://github.com/algofoogle/tt05-vga-spi-rom",
   "commit": "d40ca82c13896b7d9962dd27e77e3c139617a89f",

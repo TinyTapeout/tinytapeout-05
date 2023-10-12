@@ -1,4 +1,5 @@
 {
+  "skip": true,
   "app": "Tiny Tapeout tt05 59255259",
   "repo": "https://github.com/himanshu5-prog/tt_myChip",
   "commit": "7597e13a6ba7d03f788ba512cf86528d7b6513db",

@@ -1,4 +1,5 @@
 {
+  "skip": true,
   "app": "Tiny Tapeout tt05 462004f9",
   "repo": "https://github.com/rtfb/tt05-collatz",
   "commit": "d021dc964672740570b79e1bfb241ee1ed3b40b5",
