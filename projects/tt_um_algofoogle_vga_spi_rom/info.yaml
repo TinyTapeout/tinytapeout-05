@@ -32,6 +32,7 @@ documentation:
     Reads data from an SPI flash ROM (or any memory compatible with, say, W25Q10 or above).
 
     Displays it using two alternating modes:
+
     1.  During HBLANK, read up to 128 bits (16 bytes) and store in local register memory,
         then display on the next scanline.
     2.  Just send unregistered SPI data output (MISO) directly to the VGA display.
@@ -43,6 +44,7 @@ documentation:
     this `SCLK` output running constantly, relying on `/CS`.
 
     NOTE: Besides the main design, I've got simple loopback tests:
+
     *   `TestA[5:0]` feeds a 6-input logical `AND` which outputs to `TestA_out`
     *   `TestB` feeds directly to `TestB_out`
 
@@ -59,6 +61,7 @@ documentation:
     I used a generic 25Q80 (8Mbit) that I pulled off an ESP-01.
 
     Attach a VGA display:
+
     *   NOTE: I don't yet know what current a VGA display will sink per each input, nor what current
         the TT05 chip can safely supply per pin (or in total), so for now I recommend using some
         bigger resistors in series with each signal, even if it means an impedance mismatch. Either
@@ -71,7 +74,7 @@ documentation:
         `red`, `green`, and `blue`, each via a 330&ohm; resistor, to their respective VGA colour
         channel input pins.
     *   For a much better display, use at least an RGB222 (upper 2 bits per channel) or RGB333 DAC
-        (all 3 bits per channel), and preferably one that buffers each input.
+        (all 3 bits per channel), and preferably one that buffers each of those digital outputs.
 
   inputs:
     - 'In: MISO'
