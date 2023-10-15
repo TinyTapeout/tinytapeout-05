@@ -38,13 +38,13 @@ documentation:
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
       Load initial grid row by row. 
-      Each row is loaded by selecting the row number (using the row_sel[0:2] inputs), 
-      setting the cell_in[0:7] inputs to the desired state, and pulsing the wr_en input.
+      Each row is loaded by selecting the row number (using the row_sel[2:0] inputs),
+      setting the cell_in[7:0] inputs to the desired state, and pulsing the wr_en input.
 
-      Once the grid is loaded, set the en input to 1 to start the game. The game will one step each clock cycle.
+      Once the grid is loaded, set the en input to 1 to start the game. The game will advance one step in each clock cycle.
       To pause the game, set the en input to 0.
 
-      To view the current state of the grid, set the row_sel[0:2] inputs to the desired row number, and read the cell_out[0:7] outputs.
+      To view the current state of the grid, set the row_sel[2:0] inputs to the desired row number, and read the cell_out[7:0] outputs.
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
