@@ -40,7 +40,9 @@ documentation:
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-      This creates a stop watch type of behavior
+      This creates a stop watch type of behavior. It was originally written and verified on the Basys 3 board.
+      The Inc Switch controls whether the timer increments or decrements when the increment buttons are pressed. 
+      When the timer is running it can be paused by pressing the stop button. The timer can be reset by pressing the soft reset button. 
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
@@ -78,8 +80,8 @@ documentation:
     - none
 
 # The following fields are optional
-  tag:          "class, provided lab file"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
-  external_hw:  ""      # Describe any external hardware needed
+  tag:          "ENEL453, UofC, Timer"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "7 Segement Display (Common Anode Segments), Active Low top and Bottom"      # Describe any external hardware needed
   discord:      "devinatkin"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
   clock_hz:     25 000 000       # Clock frequency in Hz (if required)
