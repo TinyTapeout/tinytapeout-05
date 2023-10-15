@@ -1,0 +1,76 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - tt_um_urish_ringosc_cnt.v
+    - prim_sky130/tt_prim_dfrbp.v
+    - prim_sky130/tt_prim_inv.v
+  top_module:  "tt_um_urish_ringosc_cnt"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Uri Shaked"      # Your name
+  title:        "Ring oscillator with counter"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Test module for the TT05 power switching FET"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      A ring oscillator with a 64-bit counter that counts the number of oscillations. The counter is connected to pins ou_out,
+      and is shifted by the cnt_shift input. The counter is reset when cnt_reset is high, and stops when cnt_stop is high.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      Set inputs 0 to 5 to the desired counter shift value, and observe the counter on outputs 0 to 7.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:
+    - cnt_shift[0]
+    - cnt_shift[1]
+    - cnt_shift[2]
+    - cnt_shift[3]
+    - cnt_shift[4]
+    - cnt_shift[5]
+    - cnt_stop
+    - cnt_reset
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - cnt[0]
+    - cnt[1]
+    - cnt[2]
+    - cnt[3]
+    - cnt[4]
+    - cnt[5]
+    - cnt[6]
+    - cnt[7]
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+
+# The following fields are optional
+  tag:          "test, counter, oscillator"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""      # Describe any external hardware needed
+  discord:      "urish"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     0       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
