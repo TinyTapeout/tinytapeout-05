@@ -1,0 +1,80 @@
+--- 
+# TinyTapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - tt_um_rgb_mixer.v
+    - rgb_mixer.v
+    - encoder.v
+    - debounce.v
+    - pwm.v
+  top_module:  "tt_um_rgb_mixer"      # put the name of your top module here, make it unique by prepending your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Matt Venn"
+  title:        "RGB Mixer"
+  language:     "Verilog"
+  description:  "Use 3 rotary encoder to control 3 PWM generators"
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      3 PWM generators are fed by 3 debounced encoder peripherals.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      Connect 3 digital rotary encoders to the first 6 inputs. Changing the encoders will change the PWM outputs on the first 3 outputs.
+      
+      Select a channel with the debug enc sel bits and that channel's encoder internal value will be output to the bidirectional outputs. 
+      The output of the 2 debouncers will also be output.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - encoder 0 pin a
+    - encoder 0 pin b
+    - encoder 1 pin a
+    - encoder 1 pin b
+    - encoder 2 pin a
+    - encoder 2 pin b
+    - debug encoder select bit 0
+    - debug encoder select bit 1
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - pwm 0
+    - pwm 1
+    - pwm 2
+    - debug debounce a
+    - debug debounce b
+    - n/a
+    - n/a
+    - n/a 
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - debug encoder bit 0
+    - debug encoder bit 1
+    - debug encoder bit 2
+    - debug encoder bit 3
+    - debug encoder bit 4
+    - debug encoder bit 5
+    - debug encoder bit 6
+    - debug encoder bit 7
+
+# The following fields are optional
+  tag:          "pwm, led"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""      # Describe any external hardware needed
+  discord:      "mattvenn"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     10000000       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository
