@@ -67,7 +67,7 @@ MACRO tt_um_frequency_counter
   PIN rst_n
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.196500 ;
+    ANTENNAGATEAREA 0.159000 ;
     PORT
       LAYER met4 ;
         RECT 142.910 110.520 143.210 111.520 ;
@@ -94,7 +94,7 @@ MACRO tt_um_frequency_counter
   PIN ui_in[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.213000 ;
+    ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
         RECT 134.630 110.520 134.930 111.520 ;
@@ -111,6 +111,7 @@ MACRO tt_um_frequency_counter
   PIN ui_in[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
         RECT 129.110 110.520 129.410 111.520 ;
@@ -119,6 +120,7 @@ MACRO tt_um_frequency_counter
   PIN ui_in[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
         RECT 126.350 110.520 126.650 111.520 ;
@@ -127,6 +129,7 @@ MACRO tt_um_frequency_counter
   PIN ui_in[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
         RECT 123.590 110.520 123.890 111.520 ;
@@ -135,6 +138,7 @@ MACRO tt_um_frequency_counter
   PIN ui_in[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
         RECT 120.830 110.520 121.130 111.520 ;
@@ -269,7 +273,7 @@ MACRO tt_um_frequency_counter
   PIN uio_oe[6]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.795200 ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 35.270 110.520 35.570 111.520 ;
@@ -297,7 +301,7 @@ MACRO tt_um_frequency_counter
   PIN uio_out[1]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.406500 ;
+    ANTENNAGATEAREA 1.615500 ;
     ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
@@ -334,7 +338,7 @@ MACRO tt_um_frequency_counter
   PIN uio_out[5]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.795200 ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 60.110 110.520 60.410 111.520 ;
@@ -361,7 +365,7 @@ MACRO tt_um_frequency_counter
   PIN uo_out[0]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.924000 ;
+    ANTENNADIFFAREA 0.462000 ;
     PORT
       LAYER met4 ;
         RECT 95.990 110.520 96.290 111.520 ;
@@ -379,7 +383,7 @@ MACRO tt_um_frequency_counter
   PIN uo_out[2]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.445500 ;
+    ANTENNADIFFAREA 0.795200 ;
     PORT
       LAYER met4 ;
         RECT 90.470 110.520 90.770 111.520 ;
@@ -425,7 +429,7 @@ MACRO tt_um_frequency_counter
   PIN uo_out[7]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.795200 ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 76.670 110.520 76.970 111.520 ;
@@ -456,11 +460,11 @@ MACRO tt_um_frequency_counter
       LAYER li1 ;
         RECT 2.760 2.635 165.600 108.885 ;
       LAYER met1 ;
-        RECT 2.760 2.480 166.400 109.780 ;
+        RECT 2.760 2.480 166.400 110.120 ;
       LAYER met2 ;
-        RECT 7.920 2.535 166.370 110.685 ;
+        RECT 4.240 2.535 166.370 110.150 ;
       LAYER met3 ;
-        RECT 9.265 2.555 166.390 110.665 ;
+        RECT 12.485 2.555 166.390 109.985 ;
       LAYER met4 ;
         RECT 33.210 110.120 34.870 111.170 ;
         RECT 35.970 110.120 37.630 111.170 ;
@@ -505,13 +509,13 @@ MACRO tt_um_frequency_counter
         RECT 143.610 110.120 145.270 111.170 ;
         RECT 146.370 110.120 146.905 111.170 ;
         RECT 32.510 109.440 146.905 110.120 ;
-        RECT 32.510 93.335 42.270 109.440 ;
-        RECT 44.670 93.335 62.625 109.440 ;
-        RECT 65.025 93.335 82.980 109.440 ;
-        RECT 85.380 93.335 103.335 109.440 ;
-        RECT 105.735 93.335 123.690 109.440 ;
-        RECT 126.090 93.335 144.045 109.440 ;
-        RECT 146.445 93.335 146.905 109.440 ;
+        RECT 32.510 89.935 42.270 109.440 ;
+        RECT 44.670 89.935 62.625 109.440 ;
+        RECT 65.025 89.935 82.980 109.440 ;
+        RECT 85.380 89.935 103.335 109.440 ;
+        RECT 105.735 89.935 123.690 109.440 ;
+        RECT 126.090 89.935 144.045 109.440 ;
+        RECT 146.445 89.935 146.905 109.440 ;
   END
 END tt_um_frequency_counter
 END LIBRARY
