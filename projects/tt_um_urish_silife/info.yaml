@@ -7,14 +7,12 @@ project:
 # Source files must be in ./src and you must list each source file separately
   source_files:        
     - cell.v
-    - grid_8x32.v
-    - max7219.v
-    - spi_master.v
+    - grid_8x8.v
     - silife.v
   top_module:  "tt_um_urish_silife"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
 
 # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "3x2"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+  tiles: "1x2"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
 
 # Keep a track of the submission yaml
 yaml_version: 4
@@ -25,13 +23,13 @@ yaml_version: 4
 # Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
 documentation: 
   author:       "Uri Shaked"      # Your name
-  title:        "Game of Life 8x32 (siLife)"      # Project title
+  title:        "Game of Life 8x8 (siLife)"      # Project title
   language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  "Silicon implementation of Conway's Game of Life with LED Dot Matrix Output"      # Short description of what your project does
+  description:  "Silicon implementation of Conway's Game of Life"      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-      It is a silicon implementation of Conway's Game of Life. The game is played on a 8x32 grid, and the rules are as follows:
+      It is a silicon implementation of Conway's Game of Life. The game is played on a 8x8 grid, and the rules are as follows:
       - Any live cell with fewer than two live neighbours dies, as if by underpopulation.
       - Any live cell with two or three live neighbours lives on to the next generation.
       - Any live cell with more than three live neighbours dies, as if by overpopulation.
@@ -40,32 +38,29 @@ documentation:
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
       Load initial grid row by row. 
-      Each row is loaded by selecting the row number (using the `row_sel[4:0]` inputs),
-      setting the `cell_in[7:0]` inputs to the desired state, and pulsing the `wr_en` input.
+      Each row is loaded by selecting the row number (using the row_sel[2:0] inputs),
+      setting the cell_in[7:0] inputs to the desired state, and pulsing the wr_en input.
 
-      Once the grid is loaded, set the `en` input to 1 to start the game. The game will advance one step in each clock cycle.
-      To pause the game, set the `en` input to 0.
+      Once the grid is loaded, set the en input to 1 to start the game. The game will advance one step in each clock cycle.
+      To pause the game, set the en input to 0.
 
-      To view the current state of the grid, set the `row_sel[4:0]` inputs to the desired row number,
-      `max7219_en` to 0, and read the `cell_out[7:0]` outputs.
-
-      Alternatively, set `max7129_en` to 1 to display the grid on a MAX7219 LED Matrix (FC-16 module).
+      To view the current state of the grid, set the row_sel[2:0] inputs to the desired row number, and read the cell_out[7:0] outputs.
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
     - row_sel[0]
     - row_sel[1]
     - rol_sel[2]
-    - rol_sel[3]
-    - rol_sel[4]
-    - max7129_en
+    - none
+    - none
+    - none
     - en
     - wr_en
 # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
   outputs:
-    - cell_out[0] / max7129_cs
-    - cell_out[1] / max7129_clk
-    - cell_out[2] / max7129_din
+    - cell_out[0]
+    - cell_out[1]
+    - cell_out[2]
     - cell_out[3]
     - cell_out[4]
     - cell_out[5]
@@ -83,8 +78,8 @@ documentation:
     - cell_in[7]
 
 # The following fields are optional
-  tag:          "display, cell automata, max7219"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
-  external_hw:  "MAX7219 LED Matrix (FC-16 module)"      # Describe any external hardware needed
+  tag:          "cell automata"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""      # Describe any external hardware needed
   discord:      "urish"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
   clock_hz:     0       # Clock frequency in Hz (if required)

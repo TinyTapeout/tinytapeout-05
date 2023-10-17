@@ -1,8 +1,8 @@
 {
   "app": "Tiny Tapeout tt05 300a1794",
-  "repo": "https://github.com/urish/tt05-silife-max",
-  "commit": "eba026f779ecd06dc76d53bdf466a1035f1e5397",
-  "workflow_url": "https://github.com/urish/tt05-silife-max/actions/runs/6539459611",
-  "sort_id": 1697518542919,
+  "repo": "https://github.com/urish/tt05-silife-8x8",
+  "commit": "4dcd977a84860ebe7f7ea7e2d5e9f9d95ed3c4f2",
+  "workflow_url": "https://github.com/urish/tt05-silife-8x8/actions/runs/6523847279",
+  "sort_id": 1697284610839,
   "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff\n"
 }
