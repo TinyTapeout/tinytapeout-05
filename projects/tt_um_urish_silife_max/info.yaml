@@ -10,6 +10,7 @@ project:
     - grid_8x32.v
     - max7219.v
     - spi_master.v
+    - demo.v
     - silife.v
   top_module:  "tt_um_urish_silife_max"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
 
@@ -39,11 +40,20 @@ documentation:
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
-      Load initial grid row by row. 
+      Demo mode: 
+      The demo mode loads a pre-defined game into the grid and advances it automatically.
+      To enter the demo mode, `wr_en` high while reseting the design (`rst_n` low).
+      Use the `pattern_sel` inputs to select the desired demo pattern.
+      Set `en` to 1 to automatically advance one generation every 0.4 seconds (assuming a 10MHz clock).
+      To pause the game, set `en` to 0.
+
+      Manual mode: 
+      Load the initial grid row by row. 
       Each row is loaded by selecting the row number (using the `row_sel[4:0]` inputs),
       setting the `cell_in[7:0]` inputs to the desired state, and pulsing the `wr_en` input.
 
-      Once the grid is loaded, set the `en` input to 1 to start the game. The game will advance one step in each clock cycle.
+      Once the grid is loaded, set the `en` input to 1 to start the game. 
+      The game will advance one step in each clock cycle.
       To pause the game, set the `en` input to 0.
 
       To view the current state of the grid, set the `row_sel[4:0]` inputs to the desired row number,
@@ -53,7 +63,7 @@ documentation:
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
-    - row_sel[0]
+    - row_sel[0] / pattern_sel
     - row_sel[1]
     - rol_sel[2]
     - rol_sel[3]
@@ -87,5 +97,5 @@ documentation:
   external_hw:  "MAX7219 LED Matrix (FC-16 module)"      # Describe any external hardware needed
   discord:      "urish"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
-  clock_hz:     0       # Clock frequency in Hz (if required)
+  clock_hz:     10000000       # Clock frequency in Hz (if required)
   picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
