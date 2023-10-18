@@ -1,0 +1,104 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id: 0
+  source_files:
+    - audio_pwm.v
+    - euro.v
+    - frame.v
+    - noise.v
+    - registers.v
+    - square.v
+    - system.v
+    - triangle.v
+    - uart.v
+    - apu.v
+    - tt_um_morningjava_top.v
+  top_module: "tt_um_morningjava_top"
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x2"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:      "Wallace Everest"
+  title:       "ChipTune"
+  language:    "Verilog"
+  description: "Vintage 8-bit sound generator"
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+    ChipTune implements an 8-bit Programmable Sound Generator (PSG).
+    Input is from a serial UART interface.
+    Output is PWM audio.
+
+    # Overview
+    This project replicates the Audio Processing Unit (APU) of vintage video games.
+
+    # Statistics
+    - Tiles: 1x2
+    - DFF: 458
+    - Total Cells: 2760
+    - Utilization: 72%
+
+    # TinyTapeout 5 Configuration
+    TT04 devices from the eFabless Multi-Project Wafer (MPW) shuttle are delivered in QFN-64 packages, mounted on a daughterboard for breakout.
+
+    Based on data from:
+    - https://github.com/WallieEverest/tt04
+
+    Changes:
+    1.) Static registers addressed by the serial UART have been connected to the external reset, providing a known startup.
+    2.) Default values for REG signals have been removed, allowing 'X' propagation during simulation until the design reaches steady state.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+    The ChipTune project can be interfaced to a computer COM port (9600,n,8,1).
+    An analog PWM filter and audio driver are needed for the test rig.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:
+    - None
+    - None
+    - RX
+    - None
+    - None
+    - None
+    - None
+    - None
+
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - Blink
+    - Link
+    - TX
+    - PWM
+    - Square1
+    - Square2
+    - Triangle
+    - Noise
+
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+
+# The following fields are optional
+  tag:         "music"  # comma separated list
+  external_hw: "Computer COM port"
+  discord:     "morningjava"
+  doc_link:    "https://github.com/WallieEverest/tt05/blob/main/README.md"
+  clock_hz:    1789773  # Clock frequency in Hz
+  picture:     "./image/tt05.png"
