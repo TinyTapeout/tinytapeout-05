@@ -12,7 +12,15 @@ MACRO tt_um_urish_ringosc_cnt
     USE GROUND ;
     PORT
       LAYER met4 ;
-        RECT 95.080 2.480 96.680 109.040 ;
+        RECT 42.670 2.480 44.270 109.040 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 83.380 2.480 84.980 109.040 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 124.090 2.480 125.690 109.040 ;
     END
   END VGND
   PIN VPWR
@@ -20,7 +28,19 @@ MACRO tt_um_urish_ringosc_cnt
     USE POWER ;
     PORT
       LAYER met4 ;
-        RECT 18.280 2.480 19.880 109.040 ;
+        RECT 22.315 2.480 23.915 109.040 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 63.025 2.480 64.625 109.040 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 103.735 2.480 105.335 109.040 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 144.445 2.480 146.045 109.040 ;
     END
   END VPWR
   PIN clk
@@ -428,7 +448,7 @@ MACRO tt_um_urish_ringosc_cnt
       LAYER met2 ;
         RECT 5.160 2.535 150.780 110.005 ;
       LAYER met3 ;
-        RECT 18.290 2.555 131.955 109.985 ;
+        RECT 21.430 2.555 146.035 109.985 ;
       LAYER met4 ;
         RECT 22.170 110.120 23.830 111.170 ;
         RECT 24.930 110.120 26.590 111.170 ;
@@ -470,8 +490,13 @@ MACRO tt_um_urish_ringosc_cnt
         RECT 124.290 110.120 125.950 111.170 ;
         RECT 127.050 110.120 128.710 111.170 ;
         RECT 21.455 109.440 129.425 110.120 ;
-        RECT 21.455 106.255 94.680 109.440 ;
-        RECT 97.080 106.255 129.425 109.440 ;
+        RECT 21.455 106.255 21.915 109.440 ;
+        RECT 24.315 106.255 42.270 109.440 ;
+        RECT 44.670 106.255 62.625 109.440 ;
+        RECT 65.025 106.255 82.980 109.440 ;
+        RECT 85.380 106.255 103.335 109.440 ;
+        RECT 105.735 106.255 123.690 109.440 ;
+        RECT 126.090 106.255 129.425 109.440 ;
   END
 END tt_um_urish_ringosc_cnt
 END LIBRARY
