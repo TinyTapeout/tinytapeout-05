@@ -1,0 +1,102 @@
+--- 
+# TinyTapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - simon.v
+    - top.v
+  top_module:  "tt_um_urish_simon"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Uri Shaked"      # Your name
+  title:        "Simon Says game"   # Project title
+  language:     "Verilog"         # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "A simple memory game"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      Simon says is a simple electronic memory game: the user has to repeat a growing sequence of colors. 
+      The sequence is displayed by lighting up the LEDs. Each color also has a corresponding tone.
+      
+      In each turn, the game will play the sequence, and then wait for the user to repeat the sequence
+      by pressing the buttons according to the color sequence. 
+      If the user repeated the sequence correctly, the game will play a "leveling-up" sound, 
+      add a new color at the end of the sequence, and move to the next turn.
+      
+      The game continues until the user has made a mistake. Then a game over sound is played, and the game restarts.
+      
+      Check out the online simulation at https://wokwi.com/projects/371755521090136065 (including wiring diagram).
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      You need four buttons, four LEDs, resistors, and optionally a speaker/buzzer
+      and a two digit 7-segment display for the score.
+
+      Ideally, you want to use 4 different colors for the buttons/LEDs (red, green,
+      blue, yellow).
+
+      1. Connect the buttons to pins `btn1`, `btn2`, `btn3`, and `btn4`, and also 
+        connect each button to a pull down resistor.
+      2. Connect the LEDs to pins `led1`, `led2`, `led3`, and `led4`, matching 
+        the colors of the buttons (so `led1` and `btn1` have the same color, etc.)
+      3. Connect the speaker to the `speaker` pin.
+      4. Connect the seven segment display as follows: `seg_a` through `sev_g` to
+         individual segments, `dig` to the common pin of the first digit, `dig2`
+         to the common pin of the second digit.  
+         Set `seginv` according to the type of 7 segment display you have: high
+         for common anode, low for common cathode.
+      5. Reset the game, and then press any button to start it. Enjoy!
+
+      Note: the game requires 50KHz clock input.
+
+# A description of what the inputs do
+  inputs:               
+    - btn1
+    - btn2
+    - btn3
+    - btn4
+    - seginv # high for common anode, low for common cathode
+    - none
+    - none
+    - none
+# A description of what the outputs do
+  outputs:
+    - led1
+    - led2
+    - led3
+    - led4
+    - speaker
+    - none
+    - dig1
+    - dig2
+# A description of what the bidirectional I/O pins do
+  bidirectional:
+    - seg_a
+    - seg_b
+    - seg_c
+    - seg_d
+    - seg_e
+    - seg_f
+    - seg_g
+    - none
+
+# The following fields are optional
+  tag:          "game,sound"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "Four push buttons (with pull-down resistors), four LEDs, and optionally a speaker/buzzer and two digit 7-segment display"      # Describe any external hardware needed
+  discord:      "urish"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     "https://wokwi.com/projects/371755521090136065"      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     50000      # Clock frequency in Hz (if required)
+  picture:      "docs/tt-simon-game.jpg"      # relative path to a picture in your repository (must be 512kb or less)
