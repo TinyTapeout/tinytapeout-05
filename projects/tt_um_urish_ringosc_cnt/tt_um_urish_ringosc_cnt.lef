@@ -6,7 +6,7 @@ MACRO tt_um_urish_ringosc_cnt
   CLASS BLOCK ;
   FOREIGN tt_um_urish_ringosc_cnt ;
   ORIGIN 0.000 0.000 ;
-  SIZE 168.360 BY 111.520 ;
+  SIZE 157.320 BY 111.520 ;
   PIN VGND
     DIRECTION INOUT ;
     USE GROUND ;
@@ -28,7 +28,7 @@ MACRO tt_um_urish_ringosc_cnt
     USE SIGNAL ;
     PORT
       LAYER met4 ;
-        RECT 145.670 110.520 145.970 111.520 ;
+        RECT 134.630 110.520 134.930 111.520 ;
     END
   END clk
   PIN ena
@@ -36,7 +36,7 @@ MACRO tt_um_urish_ringosc_cnt
     USE SIGNAL ;
     PORT
       LAYER met4 ;
-        RECT 148.430 110.520 148.730 111.520 ;
+        RECT 137.390 110.520 137.690 111.520 ;
     END
   END ena
   PIN rst_n
@@ -44,7 +44,7 @@ MACRO tt_um_urish_ringosc_cnt
     USE SIGNAL ;
     PORT
       LAYER met4 ;
-        RECT 142.910 110.520 143.210 111.520 ;
+        RECT 131.870 110.520 132.170 111.520 ;
     END
   END rst_n
   PIN ui_in[0]
@@ -53,7 +53,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
-        RECT 140.150 110.520 140.450 111.520 ;
+        RECT 129.110 110.520 129.410 111.520 ;
     END
   END ui_in[0]
   PIN ui_in[1]
@@ -62,7 +62,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
-        RECT 137.390 110.520 137.690 111.520 ;
+        RECT 126.350 110.520 126.650 111.520 ;
     END
   END ui_in[1]
   PIN ui_in[2]
@@ -71,16 +71,16 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
-        RECT 134.630 110.520 134.930 111.520 ;
+        RECT 123.590 110.520 123.890 111.520 ;
     END
   END ui_in[2]
   PIN ui_in[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.196500 ;
+    ANTENNAGATEAREA 0.213000 ;
     PORT
       LAYER met4 ;
-        RECT 131.870 110.520 132.170 111.520 ;
+        RECT 120.830 110.520 121.130 111.520 ;
     END
   END ui_in[3]
   PIN ui_in[4]
@@ -89,7 +89,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
-        RECT 129.110 110.520 129.410 111.520 ;
+        RECT 118.070 110.520 118.370 111.520 ;
     END
   END ui_in[4]
   PIN ui_in[5]
@@ -98,7 +98,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNAGATEAREA 0.213000 ;
     PORT
       LAYER met4 ;
-        RECT 126.350 110.520 126.650 111.520 ;
+        RECT 115.310 110.520 115.610 111.520 ;
     END
   END ui_in[5]
   PIN ui_in[6]
@@ -107,7 +107,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
-        RECT 123.590 110.520 123.890 111.520 ;
+        RECT 112.550 110.520 112.850 111.520 ;
     END
   END ui_in[6]
   PIN ui_in[7]
@@ -116,7 +116,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
-        RECT 120.830 110.520 121.130 111.520 ;
+        RECT 109.790 110.520 110.090 111.520 ;
     END
   END ui_in[7]
   PIN uio_in[0]
@@ -124,7 +124,7 @@ MACRO tt_um_urish_ringosc_cnt
     USE SIGNAL ;
     PORT
       LAYER met4 ;
-        RECT 118.070 110.520 118.370 111.520 ;
+        RECT 107.030 110.520 107.330 111.520 ;
     END
   END uio_in[0]
   PIN uio_in[1]
@@ -132,7 +132,7 @@ MACRO tt_um_urish_ringosc_cnt
     USE SIGNAL ;
     PORT
       LAYER met4 ;
-        RECT 115.310 110.520 115.610 111.520 ;
+        RECT 104.270 110.520 104.570 111.520 ;
     END
   END uio_in[1]
   PIN uio_in[2]
@@ -140,7 +140,7 @@ MACRO tt_um_urish_ringosc_cnt
     USE SIGNAL ;
     PORT
       LAYER met4 ;
-        RECT 112.550 110.520 112.850 111.520 ;
+        RECT 101.510 110.520 101.810 111.520 ;
     END
   END uio_in[2]
   PIN uio_in[3]
@@ -148,7 +148,7 @@ MACRO tt_um_urish_ringosc_cnt
     USE SIGNAL ;
     PORT
       LAYER met4 ;
-        RECT 109.790 110.520 110.090 111.520 ;
+        RECT 98.750 110.520 99.050 111.520 ;
     END
   END uio_in[3]
   PIN uio_in[4]
@@ -156,7 +156,7 @@ MACRO tt_um_urish_ringosc_cnt
     USE SIGNAL ;
     PORT
       LAYER met4 ;
-        RECT 107.030 110.520 107.330 111.520 ;
+        RECT 95.990 110.520 96.290 111.520 ;
     END
   END uio_in[4]
   PIN uio_in[5]
@@ -164,7 +164,7 @@ MACRO tt_um_urish_ringosc_cnt
     USE SIGNAL ;
     PORT
       LAYER met4 ;
-        RECT 104.270 110.520 104.570 111.520 ;
+        RECT 93.230 110.520 93.530 111.520 ;
     END
   END uio_in[5]
   PIN uio_in[6]
@@ -172,7 +172,7 @@ MACRO tt_um_urish_ringosc_cnt
     USE SIGNAL ;
     PORT
       LAYER met4 ;
-        RECT 101.510 110.520 101.810 111.520 ;
+        RECT 90.470 110.520 90.770 111.520 ;
     END
   END uio_in[6]
   PIN uio_in[7]
@@ -180,7 +180,7 @@ MACRO tt_um_urish_ringosc_cnt
     USE SIGNAL ;
     PORT
       LAYER met4 ;
-        RECT 98.750 110.520 99.050 111.520 ;
+        RECT 87.710 110.520 88.010 111.520 ;
     END
   END uio_in[7]
   PIN uio_oe[0]
@@ -189,7 +189,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 51.830 110.520 52.130 111.520 ;
+        RECT 40.790 110.520 41.090 111.520 ;
     END
   END uio_oe[0]
   PIN uio_oe[1]
@@ -198,7 +198,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 49.070 110.520 49.370 111.520 ;
+        RECT 38.030 110.520 38.330 111.520 ;
     END
   END uio_oe[1]
   PIN uio_oe[2]
@@ -207,7 +207,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 46.310 110.520 46.610 111.520 ;
+        RECT 35.270 110.520 35.570 111.520 ;
     END
   END uio_oe[2]
   PIN uio_oe[3]
@@ -216,7 +216,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 43.550 110.520 43.850 111.520 ;
+        RECT 32.510 110.520 32.810 111.520 ;
     END
   END uio_oe[3]
   PIN uio_oe[4]
@@ -225,7 +225,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 40.790 110.520 41.090 111.520 ;
+        RECT 29.750 110.520 30.050 111.520 ;
     END
   END uio_oe[4]
   PIN uio_oe[5]
@@ -234,7 +234,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 38.030 110.520 38.330 111.520 ;
+        RECT 26.990 110.520 27.290 111.520 ;
     END
   END uio_oe[5]
   PIN uio_oe[6]
@@ -243,7 +243,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 35.270 110.520 35.570 111.520 ;
+        RECT 24.230 110.520 24.530 111.520 ;
     END
   END uio_oe[6]
   PIN uio_oe[7]
@@ -252,7 +252,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 32.510 110.520 32.810 111.520 ;
+        RECT 21.470 110.520 21.770 111.520 ;
     END
   END uio_oe[7]
   PIN uio_out[0]
@@ -261,7 +261,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 73.910 110.520 74.210 111.520 ;
+        RECT 62.870 110.520 63.170 111.520 ;
     END
   END uio_out[0]
   PIN uio_out[1]
@@ -270,7 +270,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 71.150 110.520 71.450 111.520 ;
+        RECT 60.110 110.520 60.410 111.520 ;
     END
   END uio_out[1]
   PIN uio_out[2]
@@ -279,7 +279,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 68.390 110.520 68.690 111.520 ;
+        RECT 57.350 110.520 57.650 111.520 ;
     END
   END uio_out[2]
   PIN uio_out[3]
@@ -288,7 +288,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 65.630 110.520 65.930 111.520 ;
+        RECT 54.590 110.520 54.890 111.520 ;
     END
   END uio_out[3]
   PIN uio_out[4]
@@ -297,7 +297,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 62.870 110.520 63.170 111.520 ;
+        RECT 51.830 110.520 52.130 111.520 ;
     END
   END uio_out[4]
   PIN uio_out[5]
@@ -306,7 +306,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 60.110 110.520 60.410 111.520 ;
+        RECT 49.070 110.520 49.370 111.520 ;
     END
   END uio_out[5]
   PIN uio_out[6]
@@ -315,7 +315,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 57.350 110.520 57.650 111.520 ;
+        RECT 46.310 110.520 46.610 111.520 ;
     END
   END uio_out[6]
   PIN uio_out[7]
@@ -324,25 +324,25 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 54.590 110.520 54.890 111.520 ;
+        RECT 43.550 110.520 43.850 111.520 ;
     END
   END uio_out[7]
   PIN uo_out[0]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.795200 ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 95.990 110.520 96.290 111.520 ;
+        RECT 84.950 110.520 85.250 111.520 ;
     END
   END uo_out[0]
   PIN uo_out[1]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.445500 ;
+    ANTENNADIFFAREA 0.795200 ;
     PORT
       LAYER met4 ;
-        RECT 93.230 110.520 93.530 111.520 ;
+        RECT 82.190 110.520 82.490 111.520 ;
     END
   END uo_out[1]
   PIN uo_out[2]
@@ -351,7 +351,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 90.470 110.520 90.770 111.520 ;
+        RECT 79.430 110.520 79.730 111.520 ;
     END
   END uo_out[2]
   PIN uo_out[3]
@@ -360,7 +360,7 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 87.710 110.520 88.010 111.520 ;
+        RECT 76.670 110.520 76.970 111.520 ;
     END
   END uo_out[3]
   PIN uo_out[4]
@@ -369,25 +369,25 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 84.950 110.520 85.250 111.520 ;
+        RECT 73.910 110.520 74.210 111.520 ;
     END
   END uo_out[4]
   PIN uo_out[5]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.795200 ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 82.190 110.520 82.490 111.520 ;
+        RECT 71.150 110.520 71.450 111.520 ;
     END
   END uo_out[5]
   PIN uo_out[6]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.445500 ;
+    ANTENNADIFFAREA 0.795200 ;
     PORT
       LAYER met4 ;
-        RECT 79.430 110.520 79.730 111.520 ;
+        RECT 68.390 110.520 68.690 111.520 ;
     END
   END uo_out[6]
   PIN uo_out[7]
@@ -396,40 +396,44 @@ MACRO tt_um_urish_ringosc_cnt
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
-        RECT 76.670 110.520 76.970 111.520 ;
+        RECT 65.630 110.520 65.930 111.520 ;
     END
   END uo_out[7]
   OBS
       LAYER nwell ;
-        RECT 2.570 107.385 165.790 108.990 ;
-        RECT 2.570 101.945 165.790 104.775 ;
-        RECT 2.570 96.505 165.790 99.335 ;
-        RECT 2.570 91.065 165.790 93.895 ;
-        RECT 2.570 85.625 165.790 88.455 ;
-        RECT 2.570 80.185 165.790 83.015 ;
-        RECT 2.570 74.745 165.790 77.575 ;
-        RECT 2.570 69.305 165.790 72.135 ;
-        RECT 2.570 63.865 165.790 66.695 ;
-        RECT 2.570 58.425 165.790 61.255 ;
-        RECT 2.570 52.985 165.790 55.815 ;
-        RECT 2.570 47.545 165.790 50.375 ;
-        RECT 2.570 42.105 165.790 44.935 ;
-        RECT 2.570 36.665 165.790 39.495 ;
-        RECT 2.570 31.225 165.790 34.055 ;
-        RECT 2.570 25.785 165.790 28.615 ;
-        RECT 2.570 20.345 165.790 23.175 ;
-        RECT 2.570 14.905 165.790 17.735 ;
-        RECT 2.570 9.465 165.790 12.295 ;
-        RECT 2.570 4.025 165.790 6.855 ;
+        RECT 2.570 107.385 154.750 108.990 ;
+        RECT 2.570 101.945 154.750 104.775 ;
+        RECT 2.570 96.505 154.750 99.335 ;
+        RECT 2.570 91.065 154.750 93.895 ;
+        RECT 2.570 85.625 154.750 88.455 ;
+        RECT 2.570 80.185 154.750 83.015 ;
+        RECT 2.570 74.745 154.750 77.575 ;
+        RECT 2.570 69.305 154.750 72.135 ;
+        RECT 2.570 63.865 154.750 66.695 ;
+        RECT 2.570 58.425 154.750 61.255 ;
+        RECT 2.570 52.985 154.750 55.815 ;
+        RECT 2.570 47.545 154.750 50.375 ;
+        RECT 2.570 42.105 154.750 44.935 ;
+        RECT 2.570 36.665 154.750 39.495 ;
+        RECT 2.570 31.225 154.750 34.055 ;
+        RECT 2.570 25.785 154.750 28.615 ;
+        RECT 2.570 20.345 154.750 23.175 ;
+        RECT 2.570 14.905 154.750 17.735 ;
+        RECT 2.570 9.465 154.750 12.295 ;
+        RECT 2.570 4.025 154.750 6.855 ;
       LAYER li1 ;
-        RECT 2.760 2.635 165.600 108.885 ;
+        RECT 2.760 2.635 154.560 108.885 ;
       LAYER met1 ;
-        RECT 2.760 2.480 165.600 110.120 ;
+        RECT 2.760 2.480 154.560 109.440 ;
       LAYER met2 ;
-        RECT 5.160 2.535 160.440 110.150 ;
+        RECT 5.160 2.535 150.780 110.005 ;
       LAYER met3 ;
-        RECT 18.290 2.555 146.675 109.985 ;
+        RECT 18.290 2.555 131.955 109.985 ;
       LAYER met4 ;
+        RECT 22.170 110.120 23.830 111.170 ;
+        RECT 24.930 110.120 26.590 111.170 ;
+        RECT 27.690 110.120 29.350 111.170 ;
+        RECT 30.450 110.120 32.110 111.170 ;
         RECT 33.210 110.120 34.870 111.170 ;
         RECT 35.970 110.120 37.630 111.170 ;
         RECT 38.730 110.120 40.390 111.170 ;
@@ -465,14 +469,9 @@ MACRO tt_um_urish_ringosc_cnt
         RECT 121.530 110.120 123.190 111.170 ;
         RECT 124.290 110.120 125.950 111.170 ;
         RECT 127.050 110.120 128.710 111.170 ;
-        RECT 129.810 110.120 131.470 111.170 ;
-        RECT 132.570 110.120 134.230 111.170 ;
-        RECT 135.330 110.120 136.990 111.170 ;
-        RECT 138.090 110.120 139.750 111.170 ;
-        RECT 140.850 110.120 142.305 111.170 ;
-        RECT 32.495 109.440 142.305 110.120 ;
-        RECT 32.495 106.255 94.680 109.440 ;
-        RECT 97.080 106.255 142.305 109.440 ;
+        RECT 21.455 109.440 129.425 110.120 ;
+        RECT 21.455 106.255 94.680 109.440 ;
+        RECT 97.080 106.255 129.425 109.440 ;
   END
 END tt_um_urish_ringosc_cnt
 END LIBRARY
