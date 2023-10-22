@@ -27,17 +27,20 @@ documentation:
   how_it_works: |
     TBC.
 
-    Drives a VGA display at 640x480 60Hz.
+    Drives a VGA display at one of two resolutions (selectable by `vga_mode`):
 
+    *   0: 640x480 60Hz, from 25.1750MHz clock (though 25.0000MHz should do OK).
+    *   1: 1440x900 60Hz, from 26.6175MHz (or as close as you can get to it).
+    
     Reads data from an SPI flash ROM (or any memory compatible with, say, W25Q10 or above).
 
-    Displays it using two alternating modes:
+    Displays it using two alternating line modes:
 
     1.  During HBLANK, read up to 128 bits (16 bytes) and store in local register memory,
         then display on the next scanline.
     2.  Just send unregistered SPI data output (MISO) directly to the VGA display.
 
-    These two modes are timed to line up, so we can check for consistency between them.
+    These two line modes are timed to line up, so we can check for consistency between them.
 
     NOTE: This tries to use `!CLK` (main clock, inverted) to drive the SPI SCLK directly,
     so that we don't need a *faster* system CLK in order to manage extra states. It keeps
@@ -45,7 +48,7 @@ documentation:
 
     NOTE: Besides the main design, I've got simple loopback tests:
 
-    *   `TestA[5:0]` feeds a 6-input logical `AND` which outputs to `TestA_out`
+    *   `TestA[4:0]` feeds a 5-input logical `AND` which outputs to `TestA_out`
     *   `TestB` feeds directly to `TestB_out`
 
     It could be interesting, when we get the actual chip back, to compare inputs to outputs
@@ -57,33 +60,40 @@ documentation:
     TBC.
 
     Attach an SPI memory chip with some data in it, e.g. SPI flash ROM like W25Q10.
-    Anything that accepts a 24-bit address and supports at least 25MHz reads should be fine.
+    Anything that accepts a 24-bit address and supports at least 27MHz reads should be fine.
     I used a generic 25Q80 (8Mbit) that I pulled off an ESP-01.
 
     Attach a VGA display:
 
+    *   For simplicity, I suggest starting with 640x480@60Hz mode. To do that, strap `vga_mode` to GND,
+        and use a 25.000MHz (or ideally 25.175MHz) clock source. If you want to try 1440x900@60Hz mode
+        instead, strap `vga_mode` high and use ~26.6175MHz as your clock source.
+    *   NOTE: VGA modes 0 and 1 output different VSYNC polarity, as recommended by the spec.
     *   NOTE: I don't yet know what current a VGA display will sink per each input, nor what current
         the TT05 chip can safely supply per pin (or in total), so for now I recommend using some
         bigger resistors in series with each signal, even if it means an impedance mismatch. Either
         that, or just properly buffer each TT05 chip output with something like a
         74ALVC245 (https://www.digikey.com.au/en/products/detail/texas-instruments/SN74ALVC245DWR/374035).
-    *   `hsync_n`, `vsync_n` must be connected to the display; I recommend a 330&ohm; resistor
-        in series with their respective VGA pins (for safe current limiting) even though 100&ohm;
-        is more often done.
+        Supposedly the Caravel IOs we're using might sink/source a max of 4mA, so assuming they're at
+        3.3V we could use 1k&ohm; resistors (which would hit 3.3mA per pin)...?
+    *   `hsync`, `vsync` must be connected to the display; I recommend buffering them (as above)
+        and then a 100&ohm; resistor then in series with their respective VGA pins (for safe current
+        limiting) even though 100&ohm; is more often done.
     *   For a minimum display up and running quickly, attach the high bit (bit 2) of each of
-        `red`, `green`, and `blue`, each via a 330&ohm; resistor, to their respective VGA colour
-        channel input pins.
+        `red`, `green`, and `blue`, each via a 1k&ohm; resistor, to their respective VGA colour
+        channel input pins. It might be pretty dark, but should be safe on Caravel IO pins if you
+        don't otherwise buffer them.
     *   For a much better display, use at least an RGB222 (upper 2 bits per channel) or RGB333 DAC
-        (all 3 bits per channel), and preferably one that buffers each of those digital outputs.
+        (all 3 bits per channel), ensuring it buffers each of those digital outputs.
 
   inputs:
     - 'In: MISO'
+    - 'In: vga_mode'
     - 'In: TestA[0]'
     - 'In: TestA[1]'
     - 'In: TestA[2]'
     - 'In: TestA[3]'
     - 'In: TestA[4]'
-    - 'In: TestA[5]'
     - 'In: TestB'
   outputs:
     # These match my tt04-raybox-zero design (https://app.tinytapeout.com/projects/136)
@@ -107,8 +117,8 @@ documentation:
 
 # The following fields are optional
   tag:          "test, experiment, spi, vga"
-  external_hw:  "VGA RGB222 DAC and SPI flash memory"
+  external_hw:  "VGA DAC (RGB111, 222, or 333-depth) and SPI flash memory"
   discord:      "algofoogle"
   doc_link:     "https://github.com/algofoogle/tt05-vga-spi-rom"
-  clock_hz:     25000000
+  clock_hz:     "25.0MHz, 25.175MHz, or 26.6175MHz"
   picture:      "doc/vga_spi_rom-display.jpg"
