@@ -1,0 +1,94 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - top.v
+    - decoder.v
+    - spi_peri.v
+    - ring_oscillator.v
+  top_module:  "tt_um_MichaelBell_spi_peri"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Mike Bell"      # Your name
+  title:        "SPI Peripheral"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "SPI RAM/ROM/Random source"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      The project implements an 8 byte RAM, 324 byte ROM and a random source supporting standard SPI read/write (03h/02h) and SPI quad read/write (6Bh/32h) commands.  The quad read commands have 2 delay cycles.
+      
+      The address map is:
+      
+      | Address | Item |
+      | ------- | ---- |
+      | 0x000   | RP2040 boot stage 2 ROM |
+      | 0x100   | 8 byte RAM, wrapped 32 times |
+      | 0x200   | RP2040 program ROM |
+      | 0x300   | Mirror of the RAM |
+      | 0x400   | Random source |
+      
+      See the [README](https://github.com/MichaelBell/tt05-spi-peripheral/blob/main/README.md) for more details.
+      
+      Note the default project clk is a debug clock only, the project is internally clocked off SPI CLK, input 0.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      You will need to use an SPI/QSPI master, unfortunately it was not possible to set up the pinout to support both QSPI and match the native RP2040 SPI block, so you'll need a PIO (Q)SPI implementation.  I'll make that available before the chips are available.
+
+      The values in the RAM may be inspected by setting the address on the input toggle switches 2-5 and pressing the single clock button to latch the data, which is displayed on the 7 segment display and presented on uio pins 4-7.  The default project clock should otherwise not be used - the project is clocked from the SPI clock.
+
+      The project is also designed to be used as a ROM connected to an RP2040's QSPI pins (instead of the more normal flash).  You'll need a custom board for this as the QSPI pins are generally connected directly to a flash chip, I have a couple which I could potentially send to interested people in the UK - contact me on Discord.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - SPI CLK
+    - SPI CSn
+    - Debug nibble select
+    - Debug addr 0
+    - Debug addr 1
+    - Debug addr 2
+    - Unused
+    - Unused
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - segment a
+    - segment b
+    - segment c
+    - segment d
+    - segment e
+    - segment f
+    - segment g
+    - dot (Set to SPI CSn)
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - SPI MOSI / D0
+    - SPI MISO / D1
+    - D2
+    - D3
+    - Debug bit 0
+    - Debug bit 1
+    - Debug bit 2
+    - Debug bit 3
+
+# The following fields are optional
+  tag:          "spi, memory, qspi, rom, random"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "A custom RP2040 board to make full use of the ROM"      # Describe any external hardware needed
+  discord:      "rebelmike"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     10000000       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
