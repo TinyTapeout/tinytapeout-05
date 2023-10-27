@@ -1,0 +1,90 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:
+    - ros_nand4.v
+    - ros_nand4_cap.v
+    - ros_einv_sub.v
+    - fmeasurment.v
+    - tt_um_gfg_development_tros.v
+  top_module:  "tt_um_gfg_development_tros"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Gerrit Grutzeck"      # Your name
+  title:        "TROS"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Three different ring oscillator, with different temperature dependence"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      This design implements three different ring oscillators. The first one is a basic NAND 
+      based oscillator. The second one adds additional NAND gates to the outputs of the stages
+      of the oscillator to increase the capacitve loading. The last one uses the tri-state
+      inverts with a sub-threshold tri-state enable. 
+
+      For measuring the frequencies each oscillator is driving a counter. This counters are
+      latched with the latch counter input. With the input transfer counter the currently 
+      selected counter (counter select bits) is transfered via the serial data stream. The 
+      transfer is driven by the clock of the design. As encoding a manchester encoding is used. 
+
+      Furthermore, a divided version of the clock of each oscillator is outputted. The divisior
+      can be configured with the frequency selection bits. 
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test: |
+      TODO
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs: 
+    - latch counter
+    - counter reset
+    - transfer counter
+    - counter select bit 0
+    - counter select bit 1
+    - select latch counter (sync/async)
+    - frequency divider select bit 0
+    - frequency divider select bit 1      
+
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - serial data stream
+    - not used
+    - not used
+    - not used
+    - not used
+    - divided clock of oscillator 0
+    - divided clock of oscillator 1
+    - divided clock of oscillator 2
+
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - not used
+    - not used
+    - not used
+    - not used
+    - not used
+    - not used
+    - not used
+    - not used
+
+# The following fields are optional
+  tag:          "oscillator, test"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""      # Describe any external hardware needed
+  discord:      "liggi.iggil"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     10000000       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
