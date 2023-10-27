@@ -1,0 +1,37 @@
+{
+   "creator": "Yosys 0.33 (git sha1 2584903a060, clang++ 11.1.0 -fPIC -Os)",
+   "invocation": "stat -json ",
+   "modules": {
+      "\\tt_um_urish_skullfet": {
+         "num_wires":         10,
+         "num_wire_bits":     45,
+         "num_pub_wires":     10,
+         "num_pub_wire_bits": 45,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         26,
+         "num_cells_by_type": {
+            "skullfet_inverter": 1,
+            "skullfet_nand": 1,
+            "sky130_fd_sc_hd__buf_2": 24
+         }
+      }
+   },
+      "design": {
+         "num_wires":         10,
+         "num_wire_bits":     45,
+         "num_pub_wires":     10,
+         "num_pub_wire_bits": 45,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         26,
+         "num_cells_by_type": {
+            "skullfet_inverter": 1,
+            "skullfet_nand": 1,
+            "sky130_fd_sc_hd__buf_2": 24
+         }
+      }
+}
+
