@@ -1,8 +1,9 @@
 {
   "app": "Tiny Tapeout tt05 18224320",
   "repo": "https://github.com/urish/tt05-skullfet",
-  "commit": "9a5186d9c02a9af4a792c3c160cbe087bb38cf58",
-  "workflow_url": "https://github.com/urish/tt05-skullfet/actions/runs/6668485248",
+  "commit": "aa8bbf58665e5a8ffc74bf89bab077c5f852cfc1",
+  "workflow_url": "https://github.com/urish/tt05-skullfet/actions/runs/6669729515",
   "sort_id": 1698421160865,
-  "openlane_version": "OpenLane2 2.0.0b15"
+  "openlane_version": "OpenLane2 2.0.0b15",
+  "power_gate": true
 }
