@@ -1,0 +1,72 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - tt_um_haozhezhu_top.v
+    - modules_haozhezhu.v
+  top_module:  "tt_um_haozhezhu_top"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Haozhe Zhu"      # Your name
+  title:        "4-bit FIFO/LIFO"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "A FIFO/LIFO memory"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+    This memory module can operate as both a First-In-First-Out (FIFO) and a Last-In-First-Out (LIFO) memory, which can be selected using the mode pin. It can store a maximum of 30 4-bit numbers, which is preserved upon mode switch. In addition, it is equipped with a 7-segment display that displays the current number of stored data entries (not more than nine). Should the stored entries surpass nine, the display will be deactivated, and an overflow flag will be triggered. If the memory is full, further write attempts has no effect on stored data. If the memory is empty, further read attempts will invalidate the output data and clear output valid flag. If no read operation has been performed after the most recent reset, the output is also invalid. 
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+    Load some data into the memory and then read them out. 
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - Data In [0]
+    - Data In [1]
+    - Data In [2]
+    - Data In [3]
+    - Write Enable 
+    - Read Enable
+    - Mode (FIFO=0)
+    - Manual Clock
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - segment a
+    - segment b
+    - segment c
+    - segment d
+    - segment e
+    - segment f
+    - segment g
+    - dot
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - Data Out [0]
+    - Data Out [1]
+    - Data Out [2]
+    - Data Out [3]
+    - Full Flag Out
+    - Empty Flag Out
+    - Output Valid Flag Out
+    - Display Overflow Flag Out
+# The following fields are optional
+  tag:          ""      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""      # Describe any external hardware needed
+  discord:      ""      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     0       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
