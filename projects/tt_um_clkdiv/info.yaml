@@ -1,0 +1,78 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - tt_um_clkdiv.v
+  top_module:  "tt_um_clkdiv"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Austin Lo"      # Your name
+  title:        "Clock and Random Number Gen"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Divider up it 16bit input and a simple random number"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      Uses a set of registers to divide the clock.
+    
+      Both 8 bit input are used for the divider
+    
+      Can divide up to 65565, target uses 20 Mhz as example.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      After reset, the clock should be divided by the input a 20MHz input clock.
+      Experiment by changing the inputs
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:
+    - division input bit 0
+    - division input bit 1
+    - division input bit 2
+    - division input bit 3
+    - division input bit 4
+    - division input bit 5
+    - division input bit 6
+    - division input bit 7
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - uo_out[0] clock output
+    - Random Number Output
+    - Random Number Output
+    - Random Number Output
+    - Random Number Output
+    - Random Number Output
+    - Random Number Output
+    - Random Number Output
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - division input bit 8
+    - division input bit 9
+    - division input bit 10
+    - division input bit 11
+    - division input bit 12
+    - division input bit 13
+    - division input bit 14
+    - division input bit 15
+
+# The following fields are optional
+  tag:          "clock, test, random number generator"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""      # Describe any external hardware needed
+  discord:      "lolo0827"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     200000000       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
