@@ -1,8 +1,8 @@
 {
   "app": "custom_gds action",
   "repo": "https://github.com/mattvenn/tt05-analog-test",
-  "commit": "3a4aa4fdc8e9dc48f8789c28f5e268daa7ad253e",
-  "workflow_url": "https://github.com/mattvenn/tt05-analog-test/actions/runs/6678616055",
+  "commit": "2bd331f227594cff1a4eb8a79beb423edc8aeb93",
+  "workflow_url": "https://github.com/mattvenn/tt05-analog-test/actions/runs/6682580882",
   "sort_id": 1698517505436,
   "power_gate": true
 }
