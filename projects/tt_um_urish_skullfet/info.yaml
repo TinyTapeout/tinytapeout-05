@@ -7,6 +7,7 @@ project:
 # Source files must be in ./src and you must list each source file separately
   source_files:        
     - top.v
+    - flipflop.v
     - skullfet.v
   top_module:  "tt_um_urish_skullfet"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
 
@@ -28,19 +29,23 @@ documentation:
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-      Hand-crafted, skull-shaped MOSFET transistors. ☠️"
+      Hand-crafted, skull-shaped MOSFET transistors. ☠️
+
+      The project contains three SkullFET devices: a NOT gate, a NAND gate, and a SR flip-flop.
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
       Input some values into A and B, and observe the outputs. The first output is connected to the SkullFET inverter, and the second output
       is connected to the SkullFET NAND gate.
 
+      Pulse ~S to set the SkullFlop (Q), and pulse ~R to reset it.
+
 # A description of what the inputs do
   inputs:               
     - A
     - B
-    - none
-    - none
+    - ~S
+    - ~R
     - none
     - none
     - none
@@ -49,8 +54,8 @@ documentation:
   outputs:
     - ~A
     - ~(A&B)
-    - none
-    - none
+    - Q
+    - ~Q
     - none
     - none
     - none
