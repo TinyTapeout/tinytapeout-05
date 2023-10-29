@@ -1,8 +1,9 @@
 {
   "app": "Tiny Tapeout tt05 18224320",
   "repo": "https://github.com/gfg-development/tt05-tros",
-  "commit": "9bd58244064d8c75d72c0ac760a1c7450b2e1bb0",
-  "workflow_url": "https://github.com/gfg-development/tt05-tros/actions/runs/6665151887",
+  "commit": "a3539c8e208e0ee51bc57be128bdec1e672c00d6",
+  "workflow_url": "https://github.com/gfg-development/tt05-tros/actions/runs/6668123284",
   "sort_id": 1698398308655,
-  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff\n"
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
 }
