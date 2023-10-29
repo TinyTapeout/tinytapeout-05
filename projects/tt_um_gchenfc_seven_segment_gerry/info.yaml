@@ -1,0 +1,83 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - tt_um_gchenfc_seven_segment_gerry.v
+    - decoder.v
+    - rollover.v
+  top_module:  "tt_um_gchenfc_seven_segment_gerry"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Gerry Chen"      # Your name
+  title:        "7-segment Name Display"    # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Displays names on the 7-segment display one at a time."
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      Uses a counter to display names on a 7-segment display.
+
+      A clock divider slows down the segments to 1 per second (default) as in the 7-segment counter template project.  The bottom 8-bits of the counter are output on the bidirectional outputs.
+      The bottom-5 bits of the dedicated inputs define how fast the clock divider is: if non-zero, this formula is used for the wraparound value of the divider: {ui_in[4:2], 18'b0, ui_in[1:0]}.
+      Setting the input to 0bxxx00001 will therefore have clock divider of 1 (i.e. match the clock) so that a manual debounced push-button can be used in place of the clock.
+
+      Each second, one letter of a name is displayed.  The top 3-bits of the dedicated inputs define which name is displayed.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      After reset, a new letter should displayed each second with a 10MHz input clock.
+      Changing the 3 MSB of the input should change which name is displayed.
+      Changing the 5 LSB of the input should change how quickly the letters are updated.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - name bit 2
+    - name bit 1
+    - name bit 0
+    - clock divider bit 23
+    - clock divider bit 22
+    - clock divider bit 21
+    - clock divider bit 1
+    - clock divider bit 0
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - segment a
+    - segment b
+    - segment c
+    - segment d
+    - segment e
+    - segment f
+    - segment g
+    - dot
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - second counter bit 0
+    - second counter bit 1
+    - second counter bit 2
+    - second counter bit 3
+    - second counter bit 4
+    - second counter bit 5
+    - second counter bit 6
+    - second counter bit 7
+
+# The following fields are optional
+  tag:          "animation"
+  external_hw:  ""      # Describe any external hardware needed
+  discord:      "gchenfc"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     "https://github.com/gchenfc/Gerrys-Custom-ASIC-tt05"      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     10000000       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
