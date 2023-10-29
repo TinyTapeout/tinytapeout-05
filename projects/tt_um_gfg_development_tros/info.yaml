@@ -61,11 +61,11 @@ documentation:
 
 # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
   outputs:
+    - not used
+    - not used
+    - not used
+    - not used
     - serial data stream
-    - not used
-    - not used
-    - not used
-    - not used
     - divided clock of oscillator 0
     - divided clock of oscillator 1
     - divided clock of oscillator 2
