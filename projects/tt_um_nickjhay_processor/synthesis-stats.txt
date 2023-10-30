@@ -1,0 +1,28 @@
+
+62. Printing statistics.
+
+=== tt_um_nickjhay_processor ===
+
+   Number of wires:                767
+   Number of wire bits:            802
+   Number of public wires:         217
+   Number of public wire bits:     252
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                783
+     sky130_fd_sc_hd__a21oi_2       64
+     sky130_fd_sc_hd__a22o_2        56
+     sky130_fd_sc_hd__and2_2        89
+     sky130_fd_sc_hd__and3_2         8
+     sky130_fd_sc_hd__and3b_2        2
+     sky130_fd_sc_hd__buf_1        145
+     sky130_fd_sc_hd__conb_1        16
+     sky130_fd_sc_hd__dfxtp_2      209
+     sky130_fd_sc_hd__mux2_2        64
+     sky130_fd_sc_hd__nand2_2        2
+     sky130_fd_sc_hd__o21ai_2       64
+     sky130_fd_sc_hd__or2b_2        64
+
+   Chip area for module '\tt_um_nickjhay_processor': 8773.414400
+
