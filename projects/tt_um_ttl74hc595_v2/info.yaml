@@ -42,6 +42,16 @@ documentation:
     - G
 # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
   outputs:
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
     - q[0]
     - q[1]
     - q[2]
@@ -50,9 +60,6 @@ documentation:
     - q[5]
     - q[6]
     - q[7]
-# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
-  bidirectional:
-
 # The following fields are optional
   tag:          "74hc595, shift, register"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
   external_hw:  "You should connect 8 LEDs; perhaps a Pmod might also work."      # Describe any external hardware needed

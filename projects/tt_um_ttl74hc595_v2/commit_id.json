@@ -1,8 +1,9 @@
 {
-  "app": "Tiny Tapeout tt05 300a1794",
+  "app": "Tiny Tapeout tt05 98e7cb27",
   "repo": "https://github.com/splinedrive/74hc595",
-  "commit": "861d4dc6d4f7386db67f7cbb2594187a02fd3bf8",
-  "workflow_url": "https://github.com/splinedrive/74hc595/actions/runs/6511937215",
+  "commit": "91bd977268e35377d33b5a8d037e56740b1c2f09",
+  "workflow_url": "https://github.com/splinedrive/74hc595/actions/runs/6699624147",
   "sort_id": 1696027736559,
-  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff\n"
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
 }
