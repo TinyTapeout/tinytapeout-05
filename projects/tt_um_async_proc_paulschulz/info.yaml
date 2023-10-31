@@ -1,0 +1,101 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+  # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+  # Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - tt_um_async_proc_paulschulz.v
+    - lif.v
+  top_module:  "tt_um_async_proc_paulschulz"
+  # Put the name of your top module here, must start with "tt_um_". Make it
+  # unique by including your github username
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# URL: https://github.com/PaulSchulz/tt05-submission-verilog
+documentation: 
+  author:       "Paul Schulz"
+  title:        "Async Parallel Processor Demonstrator"
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  # Short description
+  description:  "Asynchronous Parallel Processor Model"
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+    This circuit is an investigation into an asynchronous parallel processor.
+
+    A processing node follows the following state flow:
+    - Wait for valid data;
+    - Process the data to produce an output value, and let neighbors know that
+      processing in being done;
+    - Make the result available; and wait for more data to process.
+
+    In this example, the processing node is doing a calculation on four(4)
+    inputs of 4 bits, based on the "Arctic Circle Theorem" model. ([video](https://www.youtube.com/watch?v=Yy7Q8IWNfHM))
+
+# Instructions on how someone could test your project, include things like what
+# buttons do what and how to set the clock if needed
+  how_to_test:  |
+      TBD
+      
+      Experiment by changing the input values.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - input bit 0
+    - input bit 1
+    - input bit 2
+    - input bit 3
+    - load input 0
+    - load input 1
+    - load input 2
+    - load input 3
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - segment a
+    - segment b
+    - segment c
+    - segment d
+    - segment e
+    - segment f
+    - segment g
+    - dot
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - second counter bit 0
+    - second counter bit 1
+    - second counter bit 2
+    - second counter bit 3
+    - second counter bit 4
+    - second counter bit 5
+    - second counter bit 6
+    - second counter bit 7
+
+# The following fields are optional
+  tag:          "test, experiment"
+  # comma separated list of tags: test, encryption, experiment, clock,
+  # animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv,
+  # sensor, signal generator, fft, filter, music, bcd, sound, serial, timer,
+  # random number generator, calculator, decoder, counter, puzzle, multiplier,
+  # game, oscillator
+
+  # Describe any external hardware needed
+  external_hw:  ""
+  # Discord Handle, used for communication and automatically assigning tapeout
+  # role after a submission
+  discord:      "paul.schulz"
+  # URL to longer form documentation, eg the README.md in your repository
+  doc_link:     ""
+  # Clock frequency in Hz (if required)
+  clock_hz:     10000000
+  # Relative path to a picture in your repository (must be 512kb or less)
+  picture:      "doc/images/diagram-node-logic.png"
