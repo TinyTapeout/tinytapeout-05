@@ -1,0 +1,24 @@
+
+62. Printing statistics.
+
+=== tt_um_loopback_ericsmi ===
+
+   Number of wires:                 45
+   Number of wire bits:             80
+   Number of public wires:          20
+   Number of public wire bits:      55
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 61
+     sky130_fd_sc_hd__and4_2         1
+     sky130_fd_sc_hd__buf_1         12
+     sky130_fd_sc_hd__buf_2         22
+     sky130_fd_sc_hd__dfrtp_2        8
+     sky130_fd_sc_hd__dfxtp_2        1
+     sky130_fd_sc_hd__inv_2          1
+     sky130_fd_sc_hd__mux2_2        12
+     sky130_fd_sc_hd__mux4_2         4
+
+   Chip area for module '\tt_um_loopback_ericsmi': 625.600000
+
