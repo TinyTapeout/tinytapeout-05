@@ -67,7 +67,7 @@ MACRO tt_um_seven_segment_seconds
   PIN rst_n
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.126000 ;
+    ANTENNAGATEAREA 0.159000 ;
     PORT
       LAYER met4 ;
         RECT 142.910 110.520 143.210 111.520 ;
@@ -312,7 +312,7 @@ MACRO tt_um_seven_segment_seconds
   PIN uio_out[4]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.795200 ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 62.870 110.520 63.170 111.520 ;
@@ -321,7 +321,7 @@ MACRO tt_um_seven_segment_seconds
   PIN uio_out[5]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.445500 ;
+    ANTENNADIFFAREA 0.795200 ;
     PORT
       LAYER met4 ;
         RECT 60.110 110.520 60.410 111.520 ;
@@ -441,7 +441,7 @@ MACRO tt_um_seven_segment_seconds
       LAYER li1 ;
         RECT 2.760 2.635 165.600 108.885 ;
       LAYER met1 ;
-        RECT 2.760 2.480 166.400 109.780 ;
+        RECT 2.760 2.480 166.400 109.040 ;
       LAYER met2 ;
         RECT 22.345 2.535 166.370 110.005 ;
       LAYER met3 ;

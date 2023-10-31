@@ -1,5 +1,5 @@
 --- 
-# TinyTapeout project information
+# Tiny Tapeout project information
 project:
   wokwi_id:    0        # If using wokwi, set this to your project's ID
 
@@ -8,10 +8,10 @@ project:
   source_files:        
     - tt_um_seven_segment_seconds.v
     - decoder.v
-  top_module:  "tt_um_seven_segment_seconds"      # put the name of your top module here, make it unique by prepending your github username
+  top_module:  "tt_um_seven_segment_seconds"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
 
 # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 4x2 or 8x2
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
 
 # Keep a track of the submission yaml
 yaml_version: 4
@@ -21,10 +21,10 @@ yaml_version: 4
 #
 # Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
 documentation: 
-  author:       "Matt Venn"
-  title:        "7 segment seconds"
-  language:     "Verilog"
-  description:  "Count up to 10, one second at a time."
+  author:       "Matt Venn"      # Your name
+  title:        "7 segment seconds (Verilog Demo)"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Count up to 10, one second at a time."      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
@@ -82,4 +82,4 @@ documentation:
   discord:      "mattvenn"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
   clock_hz:     10000000       # Clock frequency in Hz (if required)
-  picture:      ""      # relative path to a picture in your repository
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
