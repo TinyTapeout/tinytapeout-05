@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/ericsmi/tt05-wokwi-lfsr-counter",
+  "commit": "19a836407aea15876c536ebd6afa3a2748f789e1",
+  "workflow_url": "https://github.com/ericsmi/tt05-wokwi-lfsr-counter/actions/runs/6704814969",
+  "sort_id": 1698747067068,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
