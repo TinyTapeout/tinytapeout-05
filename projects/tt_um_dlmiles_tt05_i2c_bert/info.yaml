@@ -1,0 +1,112 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:
+    - tt_um.vh
+    - config.vh
+    - top_tt_um_dlmiles_tt05_i2c_bert.v
+    - sky130_toolbox/dffqn_negedge.v
+    - sky130_toolbox/dff.v
+    - sky130_toolbox/glitch_free_clock_mux.v
+    - sky130_toolbox/sky130_behavioral_udp_dlatch_pr.v
+    - sky130_fd_sc_hd__dlrtp.v
+    - sky130_fd_sc_hd__maj3.v
+    - TT05I2CBertTop.v
+  top_module:  "tt_um_dlmiles_tt05_i2c_bert"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Darryl Miles"      # Your name
+  title:        "I2C BERT"      # Project title
+  language:     "SpinalHDL" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "I2C Bit Error Rate Test"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      This text will be updated nearer the scheduled TT05 redistribution time (early 2024) along with the project github
+      README.md and gh-pages documentation.  Please regenerate your documentation.
+
+      Issue synchronous reset, ensure interface inputs are set to zero.  Power-on-reset configuration is possible
+      via the input pins, see documentation.
+
+      This design is an I2C peripheral that implements an 8-bit ALU over I2C.  The purpose of the ALU is to
+      allow pattern testing to occur and read back the accumulated result.
+
+      There are a few clocking modes, the default uses SCL pin as per the standard.
+
+      Connection to I2C interface\:
+       * uio[2] = SDA (should be direct to RP2040 pin with capable mode)
+       * uio[3] = SCL (shouid be direct to RP2040 pin with capable mode)
+
+      When in open-drain mode the standard pull-up resistor is in the order of 4k7 to 10k and no more than 400pF
+      capacitance on lines.  Higher speeds my require attention to those metrics for your setup.
+      The project is peripheral only and does not drive SCL.  So open-drain or push-pull can be used by the
+      controller no matter the mode setup in this project.
+
+      Power-on-reset configuration (set all zero for standard mode)\:
+       * ui_in[1] sets CLOCKMUX to use divider
+       * ui_in[2] sets PUSHPULL I2C bus mode (by default open-drain is in use)
+       * ui_in[3] activates DIV12 divider setup on reset (default is 10Mhz for 10Khz)
+       * {uio_in[7:0], ui_in[7:4]} is the DIV12 value to use
+
+      The design is based around a high-speed clock, at default speed of 10MHz with
+
+      Other than the default divider setup for CLOCKMUX mode there is no restriction upon the system clock
+      used, other than trying to operate at low ratios of system-clock:SCL.  The design has been simulated from
+      "6:1" upto 1000000:1.  Maybe lower than 6:1 are possible.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      RP2040 code is expected to be provided to conduct testing based on simulation expectations.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+
+# The following fields are optional
+  tag:          "i2c, bert"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "I2C Controller/RP2040"      # Describe any external hardware needed
+  discord:      ""      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     "https://dlmiles.github.io/tt05-i2c-bert/"      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     10000000       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
