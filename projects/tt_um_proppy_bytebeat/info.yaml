@@ -1,0 +1,62 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0
+  source_files:        
+    - bytebeat.v
+    - tt_um_proppy_bytebeat.v
+  top_module:  "tt_um_proppy_bytebeat"
+  tiles: "1x1"
+
+yaml_version: 4
+
+documentation: 
+  author:       "proppy"
+  title:        "bytebeat"
+  language:     "xls"
+  description:  |
+     Attempt implement the formula from one of the original [bytebeat](http://countercomplex.blogspot.com/2011/10/algorithmic-symphonies-from-one-line-of.html) [video](https://www.youtube.com/watch?v=tCRPUv8V22o) in hardware.
+
+  how_it_works: |
+     The main module accept parameters from 4x 4-bit parameters buses and generate PCM samples according to the following formula: `((t*a)&(t>>b))|((t*c)&(t>>d))`.
+     Derivative of this project can easily be created by editing the formula in `src/bytebeat.x` and using the [XLS: Accelerated HW Synthesis](https://github.com/google/xls) toolkit to regenerate the Verilog code.
+     See the following [notebook](https://colab.research.google.com/gist/proppy/1258e007febb077c42ccea1d28e092c4/xls_audio_playground.ipynb) for more information.
+
+  how_to_test: |
+     - Tweak parameters pins using a absolute encoders
+     - Feed the data coming from the sample bus to a DAC
+
+  inputs:               
+    - param `a` bit 0/3
+    - param `a` bit 1/3
+    - param `a` bit 2/3
+    - param `a` bit 3/3
+    - param `b` bit 0/3
+    - param `b` bit 1/3
+    - param `b` bit 2/3
+    - param `b` bit 3/3
+  outputs:
+    - pcm sample bit 0/7
+    - pcm sample bit 1/7
+    - pcm sample bit 2/7
+    - pcm sample bit 3/7
+    - pcm sample bit 4/7
+    - pcm sample bit 5/7
+    - pcm sample bit 6/7
+    - pcm sample bit 7/7
+  bidirectional:
+    - param `c` bit 0/3
+    - param `c` bit 1/3
+    - param `c` bit 2/3
+    - param `c` bit 3/3
+    - param `d` bit 0/3
+    - param `d` bit 1/3
+    - param `d` bit 2/3
+    - param `d` bit 3/3
+
+  tag:          "bytebeat, audio, xls"
+  external_hw:  "8bit pcm DAC, rotary encoder"
+  discord:      "proppy#5890"
+  doc_link:     "https://colab.research.google.com/gist/proppy/1258e007febb077c42ccea1d28e092c4/xls_audio_playground.ipynb"
+  clock_hz:     8000
+  picture:      "waveform.png"
