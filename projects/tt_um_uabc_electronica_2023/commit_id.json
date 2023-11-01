@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/rogeermv/UABC_ELECTRONICA_2023",
+  "commit": "978eae48f650b5e94821d2f56085591f4d08e857",
+  "workflow_url": "https://github.com/rogeermv/UABC_ELECTRONICA_2023/actions/runs/6715336979",
+  "sort_id": 1698808645565,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
