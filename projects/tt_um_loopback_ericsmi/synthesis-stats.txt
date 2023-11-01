@@ -3,22 +3,27 @@
 
 === tt_um_loopback_ericsmi ===
 
-   Number of wires:                 45
-   Number of wire bits:             80
-   Number of public wires:          20
-   Number of public wire bits:      55
+   Number of wires:                 57
+   Number of wire bits:             92
+   Number of public wires:          21
+   Number of public wire bits:      56
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                 61
+   Number of cells:                 73
+     sky130_fd_sc_hd__and2b_2        1
      sky130_fd_sc_hd__and4_2         1
-     sky130_fd_sc_hd__buf_1         12
-     sky130_fd_sc_hd__buf_2         22
-     sky130_fd_sc_hd__dfrtp_2        8
-     sky130_fd_sc_hd__dfxtp_2        1
-     sky130_fd_sc_hd__inv_2          1
-     sky130_fd_sc_hd__mux2_2        12
-     sky130_fd_sc_hd__mux4_2         4
+     sky130_fd_sc_hd__buf_1         14
+     sky130_fd_sc_hd__buf_2         19
+     sky130_fd_sc_hd__dfrtp_2        9
+     sky130_fd_sc_hd__dfxtp_2        2
+     sky130_fd_sc_hd__inv_2          2
+     sky130_fd_sc_hd__mux2_2        17
+     sky130_fd_sc_hd__mux4_2         3
+     sky130_fd_sc_hd__nand2_2        2
+     sky130_fd_sc_hd__nor2_2         1
+     sky130_fd_sc_hd__o31a_2         1
+     sky130_fd_sc_hd__xnor2_2        1
 
-   Chip area for module '\tt_um_loopback_ericsmi': 625.600000
+   Chip area for module '\tt_um_loopback_ericsmi': 756.976000
 
