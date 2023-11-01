@@ -1,0 +1,82 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+  # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+  # Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - rtl/computer.v
+    - rtl/tt_wrapper.v
+  top_module:  "tt_um_wrapper_inputblackboxoutput"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Rutuparn Pawar"                         # Your name
+  title:        "Byte Computer"                          # Project title
+  language:     "Verilog"                                # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "An 8 bit turing complete computer"      # Short description of what your project does
+
+  # Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      Byte computer is an in-order, no register file, no-cache, non-pipelined and no branch predictor implementation of an 8-bit Turing complete computer thus making it extremely simple and small enough for TinyTapeout.
+
+      The computer fetches instruction at the address in the program counter which has an initial value of zero. 
+      The instruction is decoded and then executed followed by setting appropriate condition flags. 
+      The program counter is incremented and the fetch -> decode -> execute process repeats until a halt instruction is fetched and executed. 
+      See README in project repository for waveform illustrating the fetch -> decode -> execute process.
+
+  # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      External memory and memory control logic is required to test the design which can be implemented using a microcontroller. 
+      The memory should be preloaded with a program created using the available instructions and the data processed by the program.
+      The expected memory behaviour is to write data to memory at address indicated by the addr signal when we signal is high and vice versa.
+      The halt signal indicates that the computer has encountered and ececuted a halt instruction.
+
+  # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - data[7]
+    - data[6]
+    - data[5]
+    - data[4]
+    - data[3]
+    - data[2]
+    - data[1]
+    - data[0]
+  # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - data[7]
+    - data[6]
+    - data[5]
+    - data[4]
+    - data[3]
+    - data[2]
+    - data[1]
+    - data[0]
+  # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - we
+    - halt
+    - none
+    - addr[4]
+    - addr[3]
+    - addr[2]
+    - addr[1]
+    - addr[0]
+
+  # The following fields are optional
+  tag:          "microprocessor"                                         # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""                                                       # Describe any external hardware needed
+  discord:      "blackbox0x0000"                                         # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     "https://github.com/InputBlackBoxOutput/Byte-Computer"   # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     0                                                        # Clock frequency in Hz (if required)
+  picture:      ""                                                       # relative path to a picture in your repository (must be 512kb or less)
