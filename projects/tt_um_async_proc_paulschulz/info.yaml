@@ -7,7 +7,9 @@ project:
   # Source files must be in ./src and you must list each source file separately
   source_files:        
     - tt_um_async_proc_paulschulz.v
+    - block.v
     - lif.v
+    - lfsr.v
   top_module:  "tt_um_async_proc_paulschulz"
   # Put the name of your top module here, must start with "tt_um_". Make it
   # unique by including your github username
@@ -24,24 +26,34 @@ yaml_version: 4
 # URL: https://github.com/PaulSchulz/tt05-submission-verilog
 documentation: 
   author:       "Paul Schulz"
-  title:        "Async Parallel Processor Demonstrator"
+  title:        "Asynchronous  Parallel Processor Demonstrator"
   language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
   # Short description
-  description:  "Asynchronous Parallel Processor Model"
+  description:  "Implementation for an Asynchronous Parallel Processor"
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-    This circuit is an investigation into an asynchronous parallel processor.
+    See Github: https://github.com/PaulSchulz/tt05-async-proc
+    
+    This circuit is an investigation into an asynchronous parallel processor design.
 
+    The design in a work in progress.
+
+    Note: This is a very early design, which doesn't yet do much.
+    
     A processing node follows the following state flow:
     - Wait for valid data;
-    - Process the data to produce an output value, and let neighbors know that
-      processing in being done;
+    - Process the data to produce an output value, and let neighboring nodes
+      know that processing in being done;
     - Make the result available; and wait for more data to process.
 
     In this example, the processing node is doing a calculation on four(4)
-    inputs of 4 bits, based on the "Arctic Circle Theorem" model. ([video](https://www.youtube.com/watch?v=Yy7Q8IWNfHM))
+    inputs of 4 bits.  The calculation is based on a deconstruction of the
+    the "Arctic Circle Theorem" model. ([video](https://www.youtube.com/watch?v=Yy7Q8IWNfHM))
 
+    In a future design, it should be possible to switch the function of
+    processing node, or even make it generally programmable for other calculations.
+    
 # Instructions on how someone could test your project, include things like what
 # buttons do what and how to set the clock if needed
   how_to_test:  |
@@ -98,4 +110,4 @@ documentation:
   # Clock frequency in Hz (if required)
   clock_hz:     10000000
   # Relative path to a picture in your repository (must be 512kb or less)
-  picture:      "doc/images/diagram-node-logic.png"
+  picture:      "doc/images/architecture.svg"
