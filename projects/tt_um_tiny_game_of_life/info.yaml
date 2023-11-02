@@ -1,0 +1,87 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - project.sv
+  top_module:  "tt_um_tiny_game_of_life"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x2"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Petros Emmanouilidis"      # Your name
+  title:        "Tiny Game of Life"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Simulates cellular automaton Conway's Game of Life on a 8x8 grid using shift registers."      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+
+      The design uses to shift registers to play the game: a load register and an update register. 
+      After the entire grid is sequentially loaded in, the circuit plays the game indefinitely, outputting the state of each cell sequentially in the process. 
+      
+      Simulation operates on 3 distinct states: INPUT, UPDATE, and OUTPUT. 
+      INPUT: The values of the grid are loaded into the circuit, 1 cell at a time. Cells are organized in row-major order. The user must indicate a transition from INPUT to UPDATE through a special input combination. The circuit can hold a total of 64 values at a time; after that, the oldest values are pushed out of the grid
+      UPDATE: The user may transition from INPUT to UPDATE by asserting ui_in[1]. UPDATE takes a single clock cycle, since all cells in the grid are updated in parallel. After UPDATE, the FSM automatically transitions to OUTPUT
+      OUTPUT: The updated cells are outputted sequentially. uo_out[0] holds the bit being outputted, while uo_out[2:1] holds the current state of the FSM. After all cells have been outputted, the FSM switches back to UPDATE.
+
+      Unless reset, the FSM alternates between UPDATE and OUTPUT states without any further input from the user.
+
+      State Assignments:  00 --> INPUT
+                          01 --> UPDATE
+                          10 --> OUTPUT
+      
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      Load values through ui_i[0] and start the game through ui_i[1]. Pray it works.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - Data sequentially loaded into the grid
+    - Starts the game upon assertion
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - Data sequentially outputted after the update
+    - 0th bit of current state
+    - 1st bit of current state
+    - segment d
+    - segment e
+    - segment f
+    - segment g
+    - dot
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+
+# The following fields are optional
+  tag:          ""      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""      # Describe any external hardware needed
+  discord:      "petrosem"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     0       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
