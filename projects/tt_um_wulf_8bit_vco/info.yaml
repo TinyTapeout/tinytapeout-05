@@ -1,0 +1,78 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - tt_um_wulf_8bit_vco.v
+    - tt_um_wulf_8bit_vco.lef
+  top_module:  "tt_um_wulf_8bit_vco"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Ivan M Bow"      # Your name
+  title:        "tt_um_wulf_8bit_vco"      # Project title
+  language:     "XSchem / KLayout" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Voltage Controlled Oscillator controlled by an 8-bit input"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      The inputs ui_in[7:0] are used to control an 8-bit DAC.
+      The value of the input increases and decreases the frequency of a voltage controlled oscillator (VCO).
+      The larger the value of the 8-bit input, the faster the frequency is output.
+      The oscillator is output on uo_out[0].
+      The frequency range of the VCO is not yet completely characterized, but at this time I expect form 1-30 MHz.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      The project can be tested by measuring the output of uo_out[0]. The input ui_in[7:0] can then be put to anything you like.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - DAC bit 0
+    - DAC bit 1
+    - DAC bit 2
+    - DAC bit 3 
+    - DAC bit 4 
+    - DAC bit 5  
+    - DAC bit 6 
+    - DAC bit 7 
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - VCO Output (uo_out[0])
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+
+# The following fields are optional
+  tag:          "vco, dac, oscillator, ring oscillator, ro"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "oscilloscope is needed to measure the frequency"      # Describe any external hardware needed
+  discord:      "wulfhednar02"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     "tbd"      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     0       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
