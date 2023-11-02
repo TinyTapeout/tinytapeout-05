@@ -1,0 +1,46 @@
+
+62. Printing statistics.
+
+=== tt_um_tiny_game_of_life ===
+
+   Number of wires:               1703
+   Number of wire bits:           1738
+   Number of public wires:         140
+   Number of public wire bits:     175
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1719
+     sky130_fd_sc_hd__a21o_2        44
+     sky130_fd_sc_hd__a21oi_2       50
+     sky130_fd_sc_hd__a22o_2        18
+     sky130_fd_sc_hd__a22oi_2        1
+     sky130_fd_sc_hd__a31o_2         3
+     sky130_fd_sc_hd__a32o_2        36
+     sky130_fd_sc_hd__and2_2       126
+     sky130_fd_sc_hd__and2b_2        2
+     sky130_fd_sc_hd__and3_2         6
+     sky130_fd_sc_hd__and3b_2        1
+     sky130_fd_sc_hd__and4_2         1
+     sky130_fd_sc_hd__buf_1        152
+     sky130_fd_sc_hd__buf_2          1
+     sky130_fd_sc_hd__conb_1        16
+     sky130_fd_sc_hd__dfxtp_2      139
+     sky130_fd_sc_hd__inv_2         64
+     sky130_fd_sc_hd__mux2_2         1
+     sky130_fd_sc_hd__nand2_2      180
+     sky130_fd_sc_hd__nand3_2        1
+     sky130_fd_sc_hd__nor2_2       148
+     sky130_fd_sc_hd__o211a_2      111
+     sky130_fd_sc_hd__o21a_2       110
+     sky130_fd_sc_hd__o21ai_2        3
+     sky130_fd_sc_hd__o21ba_2       16
+     sky130_fd_sc_hd__o221a_2        1
+     sky130_fd_sc_hd__o2bb2a_2      24
+     sky130_fd_sc_hd__or2_2        114
+     sky130_fd_sc_hd__or2b_2         1
+     sky130_fd_sc_hd__xnor2_2      290
+     sky130_fd_sc_hd__xor2_2        59
+
+   Chip area for module '\tt_um_tiny_game_of_life': 17322.864000
+
