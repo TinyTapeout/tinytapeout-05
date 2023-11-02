@@ -282,7 +282,7 @@ MACRO tt_um_tomkeddie_a
   PIN uio_out[0]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.795200 ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 73.910 110.520 74.210 111.520 ;
@@ -370,7 +370,7 @@ MACRO tt_um_tomkeddie_a
   PIN uo_out[2]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.795200 ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 90.470 110.520 90.770 111.520 ;
@@ -451,7 +451,7 @@ MACRO tt_um_tomkeddie_a
       LAYER met2 ;
         RECT 4.240 2.535 166.370 110.005 ;
       LAYER met3 ;
-        RECT 19.845 2.555 166.390 109.985 ;
+        RECT 6.965 2.555 166.390 109.985 ;
       LAYER met4 ;
         RECT 33.210 110.120 34.870 110.650 ;
         RECT 35.970 110.120 37.630 110.650 ;
