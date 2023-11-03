@@ -1,0 +1,128 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - tt_um_joerdsonsilva_top.v
+    - modem.v
+    - bask.v
+    - mult1.v
+    - clk_rdg1.v
+    - rdg1.v
+    - ffd1.v
+    - wave11.v
+    - bfsk.v
+    - clk_rdg2.v
+    - clk_25MHz.v
+    - wave12.v
+    - wave22.v
+    - rdg2.v
+    - ffd2.v
+    - freq_select.v
+    - bpsk.v
+    - clk_rdg3.v
+    - rdg3.v
+    - ffd3.v
+    - wave13.v
+    - wave23.v
+    - control_0.v
+    - demod_bask.v
+    - demod_bfsk.v
+    - wave122.v
+    - mult2.v
+    - integrator2.v
+    - demod_bpsk.v
+    - wave133.v
+    - mult3.v
+    - integrator3.v
+    - control_1.v
+  top_module:  "tt_um_joerdsonsilva_top"     # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+  
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x2"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Joerdson Silva"     # Your name
+  title:        "Multimode Modem"    # Project title
+  language:     "Verilog"            # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Performs digital modulation and demodulation in amplitude, frequency and phase schemes."      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      The multimode modem uses a clock signal to generate digitized signals over time, in sinusoidal format (carrier wave).
+      From this digitized sinusoid, the modulation process is applied using different methods for each scheme, implemented 
+      through specific internal blocks to perform modulations ASK (switching the amplitude of the sine wave), FSK (switching 
+      the frequency of the sine wave through a digital signal modulator) and PSK (phase coding). In the demodulation stage, 
+      these three modulation schemes are analyzed to recover the original information, manifesting as '0' or '1' values that 
+      reflect the data signal already restored after the process.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test: |
+      The multimode modem has the following inputs and outputs:
+     
+         - Input  - clock (1 bit)
+         - Input  - reset (1 bit)
+         - Input  - sel (2 bits)
+         - Output - mod_out (7 bits)
+         - Output - demod_out (1 bit)
+       
+      Apply a “clock” of 40~50 MHz. Then, apply a “reset” signal of logic level “1” to synchronize the modem system and then make the 
+      “reset” signal a logic level “0”. After that, select the type of modulation to be used, as per the sequence below:
+
+         - Sel = "01" <= ASK modulation and demodulation
+    
+         - Sel = "10" <= FSK modulation and demodulation
+
+         - Sel = "11" <= PSK modulation and demodulation
+
+      After selecting the modulation type, the modulated signal is expressed at the “mod_out” output, and the demodulated signal at the 
+      “demod_out” output.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - clock
+    - reset
+    - sel_0
+    - sel_1
+    - none
+    - none
+    - none
+    - none
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - mod_out_0
+    - mod_out_1
+    - mod_out_2
+    - mod_out_3
+    - mod_out_4
+    - mod_out_5
+    - mod_out_6
+    - demod_out
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+
+# The following fields are optional
+  tag:          "clock, modem, signal generator"    # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "oscilloscope or signal analyzer"   # Describe any external hardware needed
+  discord:      "joerdson"       # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     "README.md"    # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     50000000       # Clock frequency in Hz (if required)
+  picture:      ""             # relative path to a picture in your repository (must be 512kb or less)
