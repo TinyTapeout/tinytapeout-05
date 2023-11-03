@@ -1,0 +1,74 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:
+    - tt_um_jleugeri_ticktocktokens.sv
+    - ttt_processor.sv
+  top_module:  "tt_um_jleugeri_ticktocktokens"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Johannes Leugering"      # Your name
+  title:        "TickTockTokens"      # Project title
+  language:     "SystemVerilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Implementation of a processor that uses Tick Tock Tokens for event-based computation."      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      Each TickTockToken (ttt) is indicated by two messages, a start and an end event. A ttt-Processor uses these tokens to perform event-based computations in a fashion inspired by Time Petri Nets. 
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      If I didn't get lazy half-way though, the test-script provided in the repo should run a test model successfully, and the documentation should provide a more through explanation.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:             
+    - instruction bit 0
+    - instruction bit 1
+    - instruction bit 2
+    - instruction bit 3
+    - (reserved)
+    - (reserved)
+    - (reserved)
+    - (reserved)
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - data bit 0 | token start flag
+    - data bit 1 | token stop flag
+    - data bit 2
+    - data bit 3
+    - data bit 4
+    - data bit 5
+    - data bit 6
+    - data bit 7
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - data bit 0
+    - data bit 1
+    - data bit 2
+    - data bit 3
+    - data bit 4
+    - data bit 5
+    - data bit 6
+    - data bit 7 | good/bad token flag (0 = good, 1 = bad)
+
+# The following fields are optional
+  tag:          "tick tock token, event processor, Petri Net"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "arduino to generate I/O"      # Describe any external hardware needed
+  discord:      "jleugeri"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     "README.md"      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     10000000       # Clock frequency in Hz (if required)
+  picture:      "event_processor.svg"      # relative path to a picture in your repository (must be 512kb or less)
