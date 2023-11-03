@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/hongselectronics/HW_Trojan_hongseleco",
+  "commit": "7cb1186e66e2854a1ab4a82ff5ea6689895d6a37",
+  "workflow_url": "https://github.com/hongselectronics/HW_Trojan_hongseleco/actions/runs/6750975645",
+  "sort_id": 1699052993957,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
