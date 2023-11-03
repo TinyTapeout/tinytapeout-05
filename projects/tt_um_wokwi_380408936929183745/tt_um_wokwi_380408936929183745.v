@@ -4780,7 +4780,11 @@ module tt_um_wokwi_380408936929183745 (VGND,
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
- sky130_fd_sc_hd__decap_4 FILLER_0_38_245 (.VGND(VGND),
+ sky130_fd_sc_hd__fill_2 FILLER_0_38_245 (.VGND(VGND),
+    .VNB(VGND),
+    .VPB(VPWR),
+    .VPWR(VPWR));
+ sky130_fd_sc_hd__fill_2 FILLER_0_38_250 (.VGND(VGND),
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
@@ -6736,20 +6740,20 @@ module tt_um_wokwi_380408936929183745 (VGND,
     .VPWR(VPWR));
  sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_TAPCELL_ROW_9_143 (.VGND(VGND),
     .VPWR(VPWR));
- sky130_fd_sc_hd__nand2_1 _00_ (.A(net2),
-    .B(net1),
-    .VGND(VGND),
-    .VNB(VGND),
-    .VPB(VPWR),
-    .VPWR(VPWR),
-    .Y(\gate1.out ));
- sky130_fd_sc_hd__nand2_1 _01_ (.A(net4),
+ sky130_fd_sc_hd__nand2_1 _00_ (.A(net4),
     .B(net3),
     .VGND(VGND),
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR),
     .Y(\gate4.out ));
+ sky130_fd_sc_hd__nand2_1 _01_ (.A(net2),
+    .B(net1),
+    .VGND(VGND),
+    .VNB(VGND),
+    .VPB(VPWR),
+    .VPWR(VPWR),
+    .Y(\gate1.out ));
  sky130_fd_sc_hd__clkbuf_4 _24_ (.A(\gate1.out ),
     .VGND(VGND),
     .VNB(VGND),
