@@ -28,12 +28,19 @@ documentation:
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-      Explain how your project works
+      This continued fraction calculator computes the convergents in the standard manner. It computes the coefficients of the continued fraction, and then recursively computes the convergents. 
+      It turns out that when the target is the square of a natural number, one can avoid the need of comparisons or taking the floor (except on the first step) and only use addition, multiplication, and integer division. 
+      Still, squeezing the design in roughly 1000 cells proved quite difficult, and various simplifications were necessary (such as changing the output from 7-segment to binary). 
+
+      This calculator, in conjunction with a mobile phone calculator, or paper and pencil, can be used to calculate the fundumental solution of Pell's equation x^2 - Dy^2 = 1. To do this, simply
+      enter D, compute convergents, and verify whether the convergents satisfy Pell's equation P^2 - DQ^2 = 1. The first convergents that satisfy Pell's equation is the fundumental solution. 
+      This procedure combines the continued fraction calculator's ability to store various intermediate values and a mobile phone calculator's ability to calculate large numbers. 
+      
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
-      Enter 14 bit binary number input via switches, press first button to generate floor of square root of input, press second button to read through the values of p and q, 
-      numerator and denominator. (Currently incomplete, only computes one convergent of the continued fraction)
+      Enter 14 bit binary number D input via switches, press button 0 to generate the next convergents P and Q, where sqrt(D) ~ P/Q.
+      Press button 1 to read through the values of P and Q in order of P[15:8], P[7:0], Q[15:8], Q[7:0]. 
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
@@ -47,14 +54,14 @@ documentation:
     - switch
 # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
   outputs:
-    - segment a
-    - segment b
-    - segment c
-    - segment d
-    - segment e
-    - segment f
-    - segment g
-    - N/A
+    - status LED
+    - status LED
+    - status LED
+    - status LED
+    - status LED
+    - status LED
+    - status LED
+    - status LED
 # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
   bidirectional:
     - switch
