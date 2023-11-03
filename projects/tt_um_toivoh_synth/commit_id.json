@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/toivoh/tt05-synth",
+  "commit": "580c7fdaf811d1c6095b96181c626061059252b3",
+  "workflow_url": "https://github.com/toivoh/tt05-synth/actions/runs/6742211148",
+  "sort_id": 1698996593503,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
