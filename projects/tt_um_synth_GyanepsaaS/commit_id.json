@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/GyanepsaaS/TT_synth_GyanepsaaS",
+  "commit": "5d30b1f774db6ecc4cc51d079d192e82eac48f25",
+  "workflow_url": "https://github.com/GyanepsaaS/TT_synth_GyanepsaaS/actions/runs/6716905119",
+  "sort_id": 1698995097316,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
