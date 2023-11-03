@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/vladamladenovic/neural_network_FTS_Cacak_Serbia",
+  "commit": "9ab104f70e079c38f7312e09f238b6e17cf705db",
+  "workflow_url": "https://github.com/vladamladenovic/neural_network_FTS_Cacak_Serbia/actions/runs/6735242886",
+  "sort_id": 1699041021534,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
