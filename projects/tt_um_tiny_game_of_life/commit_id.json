@@ -1,8 +1,8 @@
 {
   "app": "Tiny Tapeout tt05 98e7cb27",
   "repo": "https://github.com/Petros-Emmanouilidis/tt05-Petros-Emmanouilidis-tiny-game-of-life",
-  "commit": "e969973c4e78390ca9a850d98b5132a4fc780eb5",
-  "workflow_url": "https://github.com/Petros-Emmanouilidis/tt05-Petros-Emmanouilidis-tiny-game-of-life/actions/runs/6722989617",
+  "commit": "cfc660357bef7649975ee69f36dae2b9bded8609",
+  "workflow_url": "https://github.com/Petros-Emmanouilidis/tt05-Petros-Emmanouilidis-tiny-game-of-life/actions/runs/6748674635",
   "sort_id": 1698902881336,
   "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
   "power_gate": false
