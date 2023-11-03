@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/AndreouLab/tinytapeout_05_chatgpt_snn",
+  "commit": "fb5ad05ccbae217831e7e296861b23beabd43dbb",
+  "workflow_url": "https://github.com/AndreouLab/tinytapeout_05_chatgpt_snn/actions/runs/6738657318",
+  "sort_id": 1698972971791,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
