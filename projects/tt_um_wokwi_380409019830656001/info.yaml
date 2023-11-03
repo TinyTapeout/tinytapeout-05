@@ -24,7 +24,7 @@ documentation:
   author:       "Alexandre Ney Guimaraes"      # Your name
   title:        "Logic Gates Tapeout"      # Project title
   language:     "Wokwi" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  "Teste"      # Short description of what your project does
+  description:  "TesteX"      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
