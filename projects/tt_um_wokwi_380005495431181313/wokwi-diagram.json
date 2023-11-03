@@ -130,7 +130,7 @@
       "type": "wokwi-buzzer",
       "id": "bz1",
       "top": -57.6,
-      "left": 700.8,
+      "left": 710.4,
       "rotate": 180,
       "attrs": { "volume": "0.1" }
     },
@@ -1350,6 +1350,13 @@
       "top": -2131.2,
       "left": -1046.4,
       "attrs": { "text": "Reset signal and clock output" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text_out6",
+      "top": -124.8,
+      "left": 614.4,
+      "attrs": { "text": "BuzzerHaltedOnly" }
     }
   ],
   "connections": [
@@ -1937,7 +1944,8 @@
       "and44:OUT",
       "green",
       [ "h-19.2", "v-86.4", "h-19.2", "v0", "h-710.4", "v-1382.4", "h-19.2" ]
-    ]
+    ],
+    [ "or6:A", "ttout:OUT7", "magenta", [ "h-230.4", "v182.4" ] ]
   ],
   "dependencies": {}
 }
