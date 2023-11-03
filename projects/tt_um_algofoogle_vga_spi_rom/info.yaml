@@ -27,32 +27,53 @@ documentation:
   how_it_works: |
     TBC.
 
-    Drives a VGA display at one of two resolutions (selectable by `vga_mode`):
+    Reads data from an SPI flash ROM (or any memory compatible with, say, W25Q10 or above)
+    and displays it on a VGA display.
+
+    Drives a display at one of two resolutions (selectable by `vga_mode`):
 
     *   0: 640x480 60Hz, from 25.1750MHz clock (though 25.0000MHz should do OK).
     *   1: 1440x900 60Hz, from 26.6175MHz (or as close as you can get to it).
+
+    NOTE: Some monitors will also sync 640x480 using the 26.6175MHz clock that's otherwise
+    used for vga_mode 1... they'll get ~63Hz instead of 60Hz. That means if you can get
+    near this frequency, you might find it to be a good middle ground that allows you to
+    switch live between 640x480 and 1440x900. My HP L1908wm monitor works fine this way for
+    clocks in the range of 26.3MHz to 27.0MHz, and might even work *slightly* beyond that.
     
-    Reads data from an SPI flash ROM (or any memory compatible with, say, W25Q10 or above).
+    The flash memory contents are displayed using two alternating line modes (4 lines each):
 
-    Displays it using two alternating line modes:
-
-    1.  During HBLANK, read up to 128 bits (16 bytes) and store in local register memory,
-        then display on the next scanline.
+    1.  As VGA scans near the middle of each line, read up to 136 bits (17 bytes) and
+        store in local register memory, then display on the next scanline. NOTE:
+        Because it buffers to memory on one line and displays the buffer on the next
+        line, the *first* line is blanked out automatically by the design to avoid confusion.
+        Hence you only actually see 3 lines for this line mode, before it switches to
+        the next line mode.
     2.  Just send unregistered SPI data output (MISO) directly to the VGA display.
+        In this line mode, you should see 4 identical lines before it switches back
+        to line mode above.
 
-    These two line modes are timed to line up, so we can check for consistency between them.
+    These two line modes are timed to line up, so we can check for consistency between them,
+    but note that there is actually expected to be a slight delay in the 'MISO direct'
+    mode because the MISO output data appears on the *falling* SCLK edge.
+    At 1440x900, this should be apparent.
+
+    The `reg_outs` signal, if HIGH, specifies that the VGA output signals should be
+    registered. If LOW, the raw outputs go directly to the VGA display (inc. directly
+    from the SPI memory when not in a buffered line).
 
     NOTE: This tries to use `!CLK` (main clock, inverted) to drive the SPI SCLK directly,
     so that we don't need a *faster* system CLK in order to manage extra states. It keeps
     this `SCLK` output running constantly, relying on `/CS`.
 
-    NOTE: Besides the main design, I've got simple loopback tests:
+    NOTE: Besides the main design, I've got simple loopback test:
 
-    *   `TestA[4:0]` feeds a 5-input logical `AND` which outputs to `TestA_out`
-    *   `TestB` feeds directly to `TestB_out`
+    *   `Test_in[2:0]` feeds a 3-input logical `AND` which outputs to `Test_out`
 
     It could be interesting, when we get the actual chip back, to compare inputs to outputs
-    on an oscilloscope when sending signals into `TestA` and `TestB`, and also try chaining them.
+    on an oscilloscope.
+
+    NOTE: The sync polarity of `hsync` and `vsync` will be determined by vga_mode.
 
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
@@ -83,41 +104,40 @@ documentation:
         `red`, `green`, and `blue`, each via a 1k&ohm; resistor, to their respective VGA colour
         channel input pins. It might be pretty dark, but should be safe on Caravel IO pins if you
         don't otherwise buffer them.
-    *   For a much better display, use at least an RGB222 (upper 2 bits per channel) or RGB333 DAC
-        (all 3 bits per channel), ensuring it buffers each of those digital outputs.
+    *   For a much better display, use an RGB222 (upper 2 bits per channel), ensuring it buffers each of
+        those digital outputs. A good option is Tiny VGA (see: https://tinytapeout.com/specs/pinouts/)
 
   inputs:
-    - 'In: MISO'
     - 'In: vga_mode'
-    - 'In: TestA[0]'
-    - 'In: TestA[1]'
-    - 'In: TestA[2]'
-    - 'In: TestA[3]'
-    - 'In: TestA[4]'
-    - 'In: TestB'
+    - 'In: rst_mode'
+    - 'In: reg_outs'
+    - 'In: N/C'
+    - 'In: N/C'
+    - 'In: Test_in[0]'
+    - 'In: Test_in[1]'
+    - 'In: Test_in[2]'
   outputs:
-    # These match my tt04-raybox-zero design (https://app.tinytapeout.com/projects/136)
-    - 'Out: hsync_n'
-    - 'Out: vsync_n'
     - 'Out: red[1]'
-    - 'Out: red[2]'
     - 'Out: green[1]'
-    - 'Out: green[2]'
     - 'Out: blue[1]'
-    - 'Out: blue[2]'
-  bidirectional:
-    - 'Out: /CS'
-    - 'Out: SCLK'
-    - 'Out: MOSI'
+    - 'Out: vsync'
     - 'Out: red[0]'
     - 'Out: green[0]'
     - 'Out: blue[0]'
-    - 'Out: TestA_out'
-    - 'Out: TestB_out'
+    - 'Out: hsync'
+  bidirectional:
+    - 'Out: SPI /CS'
+    - 'Out: SPI io[0] / MOSI'
+    - 'Out: SPI io[1] / MISO'
+    - 'Out: SPI SCLK'
+    - 'Out: Test_out'
+    - 'Out: SPI /RST'
+    - 'Out: SPI io[2] (/WP)'
+    - 'Out: SPI io[3] (/HLD)'
 
 # The following fields are optional
-  tag:          "test, experiment, spi, vga"
-  external_hw:  "VGA DAC (RGB111, 222, or 333-depth) and SPI flash memory"
+  tag:          "test, experiment, spi, qspi, vga"
+  external_hw:  "VGA DAC (RGB111 or 222 depth) and SPI flash memory"
   discord:      "algofoogle"
   doc_link:     "https://github.com/algofoogle/tt05-vga-spi-rom"
   clock_hz:     "25.0MHz, 25.175MHz, or 26.6175MHz"
