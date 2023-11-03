@@ -1,0 +1,60 @@
+
+67. Printing statistics.
+
+=== tt_um_jaylennee_wta_pwm ===
+
+   Number of wires:               1968
+   Number of wire bits:           2003
+   Number of public wires:         504
+   Number of public wire bits:     539
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1984
+     sky130_fd_sc_hd__a2111oi_2      7
+     sky130_fd_sc_hd__a21boi_2      14
+     sky130_fd_sc_hd__a21o_2        37
+     sky130_fd_sc_hd__a21oi_2       31
+     sky130_fd_sc_hd__a22o_2        25
+     sky130_fd_sc_hd__a2bb2o_2      16
+     sky130_fd_sc_hd__a31o_2        16
+     sky130_fd_sc_hd__a31oi_2        1
+     sky130_fd_sc_hd__a32o_2        78
+     sky130_fd_sc_hd__and2_2        28
+     sky130_fd_sc_hd__and2b_2       66
+     sky130_fd_sc_hd__and3_2        47
+     sky130_fd_sc_hd__and4_2        30
+     sky130_fd_sc_hd__buf_1        311
+     sky130_fd_sc_hd__buf_2          8
+     sky130_fd_sc_hd__conb_1        16
+     sky130_fd_sc_hd__dfrtp_2      366
+     sky130_fd_sc_hd__dfstp_2        8
+     sky130_fd_sc_hd__dfxtp_2      112
+     sky130_fd_sc_hd__inv_2        109
+     sky130_fd_sc_hd__mux2_2       241
+     sky130_fd_sc_hd__nand2_2       69
+     sky130_fd_sc_hd__nand3_2        7
+     sky130_fd_sc_hd__nor2_2        94
+     sky130_fd_sc_hd__o2111a_2       1
+     sky130_fd_sc_hd__o2111ai_2      1
+     sky130_fd_sc_hd__o211a_2       12
+     sky130_fd_sc_hd__o21a_2         1
+     sky130_fd_sc_hd__o21ai_2        9
+     sky130_fd_sc_hd__o21ba_2        1
+     sky130_fd_sc_hd__o21bai_2       1
+     sky130_fd_sc_hd__o221a_2        7
+     sky130_fd_sc_hd__o221ai_2       7
+     sky130_fd_sc_hd__o22a_2        25
+     sky130_fd_sc_hd__o22ai_2       14
+     sky130_fd_sc_hd__o311a_2        1
+     sky130_fd_sc_hd__o31a_2         2
+     sky130_fd_sc_hd__or2_2         66
+     sky130_fd_sc_hd__or2b_2        21
+     sky130_fd_sc_hd__or3_2          2
+     sky130_fd_sc_hd__or3b_2         2
+     sky130_fd_sc_hd__or4_2         24
+     sky130_fd_sc_hd__xnor2_2       16
+     sky130_fd_sc_hd__xor2_2        34
+
+   Chip area for module '\tt_um_jaylennee_wta_pwm': 24000.518400
+
