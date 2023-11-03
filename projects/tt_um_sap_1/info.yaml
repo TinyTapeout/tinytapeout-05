@@ -1,0 +1,106 @@
+--- 
+# TinyTapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - tt_um_sap_1.v
+    - sap_1.v
+    - clock.v
+    - pc.v
+    - memory.v
+    - reg_a.v
+    - reg_b.v
+    - adder.v
+    - ir.v
+    - controller.v
+  top_module:  "tt_um_sap_1"      # put the name of your top module here, make it unique by prepending your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Brandon Cruz"
+  title:        "SAP-1 Computer"
+  language:     "Verilog"
+  description:  "Simple as Possible  computer into ASIC"
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      Originally, Malvino and Brown presented the SAP-1 architecture in a book called Digital Computer Electronics. 
+      The design gained massive popularity when it was build as a bread board computer by Ben Eater on a series of YouTube videos. 
+      The architecture contains various modules, including
+      - Clock 
+      - Program Counter
+      - Register A
+      - Register B
+      - Adder
+      - Memory
+      - Instruction Register
+      - Bus
+      - Controller
+      This design doesn't have inputs, it is dependent only on the clock that coordinates sequence of the computer's operation. 
+      Its operation consists on the communication that that bus provides between modules; the signal load dumps information into a module
+      and the enable signal allows the bus to receive a signal. The bus is 8-bit width since it is an 8 bit computer, and the registers
+      are also 8-bit registers. 
+      The computer can only perform addition, whether it is positive numbers or negative numbers (substraction). 
+      The signals information is stored within the memory module. There bus operations are coordinated with a series of multiplexers and      
+      the instruction execution set gives the SAP-1 a total of six stages from 0 to 5, repeating all over again. 
+      The more important module      is the controller. It controlls the assertion execution according to the stimuli from the stages.
+      The stages 3 to 5 five depend on the instructions of the operation codes. 
+
+    
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      Design Output Reading Section
+      The design is engineered to read the output signal generated from the bus, which contains the information 
+      of the add and subtract operations executed by the design. Currently, the only method to read the signals 
+      is through an oscilloscope. However, a significant enhancement would be the implementation of a state machine 
+      controlling a 3 7-segment display to show the numbers on the 8-bit bus (up to 255).
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - n/a
+    - n/a
+    - n/a
+    - n/a
+    - n/a
+    - n/a
+    - n/a
+    - n/a
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - bus[0]
+    - bus[1]
+    - bus[2]
+    - bus[3]
+    - bus[4]
+    - bus[5]
+    - bus[6]
+    - bus[7]
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - n/a
+    - n/a
+    - n/a
+    - n/a
+    - n/a
+    - n/a
+    - n/a
+    - n/a
+
+# The following fields are optional
+  tag:          "sap_1, test"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "Oscilloscope"      # Describe any external hardware needed
+  discord:      "Brandonz88"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     10000000       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository
