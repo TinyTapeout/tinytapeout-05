@@ -35,19 +35,18 @@ documentation:
       Switches 5 & 6: Value of p ''
       Switches 7 & 8: Value of t ''
 
-    It utilizes a mux that output the original input tuple only if p is 01 (high event). 
-    The output tuple is then stored in a 8-bit wire bus to store the tuple, the bus will output corresponding to each parameter
-    if the polarity is high. If polarity is anything other than "1", the tuple will output as 8'b0.
+    The denoiser is implemented as a debouncer. A high or low event will only be output if the data
+    remains the same for 5 clock cycles. Due to white/thermal noise in an event camera, a cluster of
+    coordinates that have no movement may incorectly spike high and the result would be a singular bright bit.
+    The debouncing avoids this by first ensuring the event is consistent before outputting. 
       
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
       Switches (L-R) 5 & 6 corresponds to the input value of the polarity of the tuple.
       If a high event is wanted - switch 5 should be low and switch 6 should be high. 
-        This will cause the chip to output the tuple set from all the switches.
-
-      If a low event is wanted = switch 5 can be low or high, and switch 6 should be high. 
-        (Note* switch 6 can be low only and only if switch five is high simultaneously)
+      If a low event is wanted = switch 5 must be low, and switch 6 must be low. 
+        This will cause the chip to output the debounced tuple corresponding to a high or low event.
 
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
@@ -81,7 +80,7 @@ documentation:
     - Unused
     - Unused
 # The following fields are optional
-  tag:          "timer, test"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  tag:          "event denoiser, debounce, tuple"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
   external_hw:  ""      # Describe any external hardware needed
   discord:      "nerfect"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
