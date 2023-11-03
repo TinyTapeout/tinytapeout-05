@@ -1,0 +1,105 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - decoder.v
+    - tt_um_retospect_neurochip.v
+  top_module:  "tt_um_retospect_neurochip"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "4x2"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Reto Stamm"      # Your name
+  title:        "Field Programmable Neural Array"      # Project title
+  language:     "Verilog, Python, PyTorch and SNNTorch" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "A collection of simulated leaky neurons that can be programmed to do computational tasks."      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      Neuromorphic neural nets are more power efficient than traditional machine learning. 
+      It replicates an array of leaky neurons, a simple structure that exists in the brain.
+      This design defines a Field Programmable Neural Array (FPNA). (1)
+      
+      A mental model for a leaky neuron is a capacitor that drains at some rate. 
+      It gets charged up by some amount (its weight) whenever an input (a dendrite) receives a pulse from somewhere else.
+      It sends a pulse (fire) its output (axon) when it reaches a specified level.
+
+      This circuit contains an array of interconnected, heavily simplified configurable neuron blocks (CNBs). 
+      Instead of continuous weights, we have three bits per weight.
+      Instead of a continuous decay of the charge in the capacitor, it halves at a somewhat configurable interval.
+      Each CNB has its own set of weights, and a somewhat configurable rate of decay.
+      In this design, each CNB had 4 inputs (dendrites), each with its own weight, one output (axon), and a choice of 8 different time decays. 
+      
+      An array of neuromorphic CNBs (Configurable Neuron Blocks). Each CNB has a 
+      4 inputs, and each input has an associated weight that gets added to the CNBs membrane potential whenever the relevant input fires. 
+      When a CNB reaches a treshhold (rolls over, in this case), it fires and sends a pulse to 3 of its neighbours.
+      Each CNB is subscribed to one of 8 decay clock tools. 
+
+      $\frac{chicken}{dog}$
+
+      The configuration data (Bitstream, or BS), including all the weights, the desired timing divisions, and the weights for each CNB are shifted in through the bs_in pin when the config_en pin is high.
+      The BS can be read back from the bs_out pin. 
+
+
+      The naxon tool is an example that shows how to train a neural network, generate all the relevant data and the BS that is needed to configure that model into this design
+      [https://github.com/retospect/naxon](https://github.com/retospect/naxon).
+
+      **References**
+      (1) [Eshraghian, Jason K., Max Ward, Emre Neftci, Xinxin Wang, Gregor Lenz, Girish Dwivedi, Mohammed Bennamoun, Doo Seok Jeong, and Wei D. Lu. 2023. “Training Spiking Neural Networks Using Lessons From Deep Learning.”](http://arxiv.org/abs/2109.12894)
+
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      After reset, clock in the bitstream to configure all the weights and stuff.
+      Then clock in the test data from the generated test bench from naxon, and see the appropriate answer come out!
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - dendritic input 0
+    - dendritic input 1
+    - dendritic input 2
+    - dendritic input 3
+    - dendritic input 4
+    - dendritic input 5
+    - dendritic input 6
+    - dendritic input 7
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - output axon 0
+    - output axon 1
+    - output axon 2
+    - output axon 3
+    - output axon 4
+    - output axon 5
+    - output axon 6
+    - output axon 7
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - reset_nn reset neural network (active high)
+    - bs_in bitstream readout
+    - bs_out bitstream input
+    - config_en - shift bitstream
+    - output axon 8
+    - output axon 9
+    - dendritic input 9
+    - dendritic input 8 
+
+# The following fields are optional
+  tag:          "neuromorphic, neuron, ml, ai, fpna, cnb, neural"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""      # Describe any external hardware needed
+  discord:      ""      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     10000000       # Clock frequency in Hz (if required)
+  picture:      "img/diagram.png"      # relative path to a picture in your repository (must be 512kb or less)
