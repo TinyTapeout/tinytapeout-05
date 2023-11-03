@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/abhishek-kakkar/tt05-verilog-7seg-clock",
+  "commit": "01e64af26eb0dbb951b0f9eb198718e55bef256f",
+  "workflow_url": "https://github.com/abhishek-kakkar/tt05-verilog-7seg-clock/actions/runs/6751209148",
+  "sort_id": 1699054911061,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
