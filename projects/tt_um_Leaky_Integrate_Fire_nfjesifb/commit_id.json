@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/nfjesifb/Leaky_Integrate_Fire_Neuron_Model",
+  "commit": "6268fb50310a06c353676c3f0682d926724854df",
+  "workflow_url": "https://github.com/nfjesifb/Leaky_Integrate_Fire_Neuron_Model/actions/runs/6741380716",
+  "sort_id": 1698987453090,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
