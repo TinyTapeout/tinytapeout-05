@@ -1,0 +1,87 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - tt_um_freq_hcohensa.v
+    - FrequencyDecoder.v
+    - FrequencyEncoder.v
+    - PLL.v
+  top_module:  "tt_um_freq_hcohensa"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Hannah Cohen-Sandler"      # Your name
+  title:        "Frequency Encoder/Decoder"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Encodes data into frequency variations and then decodes it back into its original form."      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      Utilizes an array of inputs and outputs to connect to switches, 7-segment displays, and enable bidirectional paths.
+
+      The bottom 7 bits of the second counter are linked to the bidirectional output.
+
+      The clock is generated using a Phase-Locked Loop.
+
+      The Frequency Encoder encodes data input from switches to a pulse output and uses the PLL output to enable the encoding operation.
+      
+      The Frequency Decoder is connected to bidirectional inputs and decodes the pulse signal based on the PLL output, resulting in a data output.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      Confirm that the system begins in a reset state with rst_n set to 0. Transition the system out of reset by setting rst_n to 1.
+      Set the constant current input signal (ui_in) to a specific value to simulate different input scenarios. Activate the chip design by setting the ena signal to 1.
+      Alter the clk clock signal frequency value and observe how the changes affect the design's behavior.
+      Experiment with various inputs, clock frequencies, and enabling/disabling operations verify the design and accuracy of the encoding, decoding, and pulse counting.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - current bit 11
+    - current bit 12
+    - current bit 13
+    - current bit 14
+    - current bit 15
+    - current bit 16
+    - current bit 17
+    - current bit 18
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - segment a
+    - segment b
+    - segment c
+    - segment d
+    - segment e
+    - segment f
+    - segment g
+    - segment h
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - second counter bit 0
+    - second counter bit 1
+    - second counter bit 2
+    - second counter bit 3
+    - second counter bit 4
+    - second counter bit 5
+    - second counter bit 6
+    - second counter bit 7
+
+# The following fields are optional
+  tag:          "timer, test"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""      # Describe any external hardware needed
+  discord:      "mattvenn"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     10000000       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
