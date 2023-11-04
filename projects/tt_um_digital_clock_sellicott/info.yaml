@@ -1,0 +1,100 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+  - tt_um_digital_clock_sellicott.v
+  - clock_wrapper.v
+  - clock_stb_gen.v
+  - reference_clk_stb.v
+  - sysclk_divider.v
+  - button_debounce.v
+  - basic_clock.v
+  - clock_to_7seg.v
+  - output_wrapper.v
+  - timeset_divider.v
+  - load_divider.v
+  - overflow_counter.v
+  - time_register.v
+  - bcd_to_7seg.v
+  - bin_to_bcd.v
+  - shift_register.v
+  top_module:  "tt_um_digital_clock_sellicott"
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x2"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+
+documentation: 
+  author:       "Samuel Ellicott"
+  title:        "Digital Desk Clock"
+  language:     "Verilog"
+  description:  "Simple Digital Clock Project."
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+     Simple digital clock, displays hours, minutes, and seconds in either a 24h format.
+     Since there are not enough output pins to directly drive a 6x
+     7-segment displays, the data is shifted out serially using an internal 8-bit shift register.
+     The shift register drives 6-external 74xx596 shift registers to the displays. Clock and control
+     signals (`serial_clk`, `serial_latch`) are also used to shift and latch the data into the external 
+     shift registers respectively. The time can be set using the `hours_set` and `minutes_set` inputs.
+     If `set_fast` is high, then the the hours or minutes will be incremented at a rate of 5Hz, 
+     otherwise it will be set at a rate of 2Hz. Note that when setting either the minutes, rolling-over
+     will not affect the hours setting. If both `hours_set` and `minutes_set` are presssed at the same time
+     the seconds will be cleared to zero.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+     Connect serial output to a 6x 8-bit shift registers to display the output on 6x 7-segment displays
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - refclk
+    - use_refclk
+    - fast_set
+    - hours_set
+    - minutes_set
+    - none
+    - none
+    - none
+
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - serial_data
+    - serial_latch
+    - serial_clk
+    - none
+    - none
+    - none 
+    - none
+    - none 
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+
+# The following fields are optional
+  tag:          "clock, demo, Columbus, SSCS, CAS, time"
+  external_hw:  "shift registers, 7-segment displays"      # Describe any external hardware needed
+  discord:      "@sellicott"
+  doc_link:     "https://github.com/sellicott/sellicott_tt5_digital_clock/blob/main/README.md"
+  clock_hz:     5000000
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
