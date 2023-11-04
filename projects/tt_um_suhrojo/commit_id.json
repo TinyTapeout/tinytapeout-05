@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/suhrojo/ConvolutionalNC-Design",
+  "commit": "dc556426bdb3c3478077bc875ce8cacb73ced1ff",
+  "workflow_url": "https://github.com/suhrojo/ConvolutionalNC-Design/actions/runs/6753370515",
+  "sort_id": 1699080967865,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
