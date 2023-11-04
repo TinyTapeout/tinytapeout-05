@@ -1,0 +1,98 @@
+--- 
+# TinyTapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - tt_um_ks_pyamnihc.v
+    - spi_slave_mem_interface.v
+    - register_map.v
+    - prbs15.v
+    - prbs7.v
+    - i2s_tx.v
+    - ks_string.v
+  top_module:  "tt_um_ks_pyamnihc" # put the name of your top module here, make it unique by prepending your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "2x2"    # Valid values: 1x1, 1x2, 2x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Chinmay Patil"
+  title:        "Karplus-Strong String Synthesis"
+  language:     "Verilog"
+  description:  "Plucked string sound synthesizer"
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+    This is simplified implementation of Karplus-Strong (KS) string synthesis based on papers, [Digital Synthesis of Plucked-String and Drum Timbres](https://doi.org/10.2307/3680062) and [Extensions of the Karplus-Strong Plucked-String Algorithm](https://doi.org/10.2307/3680063). 
+    
+    A register map controls and configures the KS synthesis module. This register map is accessed through a SPI interface. Synthesized sound samples can be accessed through the I2S transmitter interface.
+
+    ### SPI Frame
+    SPI Mode: CPOL = 0, CPHA = 1
+
+    The 16-bit SPI frame is defined as,
+
+    |	Read=1/Write=0	|	Address[6:0]	|	Data[7:0]	|
+    | --- | --- | --- |
+
+    ### Register Map
+    The Register Map has 16 Registers of 8-bits each.
+
+    Complete register map is described in the repository at [https://github.com/pyamnihc/tt04-um-ks-pyamnihc](https://github.com/pyamnihc/tt04-um-ks-pyamnihc).
+
+    ### I2S Transmitter
+    The 8-bit signed sound samples can be read out at `f_sck = 256 kHz` through this interface.
+
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+    Connect a clock with frequency `f_clk = 256 kHz` and apply a reset cycle to initialize the design, this sets the audio sample rate at `fs = 16 kHz`. Use the spi register map or the ui_in to futher configure the design. The synthesized samples are sent continuously on the I2S transmitter interface.
+    
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - ~rst_n_prbs_15, ~rst_n_prbs_7
+    - load_prbs_15, load_prbs_7 
+    - freeze_prbs_15
+    - freeze_prbs_7
+    - i2s_noise_sel
+    - ~rst_n_ks_string
+    - pluck
+    - NOT CONNECTED
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - segment a
+    - segment b
+    - segment c
+    - segment d
+    - segment e
+    - segment f
+    - segment g
+    - dot
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - sck_i
+    - sdi_i
+    - sdo_o
+    - cs_ni
+    - i2s_sck_o
+    - i2s_ws_o
+    - i2s_sd_o
+    - prbs_15
+
+# The following fields are optional
+  tag:          "filter, music"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""      # Describe any external hardware needed
+  discord:      ""      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     256000       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository
