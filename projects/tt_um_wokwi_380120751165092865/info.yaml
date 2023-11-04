@@ -1,0 +1,77 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    380120751165092865        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+#  source_files:        
+#    - counter.v
+#    - decoder.v
+#  top_module:  "tt_um_example"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Ciro Cattuto"      # Your name
+  title:        "WS2812B LED strip driver"      # Project title
+  language:     "Wokwi" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Drives a WS2812B LED strip with random colors for each refresh"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      This project drives a strip of WS2812B RGB LEDs, periodically updating the strip with random color values. The project consists of three main modules:
+      - a [linear feedback 16-bit shift register](https://en.wikipedia.org/wiki/Linear-feedback_shift_register) to generate a stream of pseudo-random bits
+      - a 5-bit synchronous increasing counter, wrapping to 0 when the counter reaches 25. WHen driven by a 20 MHz clock source, the counter generates the 1.25 us pulses required by the [WS2812B protocol](https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf). The duration of the high phase of the pulse is controlled by the random bit stream generated above.
+      - a 16-bit ripple counter increasing at the end of each pulse, used to divide the pulse frequency and generate the LED strip refresh signal
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      Set the clock frequency to 20 MHz and connect OUT2 to the DIN signal of a WS2812B LED strip. Optionally connect to IN6 the DOUT signal of the last LED of the strip. Press and release the reset button. The strip should light up with random colors, updating at a frequency controllable using the SW3 and SW4 switches.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - clock source selection
+    - external clock source
+    - refresh freq sel (low)
+    - refresh freq sel (high)
+    - none
+    - none
+    - WS2812B LED strip output
+    - shift register input
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - shift register output
+    - shift register clock
+    - WS2812B LED strip input
+    - LED strip overflow
+    - LED strip refresh
+    - none
+    - none
+    - none
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+
+# The following fields are optional
+  tag:          "led,strip,ws2812b,ws2812,rng,signal generator,test"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "WS2812B strip of arbitrary lengthd"      # Describe any external hardware needed
+  discord:      "ciro6942"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     "https://github.com/ccattuto/tt05-rng-ws2812b-strip/blob/main/README.md"      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     20000000       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
