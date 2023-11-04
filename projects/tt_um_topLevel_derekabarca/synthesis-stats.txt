@@ -17,7 +17,8 @@
      sky130_fd_sc_hd__and3b_2        2
      sky130_fd_sc_hd__and4_2         2
      sky130_fd_sc_hd__buf_1          5
-     sky130_fd_sc_hd__conb_1        24
+     sky130_fd_sc_hd__buf_2          1
+     sky130_fd_sc_hd__conb_1        23
      sky130_fd_sc_hd__dfxtp_2       12
      sky130_fd_sc_hd__inv_2          5
      sky130_fd_sc_hd__nand2_2        2
@@ -29,5 +30,5 @@
      sky130_fd_sc_hd__or2_2          2
      sky130_fd_sc_hd__or3b_2         2
 
-   Chip area for module '\tt_um_topLevel_derekabarca': 605.580800
+   Chip area for module '\tt_um_topLevel_derekabarca': 606.832000
 
