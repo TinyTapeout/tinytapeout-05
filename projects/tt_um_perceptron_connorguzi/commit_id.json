@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/connorguzi/tt05-perceptron",
+  "commit": "bcc5148e4d89001d18f8232c6ece994d486f26dc",
+  "workflow_url": "https://github.com/connorguzi/tt05-perceptron/actions/runs/6750974613",
+  "sort_id": 1699068492569,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
