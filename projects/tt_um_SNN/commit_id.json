@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/abhiucsc/SNN293",
+  "commit": "6f81c2868e6be082cf107c6af6ff3217731d9c47",
+  "workflow_url": "https://github.com/abhiucsc/SNN293/actions/runs/6752767833",
+  "sort_id": 1699072794417,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
