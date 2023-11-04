@@ -37,8 +37,7 @@ documentation:
   how_to_test: |
    To test the current-based LIF project, follow these steps: Connect the LIF module to the input switches,
    7-segment display, and clock source as specified in the Verilog module. Use input switches to control the
-   input current, and observe the 7-segment display for spike detection, while ensuring the clock signal is 
-   appropriately set to provide the desired clock frequency for the simulation.
+   input current, and observe the 7-segment display for spike detection, while ensuring the clock signal is appropriately set to provide the desired clock frequency for the simulation.
 
   # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:
