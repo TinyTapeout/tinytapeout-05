@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/satabios/ttf-perceptron",
+  "commit": "d320021b451e4bea9304f7b6f454992516ffc6a9",
+  "workflow_url": "https://github.com/satabios/ttf-perceptron/actions/runs/6752612099",
+  "sort_id": 1699071871761,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
