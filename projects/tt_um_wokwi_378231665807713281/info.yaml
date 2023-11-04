@@ -36,12 +36,12 @@ documentation:
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
-    IN0 to IN3  - input data
-    IN4, IN5    - address selection
-    IN6         - write | read 
+    - IN0 to IN3  - input data
+    - IN4, IN5    - address selection
+    - IN6         - write | read 
 # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
   outputs:
-    OUT0 - OUT3   - output data
+    - OUT0 - OUT3 - output data
 
 # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
   bidirectional:
