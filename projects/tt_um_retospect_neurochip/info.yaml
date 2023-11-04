@@ -24,7 +24,7 @@ documentation:
   author:       "Reto Stamm"      # Your name
   title:        "Field Programmable Neural Array"      # Project title
   language:     "Verilog, Python, PyTorch and SNNTorch" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  "A collection of simulated leaky neurons that can be programmed to do computational tasks."      # Short description of what your project does
+  description:  "A collection of 50 interconnected simulated leaky neurons that can be programmed to do cognitive tasks."      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
@@ -36,7 +36,7 @@ documentation:
       It gets charged up by some amount (its weight) whenever an input (a dendrite) receives a pulse from somewhere else.
       It sends a pulse (fire) its output (axon) when it reaches a specified level.
 
-      This circuit contains an array of interconnected, heavily simplified configurable neuron blocks (CNBs). 
+      This circuit contains an array of 5*10 interconnected, heavily simplified configurable neuron blocks (CNBs). 
       Instead of continuous weights, we have three bits per weight.
       Instead of a continuous decay of the charge in the capacitor, it halves at a somewhat configurable interval.
       Each CNB has its own set of weights, and a somewhat configurable rate of decay.
@@ -47,14 +47,13 @@ documentation:
       When a CNB reaches a treshhold (rolls over, in this case), it fires and sends a pulse to 3 of its neighbours.
       Each CNB is subscribed to one of 8 decay clock tools. 
 
-      $\frac{chicken}{dog}$
-
       The configuration data (Bitstream, or BS), including all the weights, the desired timing divisions, and the weights for each CNB are shifted in through the bs_in pin when the config_en pin is high.
       The BS can be read back from the bs_out pin. 
 
 
       The naxon tool is an example that shows how to train a neural network, generate all the relevant data and the BS that is needed to configure that model into this design
       [https://github.com/retospect/naxon](https://github.com/retospect/naxon).
+      More up-to-date design documents may also be found there.
 
       **References**
       (1) [Eshraghian, Jason K., Max Ward, Emre Neftci, Xinxin Wang, Gregor Lenz, Girish Dwivedi, Mohammed Bennamoun, Doo Seok Jeong, and Wei D. Lu. 2023. “Training Spiking Neural Networks Using Lessons From Deep Learning.”](http://arxiv.org/abs/2109.12894)
