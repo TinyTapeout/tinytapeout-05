@@ -22,7 +22,7 @@ yaml_version: 4
 # Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
 documentation:
   author:       "Fiona Fisher"                                                          # Your name
-  title:        "Stream Cipher w/ LSR"                                                  # Project title
+  title:        "Stream Cipher w/ LSR (8 bit key)"                                                  # Project title
   language:     "SystemVerilog"                                                         # other examples include Verilog, Amaranth, VHDL, etc
   description:  "Uses a stream cipher and linear shift register to encrypt a message."  # Short description of what your project does
 
