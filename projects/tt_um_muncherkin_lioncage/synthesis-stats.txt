@@ -1,0 +1,39 @@
+
+63. Printing statistics.
+
+=== tt_um_muncherkin_lioncage ===
+
+   Number of wires:                 70
+   Number of wire bits:            105
+   Number of public wires:          13
+   Number of public wire bits:      48
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 86
+     sky130_fd_sc_hd__a21o_2         1
+     sky130_fd_sc_hd__a22o_2         1
+     sky130_fd_sc_hd__a31o_2         1
+     sky130_fd_sc_hd__a32o_2         1
+     sky130_fd_sc_hd__and2_2         4
+     sky130_fd_sc_hd__and2b_2        1
+     sky130_fd_sc_hd__buf_1          5
+     sky130_fd_sc_hd__conb_1        17
+     sky130_fd_sc_hd__dfxtp_2       12
+     sky130_fd_sc_hd__inv_2          8
+     sky130_fd_sc_hd__mux2_2         4
+     sky130_fd_sc_hd__nand2_2        8
+     sky130_fd_sc_hd__nand3b_2       1
+     sky130_fd_sc_hd__nor2_2         5
+     sky130_fd_sc_hd__o211a_2        1
+     sky130_fd_sc_hd__o21ai_2        1
+     sky130_fd_sc_hd__o31a_2         2
+     sky130_fd_sc_hd__o32a_2         3
+     sky130_fd_sc_hd__or2_2          1
+     sky130_fd_sc_hd__or3_2          1
+     sky130_fd_sc_hd__or3b_2         1
+     sky130_fd_sc_hd__xnor2_2        6
+     sky130_fd_sc_hd__xor2_2         1
+
+   Chip area for module '\tt_um_muncherkin_lioncage': 792.009600
+
