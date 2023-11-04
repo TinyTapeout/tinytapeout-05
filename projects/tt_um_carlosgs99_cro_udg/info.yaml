@@ -1,0 +1,69 @@
+--- 
+# TinyTapeout project information
+project:
+  wokwi_id:    0
+
+ # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+ # Source files must be in ./src and you must list each source file separately
+  source_files:     
+    - cro_udg.v
+  top_module:  "tt_um_carlosgs99_cro_udg"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Carlos Guerra & Marco Gurrola"      
+  title:        "6 digit chronometer."
+  language:     "Verilog"
+  description:  "6 digit chronometer. Displays 2 digits for minutes, 2 digits for seconds and 2 digits for hundredths of a second."
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      The project consists of a 50 MHz chronometer in which minutes, seconds and hundredths of a second are shown through six 7 
+      segment displays. It can be initialized or paused pressing the start button, pressing the reset button will cause it to restart the counter.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      For testing the chronometer project connect push buttons to the reset and bt_ent (start button) inputs. It is designed to 
+      work with six 7 segment common cathode displays. Unidirectional output pins must be connected to displays cathodes. 
+      Bidirectioanl output pin must be connected to displays anodes.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - bt_ent (start button)
+    - reset
+    - clk
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - Display cathode 1 
+    - Display cathode 2
+    - Display cathode 3
+    - Display cathode 4
+    - Display cathode 5
+    - Display cathode 6
+    # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - Segment a
+    - Segment b
+    - Segment c
+    - Segment d
+    - Segment e
+    - Segment f 
+    - Segment g
+    - dot
+
+# The following fields are optional
+  tag:          "chronometer, timer, verilog"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "You need six 7 segment common cathode displays, push buttons."      # Describe any external hardware needed
+  discord:      ""      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     ""       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
