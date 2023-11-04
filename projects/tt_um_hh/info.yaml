@@ -34,10 +34,15 @@ documentation:
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
-      After reset, the membrane potential will be set to 0.
+      After reset, all state variables will be initialized. A minimum of 2 clock cycles of reset is needed.
+      
+      An 8-bit input current is then applied to uio_in. The current is treated as the LSB of a 16-bit signal by concatenating 8x0's to the front.
+      The first bit is a sign bit, the following 8-bits are treated as the whole number while the final 7-bits are the fraction.
+      The current is interpreted in dimensions of uA/cm^2.
+      This means the maximum value that can be represented is 1.992 uA/cm^2.
 
-      Then change the inputs to change the current. A higher current should
-      trigger a higher firing rate. 
+      The membrane potential of the neuron will respond accordingly. Larger currents will elicit more firing. 
+      Simulations show that the neuron will start firing, reach a steady state where it stops firing in absence of input stimulus, and start firing again if the current exceeds approximately 8'b00001100 = 8'd12.
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
@@ -59,21 +64,22 @@ documentation:
     - membrane potential bit f
     - membrane potential bit g
     - membrane potential bit h
+
 # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
   bidirectional:
-    - spike bit 0
-    - unspecified
-    - unspecified
-    - unspecified
-    - unspecified
-    - unspecified
-    - unspecified
-    - unspecified
+    - membrane potential output bit i
+    - membrane potential fractional output bit j
+    - membrane potential fractional output bit k
+    - membrane potential fractional output bit l
+    - membrane potential fractional output bit m
+    - membrane potential fractional output bit n
+    - membrane potential fractional output bit o
+    - membrane potential fractional output bit p
 
 # The following fields are optional
   tag:          "neuron, test"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
   external_hw:  ""      # Describe any external hardware needed
-  discord:      ""      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  discord:      ".jasnn"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
-  clock_hz:     10000000       # Clock frequency in Hz (if required)
-  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
+  clock_hz:     20000000      # Clock frequency in Hz (if required)
+  picture:      "https://github.com/jeshraghian/tt05-hodgkin-huxley/blob/main/hh-fig.png"      # relative path to a picture in your repository (must be 512kb or less)
