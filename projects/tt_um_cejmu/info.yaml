@@ -23,15 +23,15 @@ documentation:
   author:       "CE JMU Wuerzburg" # Your name
   title:        "4-Bit ALU" # Project title
   language:     "VHDL" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  "A simple 4-Bit ALU which contains two types of adders and multipliers"      # Short description of what your project does
+  description:  "A simple 4-Bit ALU which contains two types of adders, multipliers, a comparator and a barrel-shifter"      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-      The ALU contains a ripple carry adder, a carry lookahead adder, a matrix multiplier and a wallace-tree multiplier. Everything is implemented fully combinational. A 2-bit opcode is used to select the respective component.
+      The ALU contains a ripple carry adder, a carry lookahead adder, a matrix multiplier, a wallace-tree multiplier, a comparator and a barrel-shifter. Everything is implemented fully combinational. A 3-bit opcode is used to select the respective component.
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test: |
-      No clock is required. The first 4 input bits a[3...0] form the first operand, the last 4 input bits b[3...0] form the second operand. The bidirectional input bits 0 and 1 are used as opcode to select the component, c.f. Figure above.
+      No clock is required. The first 4 input bits a[3...0] form the first operand, the last 4 input bits b[3...0] form the second operand. The outputs s[7...0] are used for the compuational results, the results for shifting a, or the results of comparing a with b. The bidirectional input bits 0, 1 and 2 are used as opcode to select the component, c.f. Figure above. If the barrel-shifter is used, a[3...0] will be shifted, b[1...0] is used to specify the shift width, whereas b[2] selects the shift direction.
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
@@ -41,13 +41,13 @@ documentation:
     - a[3]
     - b[0]
     - b[1]
-    - b[2]
+    - b[2] (0 = shift right, 1 = shift left)
     - b[3]
 # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
   outputs:
-    - s[0]
-    - s[1]
-    - s[2]
+    - s[0] (1, if $a > b$)
+    - s[1] (1, if $a < b$)
+    - s[2] (1, if $a == b$)
     - s[3]
     - s[4]
     - s[5]
@@ -57,7 +57,7 @@ documentation:
   bidirectional:
     - opcode[0]
     - opcode[1]
-    - none
+    - opcode[2]
     - none
     - none
     - none
@@ -65,7 +65,7 @@ documentation:
     - none
 
 # The following fields are optional
-  tag:          "alu, combinational, 4-bit, adder, multiplier"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  tag:          "alu, combinational, 4-bit, adder, multiplier, comperator, barrel shifter"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
   external_hw:  ""      # Describe any external hardware needed
   discord:      "myzinsky"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
