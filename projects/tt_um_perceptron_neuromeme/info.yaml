@@ -1,0 +1,112 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - tt_um_perceptron_neuromeme.v
+    - perceptron.v
+  top_module:  "tt_um_perceptron_neuromeme"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Dylan Louie"      # Your name
+  title:        "Perceptron (Neuromeme)"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "A perceptron or a 9 + 10 adder"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      Reads from two 8-bit input and creates a weighted sum  
+      of the 16 bits.
+
+      The 8-bit wieights are default 10000000 and are unuptatable.
+      (10000000 represents 0.5 if the you conceptualize a . on the far left
+      or represents 128 if you conceptualize a . on the far right)
+
+      If the weighted sum is greater than the threshold, 11111110, than it
+      will classify the input as 1 otherwise it will classify it as 0.
+
+      9 + 10 = 21
+
+      Credit/Thanks to my Professor: UCSC's Neuromorphic Lab's Jason K Eshraghian Ph.D. 
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      Any input with all 0's should be classified as 0.
+
+      Math: 
+      
+      Note: The threshold is 11111110 which can be thought of as 0.99993896484
+
+      w0*i0 + w1*i1 + ... + w15*i15
+
+      0.5*0 + 0.5*0 + ... + 0.5*0 = 0
+
+      Any input with fifteen 0's and one 1's should be classified as 0.
+      
+      Math: 
+      
+      w0*i0 + w1*i1 + ... + w15*i15
+      
+      0.5*1 + 0.5*0 + ... + 0.5*0 = 0.5
+
+      Any input with two or more 1's should be classified as 1.
+      
+      Math: 
+      
+      w0*i0 + w1*i1 + w2*i2 + ... + w15*i15
+      
+      0.5*1 + 0.5*1 + 0.5*0 + ... + 0.5*0 = 1
+      
+      0.5*1 + 0.5*1 + 0.5*1 + 0.5*0 + ... + 0.5*0 > 1
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - input 0 asssociated with weight 0
+    - input 1 asssociated with weight 1
+    - input 2 asssociated with weight 2
+    - input 3 asssociated with weight 3
+    - input 4 asssociated with weight 4
+    - input 5 asssociated with weight 5
+    - input 6 asssociated with weight 6
+    - input 7 asssociated with weight 7
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - Read as an 8 bit output along with other outputs
+    - Read as an 8 bit output along with other outputs
+    - Read as an 8 bit output along with other outputs
+    - Read as an 8 bit output along with other outputs
+    - Read as an 8 bit output along with other outputs
+    - Read as an 8 bit output along with other outputs
+    - Read as an 8 bit output along with other outputs
+    - 
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - input 9 asssociated with weight 9
+    - input 10 asssociated with weight 10
+    - input 11 asssociated with weight 11
+    - input 12 asssociated with weight 12
+    - input 13 asssociated with weight 13
+    - input 14 asssociated with weight 14
+    - input 15 asssociated with weight 15
+    - input 16 asssociated with weight 16
+
+# The following fields are optional
+  tag:          "perceptron, test, calculator"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""
+  discord:      ".sinfinite"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""
+  clock_hz:     ""
+  picture:      ""        # relative path to picture in nrepository
