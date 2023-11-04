@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/MathiasTEriksen/tt05-SparcityAware",
+  "commit": "06cb9b036e5633e85c5ead570f3592234ed2f93e",
+  "workflow_url": "https://github.com/MathiasTEriksen/tt05-SparcityAware/actions/runs/6756294706",
+  "sort_id": 1699120044400,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
