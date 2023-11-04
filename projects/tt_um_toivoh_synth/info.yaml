@@ -23,25 +23,62 @@ documentation:
   author:       "Toivo Henningsson"      # Your name
   title:        "Analog emulation monosynth"           # Project title
   language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  "Simple analog inspired monosynth"      # Short description of what your project does
+  description:  "One synth voice with two oscillators and a 2nd order filter"      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-      TODO
+      TODO: Describe oscillators and filter, PWM
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
-  how_to_test:  |
-      TODO
+  how_to_test: |
+      The synth is controlled by writing to its configuration registers:
+        - Keep the write strobe low when not writing
+        - Set the 4 bit write address, and an 8 bit data value
+        - While keeping the address and data stable, bring the write strobe high and then low again
+            - The write address and data are sampled at 2-10 cycles after the rising edge of the write strobe
+
+      The output comes in two forms:
+        - As a Pulse Width Modulated (PWM) signal.
+        - As an 8 bit value on the 8 output pins, that can be reconstructed using a resistor ladder.
+
+      The PWM signal should be simpler to use, but be sure reduce the voltage with a resistive divider or similar
+      before connecting it to an audio device.
+      **Note:Make sure that you know what you are doing when connecting an audio device to the output.
+      Don't apply more than 1 V between the terminals of an audio plug this connected to line in.
+      5 V direct from the chip might damage your audio device.**
+
+      TODO: Register descriptions
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
-  inputs:               
-    - TODO
+  inputs:
+    - write data bit 0
+    - write data bit 1
+    - write data bit 2
+    - write data bit 3
+    - write data bit 4
+    - write data bit 5
+    - write data bit 6
+    - write data bit 7
 # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
   outputs:
-    - TODO
+    - sample bit 0
+    - sample bit 1
+    - sample bit 2
+    - sample bit 3
+    - sample bit 4
+    - sample bit 5
+    - sample bit 6
+    - sample bit 7
 # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
   bidirectional:
-    - TODO
+    - write address bit 0
+    - write address bit 1
+    - write address bit 2
+    - write address bit 3
+    - unused
+    - unused
+    - PWM output
+    - write strobe
 
 # The following fields are optional
   tag:          ""      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
