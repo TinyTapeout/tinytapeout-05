@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 e6940f63",
+  "repo": "https://github.com/abrez2004/7segment",
+  "commit": "05f41ed4a54687887196445654ed64528a3f2d30",
+  "workflow_url": "https://github.com/abrez2004/7segment/actions/runs/6606901552",
+  "sort_id": 1699062857103,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
