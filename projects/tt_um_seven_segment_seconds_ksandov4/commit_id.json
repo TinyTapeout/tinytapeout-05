@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/Ksandov4/CHIPDESIGN",
+  "commit": "053f797f65714a09eea426e8cdf769bfe0b313c7",
+  "workflow_url": "https://github.com/Ksandov4/CHIPDESIGN/actions/runs/6753094729",
+  "sort_id": 1699077433916,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
