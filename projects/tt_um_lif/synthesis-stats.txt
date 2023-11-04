@@ -3,41 +3,20 @@
 
 === tt_um_lif ===
 
-   Number of wires:                114
-   Number of wire bits:            149
-   Number of public wires:          27
-   Number of public wire bits:      62
+   Number of wires:                 23
+   Number of wire bits:             58
+   Number of public wires:          14
+   Number of public wire bits:      49
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                130
-     sky130_fd_sc_hd__a211o_2        1
-     sky130_fd_sc_hd__a21boi_2       1
-     sky130_fd_sc_hd__a21o_2         1
-     sky130_fd_sc_hd__a21oi_2        1
-     sky130_fd_sc_hd__a22o_2         1
-     sky130_fd_sc_hd__a311oi_2       1
-     sky130_fd_sc_hd__a31o_2         1
-     sky130_fd_sc_hd__a41o_2         3
-     sky130_fd_sc_hd__and2_2        18
-     sky130_fd_sc_hd__and3_2         5
-     sky130_fd_sc_hd__and3b_2        2
-     sky130_fd_sc_hd__and4_2         3
-     sky130_fd_sc_hd__buf_1         25
+   Number of cells:                 39
+     sky130_fd_sc_hd__and2b_2        3
+     sky130_fd_sc_hd__buf_1          3
      sky130_fd_sc_hd__buf_2          3
-     sky130_fd_sc_hd__conb_1        13
-     sky130_fd_sc_hd__dfxtp_2       24
-     sky130_fd_sc_hd__inv_2          1
-     sky130_fd_sc_hd__nand2_2        9
-     sky130_fd_sc_hd__nor2_2         2
-     sky130_fd_sc_hd__o2111a_2       1
-     sky130_fd_sc_hd__o211ai_2       1
-     sky130_fd_sc_hd__o21a_2         2
-     sky130_fd_sc_hd__o21ai_2        2
-     sky130_fd_sc_hd__o21ba_2        1
-     sky130_fd_sc_hd__or2_2          5
-     sky130_fd_sc_hd__or3_2          2
-     sky130_fd_sc_hd__xnor2_2        1
+     sky130_fd_sc_hd__conb_1        21
+     sky130_fd_sc_hd__dfxtp_2        6
+     sky130_fd_sc_hd__nor3b_2        3
 
-   Chip area for module '\tt_um_lif': 1202.403200
+   Chip area for module '\tt_um_lif': 296.534400
 
