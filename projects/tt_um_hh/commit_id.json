@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/jeshraghian/tt05-hodgkin-huxley",
+  "commit": "2feb3abcbdfeae222a07226dfd6d08d33d7b99f6",
+  "workflow_url": "https://github.com/jeshraghian/tt05-hodgkin-huxley/actions/runs/6756510433",
+  "sort_id": 1699123367822,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
