@@ -10,9 +10,10 @@
          "num_memories":      0,
          "num_memory_bits":   0,
          "num_processes":     0,
-         "num_cells":         28,
+         "num_cells":         29,
          "num_cells_by_type": {
             "skullfet_inverter": 1,
+            "skullfet_logo": 1,
             "skullfet_nand": 3,
             "sky130_fd_sc_hd__buf_2": 24
          }
@@ -26,9 +27,10 @@
          "num_memories":      0,
          "num_memory_bits":   0,
          "num_processes":     0,
-         "num_cells":         28,
+         "num_cells":         29,
          "num_cells_by_type": {
             "skullfet_inverter": 1,
+            "skullfet_logo": 1,
             "skullfet_nand": 3,
             "sky130_fd_sc_hd__buf_2": 24
          }
