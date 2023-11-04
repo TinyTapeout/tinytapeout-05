@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/hadirkhan10/tt05-leaky-neuron",
+  "commit": "a4184ec4cb3e3522bc2954ac07334cb984edc824",
+  "workflow_url": "https://github.com/hadirkhan10/tt05-leaky-neuron/actions/runs/6724145146",
+  "sort_id": 1699081882118,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}

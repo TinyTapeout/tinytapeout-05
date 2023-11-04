@@ -1,0 +1,84 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - tt_um_hadirkhan10_lif_neuron.v
+    - lif_neuron.v
+    - fsm.v
+  top_module:  "tt_um_hadirkhan10_lif_neuron"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Muhammad Hadir Khan"      # Your name
+  title:        "Leaky Integrate-and-Fire Neuron"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "A Leaky Integrate-and-Fire Neuron that mimics the biological neuron and is configurable from the outside world"
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      The state machine first configures the different parameters of the neuron which is then provided a synaptic current to read out the membrane potential and spiking of the neuron.
+      
+      The configurable parameters of the neuron are: 1) beta (which controls the decay of the membrane potential) 2) threshold (which is used in comparison with the membrane potential to generate a spike)
+
+      Initially, the neuron is in an IDLE state where everything remains 0. Upon configuring the setting bits with `uio_in[7:1]` the state goes to BETA where the `beta` value of the neuron is configured using the `ui_in[7:0]` bits. After which the setting bits is again configured to make the state go
+      to THRESH state which configures the threshold value of the neuron. Finally, the setting bits are used to go to the READ state and the current injection is provided with `ui_in` where the neuron starts to integrate the current onto the membrane potential.
+
+      At each timestep, the membrane potential is analyzed with `uo_out[7:0]` and the spike is outputted through `uio_out[0]`.
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+    After reset, the neuron is in the idle state and remains there unless the setting bits are configured. Setting the `uio_in[7:1]` bits to 1 changes the state to BETA. After configuring the beta value changing the setting bits to 2 takes to the THRESH state where the threshold of 
+    the neuron is configured. Then changing the setting bits to 3 takes to the READ state where the current is integrated and the membrane potential changes as well as the spike is outputted if the membrane potential becomes equal or greater than the configured threshold.
+    
+    Experiment by changing the beta, threshold and input current values to see how the neuron reacts.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - configure beta, threshold and current
+    - configure beta, threshold and current
+    - configure beta, threshold and current
+    - configure beta, threshold and current
+    - configure beta, threshold and current
+    - configure beta, threshold and current
+    - configure beta, threshold and current
+    - configure beta, threshold and current
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - membrane potential
+    - membrane potential
+    - membrane potential
+    - membrane potential
+    - membrane potential
+    - membrane potential
+    - membrane potential
+    - membrane potential
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - spike output
+    - configure the state
+    - configure the state
+    - configure the state
+    - configure the state
+    - configure the state
+    - configure the state
+    - configure the state
+
+# The following fields are optional
+  tag:          "neuromorphic, neuron"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""      # Describe any external hardware needed
+  discord:      ""      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     10000000       # Clock frequency in Hz (if required)
+  picture:      "images/top.png"      # relative path to a picture in your repository (must be 512kb or less)
