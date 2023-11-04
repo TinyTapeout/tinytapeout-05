@@ -1,0 +1,73 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - c_tt_um_rebel2_balanced_ternary_ALU_singlefile.v
+  top_module:  "tt_um_rebel2_balanced_ternary_ALU"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Ole Christian Moholth and Steven Bos"      # Your name
+  title:        "REBEL-2 Balanced Ternary ALU"      # Project title
+  language:     "MRCS" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "This 2-trit balanced ternary ALU is part of the REBEL-2 balanced ternary logic CPU"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      WIP. This balanced ternary ALU has several operations based on a novel REBEL-2 ISA. Operations include MIN,MAX,ADD,SUB,MUL,CMP,SHFT and can be done trit-wise or word-wise. This project is designed, generated and verified with Mixed Radix Circuit Synthesizer (MRCS).
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      There are many automated test included for MRCS. A verilog testbench for FPGA and FPGA constraint file is WIP.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - ui_in[7]  func2H
+    - ui_in[6]  func2L
+    - ui_in[5]  func1H
+    - ui_in[4]  func1L
+    - ui_in[3]  func0H
+    - ui_in[2]  func0L
+    - ui_in[1]  b1H
+    - ui_in[0]  b1L
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - uo_out[7] carryH
+    - uo_out[6] carryL
+    - uo_out[5] out1H
+    - uo_out[4] out1L
+    - uo_out[3] out0H
+    - uo_out[2] out0L
+    - uo_out[1] unused
+    - uo_out[0] unused
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - uio_in[7] b0H
+    - uio_in[6] b0L
+    - uio_in[5] a1H
+    - uio_in[4] a1L
+    - uio_in[3] a0H
+    - uio_in[2] a0L
+    - uio_in[1] unused
+    - uio_in[0] unused
+
+# The following fields are optional
+  tag:          "balanced ternary, ALU, REBEL-2, USN"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""      # Describe any external hardware needed
+  discord:      "steveb#6973"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     0       # Clock frequency in Hz (if required)
+  picture:      "overview.png"      # relative path to a picture in your repository (must be 512kb or less)
