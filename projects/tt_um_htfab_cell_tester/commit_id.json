@@ -1,8 +1,8 @@
 {
   "app": "custom_gds action",
   "repo": "https://github.com/htfab/cell-tester",
-  "commit": "6fb1b0bb826a0647742431d7a4a9ad2871de775d",
-  "workflow_url": "https://github.com/htfab/cell-tester/actions/runs/6752597366",
+  "commit": "a35fa3690e5f3678c355685496942a1ea812b540",
+  "workflow_url": "https://github.com/htfab/cell-tester/actions/runs/6756878611",
   "sort_id": 1698681208027,
   "power_gate": true
 }
