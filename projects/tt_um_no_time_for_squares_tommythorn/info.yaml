@@ -7,6 +7,7 @@ project:
 # Source files must be in ./src and you must list each source file separately
   source_files:
     - tt_um_no_time_for_squares_tommythorn.v
+    - clock.v
     - vga.v
     - tile.v
 # for the future
@@ -14,7 +15,7 @@ project:
   top_module:  "tt_um_no_time_for_squares_tommythorn"
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "2x2"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+  tiles: "3x2"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
 
 # Keep a track of the submission yaml
 yaml_version: 4
