@@ -24,11 +24,11 @@ documentation:
   author:       "bignug13"      # 
   title:        "Tapeout Test"      # 
   language:     "Wokwi" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  "For Supercon 2023"      # 
+  description:  "For Supercon 2023: Some logic gates that add things"      # 
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-      Explain how your project works
+      Inputs 1-4 (Values: 1,2,4,8) and Inputs 5-8 (Values: 1,2,4,8) are added together and reflected in Outputs 1-5 (Values: 1,2,4,8,16).
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
