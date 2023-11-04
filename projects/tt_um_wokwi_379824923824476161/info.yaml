@@ -1,0 +1,87 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    379824923824476161        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+#  source_files:        
+#    - counter.v
+#    - decoder.v
+#  top_module:  "tt_um_example"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Justin Hui"      # Your name
+  title:        "Analog Clock"      # Project title
+  language:     "Wokwi" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "LED controller for an Analog Clock taking a 1Hz internal clk input"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      increments seconds Counter for 60 sec.
+      increments min Counter for 60 min. 
+      increments hour counter for 12 hours
+
+      all daisy chained.
+
+      The LEDs will show the hour and the last 15min increment
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      connect leds to each output pin as described below
+      
+      RST will set the time to 11:59. 
+      
+      Input Pins 7/8 are used to set the time, by toggling those it should increment the internal clock by 1 min/hour. You should see the hour output update immediately.
+      The min output will only change once the next 15min increment passes
+      
+      Input Pin 1 will stop the clock when high
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - none
+    - stop the clock
+    - none
+    - none
+    - none
+    - none
+    - increment min counter by 1
+    - increment hour counter by 1
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - hour 12 led
+    - hour 1 led
+    - hour 2 led
+    - hour 3 led
+    - hour 4 led
+    - hour 5 led
+    - hour 6 led
+    - hour 7 led
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - hour 8 led
+    - hour 9 led
+    - hour 10 led
+    - hour 11 led
+    - 0 min
+    - 15 min
+    - 30 min
+    - 45 min
+
+# The following fields are optional
+  tag:          "clock, timer, decoder, counter"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "16 leds"      # Describe any external hardware needed
+  discord:      ""      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     1       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
