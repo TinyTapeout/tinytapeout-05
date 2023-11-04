@@ -73,15 +73,6 @@ MACRO tt_um_topLevel_derekabarca
         RECT 142.910 110.520 143.210 111.520 ;
     END
   END rst_n
-  PIN spike_output
-    DIRECTION OUTPUT TRISTATE ;
-    USE SIGNAL ;
-    ANTENNADIFFAREA 0.891000 ;
-    PORT
-      LAYER met2 ;
-        RECT 48.390 0.000 48.670 2.000 ;
-    END
-  END spike_output
   PIN ui_in[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
@@ -341,6 +332,7 @@ MACRO tt_um_topLevel_derekabarca
   PIN uo_out[0]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.795200 ;
     PORT
       LAYER met4 ;
         RECT 95.990 110.520 96.290 111.520 ;
@@ -429,9 +421,7 @@ MACRO tt_um_topLevel_derekabarca
       LAYER met1 ;
         RECT 2.760 2.480 166.400 109.040 ;
       LAYER met2 ;
-        RECT 22.345 2.280 166.370 110.005 ;
-        RECT 22.345 2.000 48.110 2.280 ;
-        RECT 48.950 2.000 166.370 2.280 ;
+        RECT 22.345 2.535 166.370 110.005 ;
       LAYER met3 ;
         RECT 22.325 2.555 166.390 109.985 ;
       LAYER met4 ;
