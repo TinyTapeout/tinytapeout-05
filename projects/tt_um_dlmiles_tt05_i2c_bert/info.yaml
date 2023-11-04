@@ -12,9 +12,12 @@ project:
     - sky130_toolbox/dffqn_negedge.v
     - sky130_toolbox/dff.v
     - sky130_toolbox/glitch_free_clock_mux.v
+    - sky130_toolbox/dffqn_negedge_async_reset.v
+    - sky130_toolbox/dff_async_reset.v
+    - sky130_toolbox/glitch_free_clock_mux_async_reset.v
     - sky130_toolbox/sky130_behavioral_udp_dlatch_pr.v
-    - sky130_fd_sc_hd__dlrtp.v
-    - sky130_fd_sc_hd__maj3.v
+    - pdk_sky130/sky130_fd_sc_hd__dlrtp.v
+    - pdk_sky130/sky130_fd_sc_hd__maj3.v
     - TT05I2CBertTop.v
   top_module:  "tt_um_dlmiles_tt05_i2c_bert"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
 
@@ -74,8 +77,8 @@ documentation:
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
-    - none
-    - none
+    - i2cSampleDivisor bit0
+    - i2cSampleDivisor bit1
     - none
     - none
     - none
@@ -84,24 +87,24 @@ documentation:
     - none
 # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
   outputs:
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
+    - segment a
+    - segment b
+    - segment c
+    - segment d
+    - segment e
+    - segment f
+    - segment g
+    - dot
 # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
   bidirectional:
     - none
     - none
+    - I2C SCL (bidi)
+    - I2C SDA (bidi)
     - none
     - none
     - none
-    - none
-    - none
-    - none
+    - powerOnSense (out)
 
 # The following fields are optional
   tag:          "i2c, bert"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
