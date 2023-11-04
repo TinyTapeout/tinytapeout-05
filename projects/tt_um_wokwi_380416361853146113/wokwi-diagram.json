@@ -146,7 +146,8 @@
     { "type": "wokwi-gate-and-2", "id": "and2", "top": -288, "left": 528, "attrs": {} },
     { "type": "wokwi-gate-not", "id": "not7", "top": -172.8, "left": 124.8, "attrs": {} },
     { "type": "wokwi-gate-nand-2", "id": "nand1", "top": -364.8, "left": 144, "attrs": {} },
-    { "type": "wokwi-gate-nand-2", "id": "nand2", "top": -326.4, "left": 326.4, "attrs": {} }
+    { "type": "wokwi-gate-nand-2", "id": "nand2", "top": -326.4, "left": 326.4, "attrs": {} },
+    { "type": "wokwi-gate-nand-2", "id": "nand3", "top": -105.6, "left": 326.4, "attrs": {} }
   ],
   "connections": [
     [ "pwr1:VCC", "sw1:8a", "red", [ "v0" ] ],
@@ -192,27 +193,27 @@
     [ "ttin:IN1", "not1:IN", "green", [ "h0" ] ],
     [ "ttin:IN2", "not2:IN", "green", [ "h0" ] ],
     [ "ttin:IN4", "not3:IN", "green", [ "h0" ] ],
-    [ "ttout:OUT6", "not5:OUT", "green", [ "h0" ] ],
     [ "not5:IN", "ttin:IN6", "green", [ "v0" ] ],
     [ "not4:IN", "ttin:IN5", "green", [ "v0" ] ],
-    [ "ttin:CLK", "and1:A", "green", [ "v0" ] ],
-    [ "and1:OUT", "ttout:OUT0", "green", [ "v0" ] ],
     [ "ttin:IN0", "not6:IN", "green", [ "h0" ] ],
-    [ "not6:OUT", "and1:B", "green", [ "v0" ] ],
     [ "and2:OUT", "ttout:OUT3", "green", [ "v0" ] ],
     [ "ttin:IN3", "not7:IN", "green", [ "h0" ] ],
     [ "not7:OUT", "and2:B", "green", [ "v0" ] ],
     [ "not3:OUT", "ttout:OUT4", "green", [ "v0" ] ],
     [ "not4:OUT", "ttout:OUT5", "green", [ "v0" ] ],
-    [ "nand2:A", "led1:A", "green", [ "h0" ] ],
     [ "not2:OUT", "nand2:B", "green", [ "v0" ] ],
-    [ "not1:OUT", "nand1:B", "green", [ "v0" ] ],
+    [ "not1:OUT", "nand1:B", "green", [ "v-86.4", "h-134.4" ] ],
     [ "nand2:OUT", "ttout:OUT2", "green", [ "v0" ] ],
-    [ "nand1:OUT", "ttout:OUT1", "green", [ "v0" ] ],
     [ "ttin:IN0", "nand2:A", "green", [ "h0" ] ],
-    [ "ttin:IN0", "nand1:A", "green", [ "h0" ] ],
-    [ "ttin:IN0", "and1:A", "green", [ "h0" ] ],
-    [ "ttin:IN0", "and2:A", "green", [ "h0" ] ]
+    [ "ttin:IN0", "nand1:A", "green", [ "h28.8", "v-172.8" ] ],
+    [ "ttin:IN0", "and1:A", "green", [ "h326.4", "v-192" ] ],
+    [ "ttin:IN0", "and2:A", "green", [ "h57.6", "v-96" ] ],
+    [ "and1:B", "ttin:IN0", "green", [ "h0" ] ],
+    [ "not5:OUT", "nand3:B", "green", [ "v0" ] ],
+    [ "nand3:OUT", "ttout:OUT6", "green", [ "v-38.4", "h115.2" ] ],
+    [ "nand3:A", "ttin:IN1", "green", [ "h0" ] ],
+    [ "nand1:OUT", "ttout:OUT1", "green", [ "v0" ] ],
+    [ "and1:OUT", "ttout:OUT0", "green", [ "v0" ] ]
   ],
   "dependencies": {}
 }
