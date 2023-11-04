@@ -1,0 +1,96 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - tt_um_thermocouple.v
+    - tc_calc.v
+    - spi_slave.v
+    - spi_master.v
+  top_module:  "tt_um_thermocouple"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Aidan Medcalf"
+  title:        "Thermocouple-to-temperature converter (digital backend)"
+  language:     "Verilog"
+  description:  "Converts digitized thermocouple voltage into temperature."
+
+  how_it_works: |
+      Converts 10-bit thermocouple ADC counts into temperature by approximating the transfer function with
+      piecewise linear segments and interpolating.
+
+      * Interface: SPI (16-bit word)
+      * ADC interface: SPI (16-bit word, 10 bits used)
+      * Output: Temperature in "centi-celsius", predivided by 4; 16-bit over full positive range of thermocouple type
+      * ADC passthrough: When enabled, directly connects SPI master to ADC for configuration
+      * Type-J and type-K thermocouples supported
+
+      ADC range: 0 counts = 0 mV = 0 C, max counts (1023) = max mV = max C. Example: For type-K
+      thermocouple, 1023 counts = 54.886 mV = 1372 C
+
+      Temperature output: Output is in "centi-Celsius", or hundredths of degrees C, pre-divided by 4, with a granularity of 0.4C.
+      ```T = A / 25.0```
+      Where T is in degrees C, and A is the value read from SPI. For example, for a type-K thermocouple
+      at 415.06C, A = 10376 (0x2888), and T = 415.04. Note the error of 0.02C.
+
+      Configuration: There are two configuration bits. Write to cfg[1:0] by issuing a SPI transaction
+      with the high bit set (i.e. write 0x800X).
+      * cfg[1]: Thermocouple type: 0 = J, 1 = K
+      * cfg[0]: ADC passthrough enable
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      Requires a J or K thermocouple analog front-end with compatible ranging. Wait 20 clocks after reset,
+      then read 16-bit temperaute from device.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - unused
+    - unused
+    - unused
+    - unused
+    - unused
+    - unused
+    - unused
+    - unused
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - unused
+    - unused
+    - unused
+    - unused
+    - unused
+    - unused
+    - unused
+    - unused
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - SCE
+    - SIN
+    - SOUT
+    - SCK
+    - ADC_SCE
+    - ADC_SOUT
+    - ADC_SIN
+    - ADC_SCK
+
+# The following fields are optional
+  tag:          "test, utility, industrial, sensor, serial, thermocouple, temperature"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "Thermocouple AFE with compatible ranging, for chosen thermocouple type"      # Describe any external hardware needed
+  discord:      "pommedeterrible"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     "https://github.com/AidanMedcalf/tt05-thermocouple/blob/main/README.md"      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     10000000       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
