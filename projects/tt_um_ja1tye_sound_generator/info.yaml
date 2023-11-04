@@ -1,0 +1,101 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+  - top.v
+  - i2s_out.v
+  - master_counter.v
+  - sample_counter.v
+  - spi_decoder.v
+  - spi_slave.v
+  - tone_engine.v
+  - wave_lut.v
+  top_module:  "tt_um_ja1tye_sound_generator"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x2"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Ryota Suzuki"      # Your name
+  title:        "Wavetable Sound Generator"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Small wavetable/PSG type sound generator with I2S output"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      This project is Small wave table/PSG type sound generator with I2S output.
+      Major features are:
+      - 4 channel sound generator
+      - 4-bit x 32depth wave table (can be uses as 2 of 16depth wave table)
+      - 8 selectable waveform (3x pulse,1x noise, 4x wave table)
+      - 8-bit volume(only for PSG mode, wave table mode is 4-step volume)
+      - 16-bit frequency
+      - Sampling Frequency is 48828.125Hz (at 50MHz clock)
+      - I2S output (16-bit mono)
+      - SPI control interface
+
+      You can control this sound generator by SPI interface.
+      SPI mode is mode 0 (CPOL=0, CPHA=0), and transaction length is 24-bit.
+      first 8-bit is register address, and next 16-bit is data. Data is MSB first.
+      
+      | Addr | Description | Width |
+      | ---- | ---- | ---- |
+      | 0x00-0x03 | Frequency[0]-[3] | 16bit |
+      | 0x04-0x07 | Volume[0]-[3] | 8bit (lower 8bits are valid)|
+      | 0x08-0x0b | Waveform Select[0]-[3] | 3bit (lower 3bits are valid)|
+      | 0x20-0x3f | WaveTable[0]-[31] | 4bit (lower 4bits are valid)|
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      Connect I2S output to I2S DAC, and control this sound generator by SPI interface.
+      SPI input is connected to RP2040's SPI1 on TT05 breakout board.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - SPI CS Input
+    - SPI CLK Input
+    - SPI MOSI Input
+    - none
+    - none
+    - none
+    - none
+    - none
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - I2S Bit Clock
+    - I2S Word Select
+    - I2S Data
+    - none
+    - none
+    - none
+    - none
+    - none
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+
+# The following fields are optional
+  tag:          "sound,SPI,I2S"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "I2S DAC is required (I tested this design with FPGA and PCM5102A DAC)"      # Describe any external hardware needed
+  discord:      "ja1tye"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     50000000       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
