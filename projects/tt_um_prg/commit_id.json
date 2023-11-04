@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/fleathlushby/tt05_boolean_pseudo_random_generator",
+  "commit": "14d900acb3f4df216e7ec80fd274d1e96a5c484b",
+  "workflow_url": "https://github.com/fleathlushby/tt05_boolean_pseudo_random_generator/actions/runs/6755691077",
+  "sort_id": 1699112209132,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
