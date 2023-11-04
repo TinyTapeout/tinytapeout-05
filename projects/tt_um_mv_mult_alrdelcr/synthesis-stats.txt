@@ -1,0 +1,25 @@
+
+63. Printing statistics.
+
+=== tt_um_mv_mult_alrdelcr ===
+
+   Number of wires:                 86
+   Number of wire bits:            121
+   Number of public wires:          25
+   Number of public wire bits:      60
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                102
+     sky130_fd_sc_hd__and2_2         1
+     sky130_fd_sc_hd__buf_1         19
+     sky130_fd_sc_hd__conb_1        18
+     sky130_fd_sc_hd__dfxtp_2       23
+     sky130_fd_sc_hd__mux2_2        18
+     sky130_fd_sc_hd__nand2_2       13
+     sky130_fd_sc_hd__nor2b_2        1
+     sky130_fd_sc_hd__or2_2          1
+     sky130_fd_sc_hd__xor2_2         8
+
+   Chip area for module '\tt_um_mv_mult_alrdelcr': 1064.771200
+
