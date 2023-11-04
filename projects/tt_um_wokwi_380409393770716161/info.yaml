@@ -25,16 +25,16 @@ yaml_version: 4
 documentation: 
   author:       "Alec Probst"      # Your name
   title:        "Supercon 2023"      # Project title
-  language:     "Wokwi" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  "Supercon 2023 Tiny Tapeout Submission"      # Short description of what your project does
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Supercon 2023 Tiny Tapeout Submission. Displays a white pixel and blue background through VGA. Makes use of Cutout1's VGA Flappy bird code."      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-      Explain how your project works
+      Correctly times the signal Digital outputs for VGA
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
-      Explain how to test your project
+      Connect to a VGA connector. Use a D2A Converter.
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
