@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/huertma/tt05-leaky-integrate-fire-neuron",
+  "commit": "83b7492f1b0d1dc6867c7b04eb3d6040dfeae345",
+  "workflow_url": "https://github.com/huertma/tt05-leaky-integrate-fire-neuron/actions/runs/6753250302",
+  "sort_id": 1699067995678,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
