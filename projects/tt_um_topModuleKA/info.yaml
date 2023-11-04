@@ -8,6 +8,9 @@ project:
   source_files:        
     - tt_um_topModuleKA.v
     - lif.v
+    - LSFR.v
+    - fdre.v
+    - fdre_reset1.v
   top_module:  "tt_um_topModuleKA"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
 
 # How many tiles your design occupies? A single tile is about 167x108 uM.
@@ -24,7 +27,7 @@ documentation:
   author:       "Karina Aguilar"      # Your name
   title:        "Time Multiplexed Neuron Ckt"      # Project title
   language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  " Utilize leaky-integrate-and-fire neurons to make [erm pending]"      # Short description of what your project does
+  description:  " Utilize leaky-integrate-and-fire neurons to make multiple neurons"      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
@@ -61,10 +64,10 @@ documentation:
     - membrane potential bit h
 # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
   bidirectional:
-    - spike bit 0
-    - unspecified
-    - unspecified
-    - unspecified
+    - spike bit 1
+    - spike bit 2
+    - spike bit 3
+    - spike bit 4
     - unspecified
     - unspecified
     - unspecified
