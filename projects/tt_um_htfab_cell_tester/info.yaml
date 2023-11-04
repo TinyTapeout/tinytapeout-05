@@ -26,10 +26,10 @@ yaml_version: 4
 #
 # Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
 documentation: 
-  author:       "htfab"      # Your name
-  title:        "Cell tester"      # Project title
-  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  "TODO"      # Short description of what your project does
+  author:       "htfab"                                   # Your name
+  title:        "Standard cell generator and tester"      # Project title
+  language:     "Verilog (digital) + Gdstk (analog)"      # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Contains a sky130 compatible standard cell generator, a few demo cells generated, and a TinyTapeout design for testing them"      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
@@ -37,38 +37,56 @@ documentation:
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
-      TODO
+
+      For simple tests, the regular output pins are connected to factory and custom cells using the first 3 inputs:
+
+      - factory mux2i_2(A0, A1, S)
+      - custom mux2i_2(A0, A1, S)
+      - factory maj3_2(A, B, C)
+      - custom maj3_2(A, B, C)
+      - factory dlrtp_1(D, GATE, RESET_B)
+      - custom dlrtp_1(D, GATE, RESET_B)
+      - factory dfrtp_1(D, CLK, RESET_B)
+      - custom dfrtp_1(D, CLK, RESET_B)
+
+      You can also run advanced tests where you
+
+      - preload a set of inputs into a shift register
+      - play them according to a ring oscillator using the trigger pin, capturing the outputs
+      - read the outputs using another shift register on the bidirectional pins
+      
+      For more information on advanced mode, read the verilog sources and the included cocotb tests.      
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
-    - TODO
-    - TODO
-    - TODO
-    - TODO
-    - TODO
-    - TODO
-    - TODO
-    - TODO
+    - A0 / A / D
+    - A1 / B / GATE / CLK
+    - S / C / RESET_B
+    - mode bit
+    - trigger bit
+    - clock divider bit 0
+    - clock divider bit 1
+    - clock divider bit 2
 # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
   outputs:
-    - TODO
-    - TODO
-    - TODO
-    - TODO
-    - TODO
-    - TODO
-    - TODO
-    - TODO
+    - factory mux2i_2 (s)
+    - custom mux2i_2 (s)
+    - factory maj3_2 (s)
+    - custom maj3_2 (s)
+    - factory dlrtp_1 (s)
+    - custom dlrtp_1 (s)
+    - factory dfrtp_1 (s)
+    - custom dfrtp_1 (s)
 # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
   bidirectional:
-    - TODO
-    - TODO
-    - TODO
-    - TODO
-    - TODO
-    - TODO
-    - TODO
-    - TODO
+    - factory mux2i_2 (a)
+    - custom mux2i_2 (a)
+    - factory maj3_2 (a)
+    - custom maj3_2 (a)
+    - factory dlrtp_2 (a)
+    - custom dlrtp_2 (a)
+    - factory dfrtp_2 (a)
+    - custom dfrtp_2 (a)
 
 # The following fields are optional
   tag:          "test, experiment"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
