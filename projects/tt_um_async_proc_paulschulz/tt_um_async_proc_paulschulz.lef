@@ -67,7 +67,7 @@ MACRO tt_um_async_proc_paulschulz
   PIN rst_n
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.213000 ;
+    ANTENNAGATEAREA 0.196500 ;
     PORT
       LAYER met4 ;
         RECT 142.910 110.520 143.210 111.520 ;
@@ -392,6 +392,7 @@ MACRO tt_um_async_proc_paulschulz
   PIN uo_out[6]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.795200 ;
     PORT
       LAYER met4 ;
         RECT 79.430 110.520 79.730 111.520 ;
@@ -400,6 +401,7 @@ MACRO tt_um_async_proc_paulschulz
   PIN uo_out[7]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 76.670 110.520 76.970 111.520 ;
@@ -430,7 +432,7 @@ MACRO tt_um_async_proc_paulschulz
       LAYER li1 ;
         RECT 2.760 2.635 165.600 108.885 ;
       LAYER met1 ;
-        RECT 2.760 2.480 166.400 109.440 ;
+        RECT 2.760 2.480 166.400 109.780 ;
       LAYER met2 ;
         RECT 22.345 2.535 166.370 110.005 ;
       LAYER met3 ;

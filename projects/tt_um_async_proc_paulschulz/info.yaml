@@ -110,4 +110,4 @@ documentation:
   # Clock frequency in Hz (if required)
   clock_hz:     10000000
   # Relative path to a picture in your repository (must be 512kb or less)
-  picture:      "doc/images/architecture.png"
+  picture:      "doc/images/architecture.svg"
