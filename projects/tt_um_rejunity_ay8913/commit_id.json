@@ -4,6 +4,7 @@
   "commit": "a93ee1da79593aca863c5d507e2177e233f67ffe",
   "workflow_url": "https://github.com/rejunity/tt05-psg-ay8913/actions/runs/6755738941",
   "sort_id": 1699092021093,
+  "skip": true,
   "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
   "power_gate": false
 }
