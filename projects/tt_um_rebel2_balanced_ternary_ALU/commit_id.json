@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt05 98e7cb27",
+  "repo": "https://github.com/aiunderstand/tt05-REBEL2-balanced-ternary-ALU",
+  "commit": "57bdea2111a99881280195703d4d16f51b2b4be8",
+  "workflow_url": "https://github.com/aiunderstand/tt05-REBEL2-balanced-ternary-ALU/actions/runs/6752116681",
+  "sort_id": 1699064936745,
+  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "power_gate": false
+}
