@@ -10,8 +10,6 @@ project:
     - clock.v
     - vga.v
     - tile.v
-# for the future
-#   - edgeeqn.v
   top_module:  "tt_um_no_time_for_squares_tommythorn"
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
@@ -38,12 +36,8 @@ documentation:
       (x,y) coordinate of the "beam" lines on the positive side of
       each line, the beam is inside the triangle.  Among the visible
       triangles, the highest priority triangle sets the color, else we
-      default to a grey color.
-
-      The coordinates of the triangles are stored in a table (didn't
-      have time to implement a CORDIC algorithm) and the render
-      equations are recalculated by a small state machine in the amble
-      time left by the vertical blanking interval.
+      default to a grey color.  Twelve dots are also marked, to make
+      it easier to read the clock.
 
       The algorithm might be easily understood by examining the
       software model in Rust, in the `sw` directory.
@@ -54,14 +48,14 @@ documentation:
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:
-    - clock, we depend on 31.5 MHz clock for video generation
+    - clock
     - reset
-    - hour, active high to advance the hour hand
-    - minute, active high to advance the minute hand
-    - debugsel[3], select between 16 variables to inspect, to be detailed later
-    - debugsel[2]
-    - debugsel[1]
-    - debugsel[0]
+    - hour, advance hour
+    - minute, advance minute
+    - unused
+    - unused
+    - debugsel\[1]
+    - debugsel\[0]
 # Outputs are supposed to match TinyVGA (cf. https://tinytapeout.com/specs/pinouts/)
   outputs:
     - R1
@@ -74,14 +68,14 @@ documentation:
     - hsync
 # So many ways this can fail, so this gets us a minimum of insight, selected by debugsel
   bidirectional:
-    - output debug[7]
-    - output debug[6]
-    - output debug[5]
-    - output debug[4]
-    - output debug[3]
-    - output debug[2]
-    - output debug[1]
-    - output debug[0]
+    - debug\[7]
+    - debug\[6]
+    - debug\[5]
+    - debug\[4]
+    - debug\[3]
+    - debug\[2]
+    - debug\[1]
+    - debug\[0]
 
 # The following fields are optional
   tag:          "clock,video"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
@@ -89,4 +83,4 @@ documentation:
   discord:      ".tommythorn"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
   doc_link:     "TBD"      # URL to longer form documentation, eg the README.md in your repository
   clock_hz:     31500000   # Clock frequency in Hz (if required)
-  picture:      "TBD"      # relative path to a picture in your repository (must be 512kb or less)
+  picture:      "picture.png"      # relative path to a picture in your repository (must be 512kb or less)
