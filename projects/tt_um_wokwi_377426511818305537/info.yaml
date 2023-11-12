@@ -204,6 +204,7 @@ documentation:
     [Wokwi]: <https://www.wokwi.com>
     [Tiny Tapeout]: <https://www.tinytapeout.com>
     [Wiki]: <https://en.wikipedia.org/wiki/Linear-feedback_shift_register>
+
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test: |
     1) Clear inputs and reset to ensure known states.
