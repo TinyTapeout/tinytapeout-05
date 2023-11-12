@@ -204,7 +204,43 @@ documentation:
     [Wokwi]: <https://www.wokwi.com>
     [Tiny Tapeout]: <https://www.tinytapeout.com>
     [Wiki]: <https://en.wikipedia.org/wiki/Linear-feedback_shift_register>
-
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test: |
+    1) Clear inputs and reset to ensure known states.
+    2) Configure the registers using SPI or using the debug_setup pin.
+    3) Set "output_en" high and observe "prbs_out".
+    4) Toggle "data_in" to invert "prbs_out" on next rising edge of "data_clk".
+    5) To restart PRBS after "busy" goes low, clear "output_en" and set "output_en" again.
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:
+    - spi_cs
+    - spi_clk
+    - spi_mosi
+    - output_en
+    - data_in
+    - none
+    - none
+    - debug_setup
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - prbs_out_1
+    - prbs_out
+    - prbs_out_n
+    - prbs_out_n_1
+    - data_clk
+    - busy
+    - debug_out_system_clk
+    - debug_out_prbs_clk
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - debug_out_reg_sel_0
+    - debug_out_reg_sel_1
+    - debug_out_reg_sel_2
+    - debug_out_prbs_clk_bypass
+    - debug_out_data_count_clk
+    - debug_out_data_count_comb_out
+    - debug_out_seq_count_comb_out
+    - none
 # The following fields are optional
   tag:          "prn, prbs, spi, clock divider, registers, "                    # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
   external_hw:  "Connection to SPI port, clock input, and analyzer to observe." # Describe any external hardware needed
