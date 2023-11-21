@@ -27,42 +27,45 @@ documentation:
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-      If input 0 is high, then a counter is output on the outputs and the bidirectional outputs. Otherwise the inputs are mirrored to the outputs.
+      If `sel` is high, then a counter is output on the output pins and the bidirectional pins (`data_o = counter_o = counter`).
+      If `sel` is low, the bidirectional pins are mirrored to the output pins (`data_o` = `data_i`).
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
-      Set input 0 high. Check the outputs are toggling.
+      Set `sel` high and observe that the counter is output on the output pins (`data_o`) and the bidirectional pins (`counter_o`).
+
+      Set `sel` low and observe that the bidirectional pins are mirrored to the output pins (`data_o` = `data_i`).
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
-    - sel / data_i[0]
-    - data_i[1]
-    - data_i[2]
-    - data_i[3]
-    - data_i[4]
-    - data_i[5]
-    - data_i[6]
-    - data_i[7]
+    - sel 
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
 # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
   outputs:
-    - data_o[0] (when sel=0) / counter_o[0] (when sel=1)
-    - data_o[1] (when sel=0) / counter_o[1] (when sel=1)
-    - data_o[2] (when sel=0) / counter_o[2] (when sel=1)
-    - data_o[3] (when sel=0) / counter_o[3] (when sel=1)
-    - data_o[4] (when sel=0) / counter_o[4] (when sel=1)
-    - data_o[5] (when sel=0) / counter_o[5] (when sel=1)
-    - data_o[6] (when sel=0) / counter_o[6] (when sel=1)
-    - data_o[7] (when sel=0) / counter_o[7] (when sel=1)
+    - data_o[0]
+    - data_o[1]
+    - data_o[2]
+    - data_o[3]
+    - data_o[4]
+    - data_o[5]
+    - data_o[6]
+    - data_o[7]
 # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
   bidirectional:
-    - counter_o[0]
-    - counter_o[1]
-    - counter_o[2]
-    - counter_o[3]
-    - counter_o[4]
-    - counter_o[5]
-    - counter_o[6]
-    - counter_o[7]
+    - data_i[0] / counter_o[0]
+    - data_i[1] / counter_o[1]
+    - data_i[2] / counter_o[2]
+    - data_i[3] / counter_o[3]
+    - data_i[4] / counter_o[4]
+    - data_i[5] / counter_o[5]
+    - data_i[6] / counter_o[6]
+    - data_i[7] / counter_o[7]
 
 # The following fields are optional
   tag:          "test"      # comma separated list of tags: test encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
