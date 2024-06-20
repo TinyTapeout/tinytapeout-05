@@ -22,7 +22,7 @@ documentation:
   title:        "Super Mario Tune on A Piezo Speaker" # Project title
   language:     "Verilog"                             # other examples include Verilog, Amaranth, VHDL, etc
                                                       # Short description of what your project does
-  description:  "Plays Super Mario Tune over a Piezo Speaker connected across io_out[1:0]"
+  description:  "Plays Super Mario Tune over a Piezo Speaker connected across uio_out[1:0]"
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
@@ -30,38 +30,40 @@ documentation:
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
-      Provide 100kHz clock on io_in[0], briefly hit reset io_in[1] (L->H->L) and io_out[1:0] will play a differential sound wave over piezo speaker (Super Mario)
+      Provide 100kHz clock on "clk" pin, briefly hit reset low ("rst_n") and uio_out[1:0] will play a differential sound wave over a connected piezo speaker (Super Mario)
 
-# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+# All inputs are copied to the outputs for basic design verification
   inputs:               
-    - clock
-    - reset
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
-# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+    - ui_in[0]
+    - ui_in[1]
+    - ui_in[2]
+    - ui_in[3]
+    - ui_in[4]
+    - ui_in[5]
+    - ui_in[6]
+    - ui_in[7]
+
+# All inputs are copied to the outputs for basic design verification
   outputs:
-    - piezo_speaker_p
-    - piezo_speaker_n
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
-# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+    - ui_in[0]
+    - ui_in[1]
+    - ui_in[2]
+    - ui_in[3]
+    - ui_in[4]
+    - ui_in[5]
+    - ui_in[6]
+    - ui_in[7]
+
+# Connect piezo speaker across uio_out[0] & uio_out[1]
   bidirectional:
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
+    - piezo_speaker_p (uio_out[0])
+    - piezo_speaker_n (uio_out[1])
+    - GND
+    - GND
+    - GND
+    - GND
+    - GND
+    - GND
 
 # The following fields are optional
   tag:          "pwm, sound, signal generator, music"             # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
