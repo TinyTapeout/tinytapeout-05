@@ -54,8 +54,8 @@ documentation:
   outputs:
     - ~A
     - ~(A&B)
-    - Q
     - ~Q
+    - Q
     - none
     - none
     - none
