@@ -71,7 +71,7 @@ documentation:
     When the output clock goes high, the data on the input pin is clocked in for the remainder of the
     output clock period.
     
-    The data bit is XOR'ed with the PRBS output to create a non-inverted or inverted sequence. A
+    The data bit is XOR'ed with the PRBS output to create a non-inverted or inverted sequence. Another
     register is configured to have the number of data bits that will be clocked into the PRBS
     generator. This number of data bits is the number of clock periods that are given from the output
     clock. Once the number of data bits has been completed, the PRBS generator automatically stops
@@ -79,7 +79,7 @@ documentation:
     then high again to start another "data bits" cycles of the PRBS.
     
     Registers are configured using SPI. For setting up each 8-bit register, the first byte sent is the
-    command byte and must be hexadecimal 0x80, plus the address of the register to be configured. The
+    command byte and must be hexadecimal 0x80 plus the address of the register to be configured. The
     second byte sent is the data that will be placed in the register and stored until changed or reset.
     The address field is the last 3-bits of the command byte and valid range is 1-5. Chip select high
     resets the command byte, and only 1 register may be written to per cycle of chip select.
@@ -93,7 +93,12 @@ documentation:
     2) Set DEBUG high.
     3) Set ENABLE high.
     
-    The PRBS generator is now running, and the data line can be toggled to invert the output.
+    The PRBS generator is now running, and the data line can be toggled to invert the output. Once the
+    PRBS has repeated 49 times, the generator will stop. To start the sequence again, toggle the enable
+    line.
+
+    Note: While the DEBUG line is high, all registers will be non-configureable. To use the SPI and
+    configure the PRBS generator, set the DEBUG line low.
     
     ## Registers
     - 5 registers control the PRBS generator
@@ -167,7 +172,19 @@ documentation:
       - 6: /64
       - 7: /128
     
-    ### Register 2: Polynomial Enable Bits
+    ### Register 2: Sequence Repeat Count
+    | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+    |-|-|-|-|-|-|-|-|
+    | C7 | C6 | C5 | C4 | C3 | C2 | C1 | C0 |
+    - bits [7:0] - Count of times PRBS sequence is repeated per bit.
+
+    ### Register 3: Data Bit Count
+    | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+    |-|-|-|-|-|-|-|-|
+    | E8 | E7 | E6 | E5 | E4 | E3 | E2 | E1 |
+    - bits [7:0] - Count of bits of data for which the generator runs.
+
+    ### Register 4: Polynomial Enable Bits
     | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
     |-|-|-|-|-|-|-|-|
     | E8 | E7 | E6 | E5 | E4 | E3 | E2 | E1 |
@@ -177,7 +194,7 @@ documentation:
         - 8-bit polynomial is b'11111111 or h'FF.
       - Bits must be sequential from bit 0. Other values are undefined.
     
-    ### Register 3: Polynomial Tap Bits
+    ### Register 5: Polynomial Tap Bits
     | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
     |-|-|-|-|-|-|-|-|
     | x^8 | x^7 | x^6 | x^5 | x^4 | x^3 | x^2 | x^1 |
