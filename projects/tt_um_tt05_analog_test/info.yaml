@@ -37,19 +37,34 @@ documentation:
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
-    - IN[2:0]: Digital input for DAC
-    - IN[3]: Enable TG for DAC output to UA[1]
-    - IN[4]: Not used
-    - IN[5]: Enable TG for ringo output to UA[0]
-    - IN[6]: Enable ringo 
-    - IN[7]: Short UA[0] and UA[1] for testing
+    - dac_in[0]
+    - dac_in[1]
+    - dac_in[2]
+    - "Enable TG for DAC output to UA[1]"
+    - none
+    - "Enable TG for ringo output to UA[0]"
+    - Enable ringo 
+    - "Short UA[0] and UA[1] for testing"
 # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
   outputs:
-    - UA[0]: Ringo output (if TG enabled)
-    - UA[1]: DAC output (if TG enabled
+    - "UA[0]: Ringo output (when TG enabled)"
+    - "UA[1]: DAC output (when TG enabled)"
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
 # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
   bidirectional:
-    - not used
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
 
 # The following fields are optional
   tag:          "analog"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
