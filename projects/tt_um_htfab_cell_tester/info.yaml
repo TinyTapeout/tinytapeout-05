@@ -138,11 +138,11 @@ documentation:
         and the negation of `A1` (input 1) if `S` is high.
       - Outputs 2 & 3 (`maj3`) should be high if at least two of inputs 0, 1 & 2 is high.
       - Outputs 4 & 5 (`dlrtp`) should behave as a latch. If `RESET_B` (input 2) is low,
-        the output should be low as well, otherwise it should relay `DATA` (input 0) if
-        `GATE` (input 1) is high and keep its output when `GATE` is low.
+        the output should be low as well, otherwise it should relay `D` (input 1) if
+        `GATE` (input 0) is high and keep its output when `GATE` is low.
       - Outputs 6 & 7 (`dfrtp`) should behave as a flop. If `RESET_B` (input 2) is low,
-        it should reset into the low state. Otherwise it should save the `DATA` (input 0)
-        state when `CLK` (input 1) is low and update the output it when `CLK` is high.
+        it should reset into the low state. Otherwise it should save the `D` (input 1)
+        state when `CLK` (input 0) is low and update the output it when `CLK` is high.
 
       ### Test 2
 
@@ -167,8 +167,8 @@ documentation:
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:
-    - A0/A/D
-    - A1/B/GATE/CLK
+    - A0/A/GATE/CLK
+    - A1/B/D
     - S/C/RESET_B
     - mode bit
     - trigger bit
